@@ -1,7 +1,9 @@
+import { AppBar, Menu } from "@mui/material";
 import type { NextPage } from "next";
+import styled from "styled-components";
 
 const Home: NextPage = () => {
-	return <div>1</div>;
+	return <div></div>;
 };
 
 export default Home;
