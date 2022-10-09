@@ -25,9 +25,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: sudo npm ci
-    - run: sudo npm run build --if-present
-
+    - run: npm run install -save --legacy-peer-deps
+    
   deploy:
   
     needs: build
@@ -40,5 +39,6 @@ jobs:
         RUNNER_WORK_PATH: ${{ secrets.RUNNER_WORK_PATH }}
       run: |
         sudo rm -rf $DEPLOY_PATH/Goraku-client
-        sudo cp -r $RUNNER_WORK_PATH/Goraku-client/Goraku-client $DEPLOY_PATH
+        sudo mv -r $RUNNER_WORK_PATH/Goraku-client/Goraku-client $DEPLOY_PATH
+        sudo npm build $DEPLOY_PATH/Goraku-client
         sudo sh $DEPLOY_PATH/run.sh
