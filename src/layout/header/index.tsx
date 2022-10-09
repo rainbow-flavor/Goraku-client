@@ -43,7 +43,7 @@ const Header = () => {
 	};
 
 	return (
-		<Box sx={{ flexGrow: 1 }}>
+		<Box component='header'>
 			<AppBar position='static' color='transparent'>
 				<Container maxWidth='xl'>
 					<Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
@@ -107,13 +107,14 @@ const Header = () => {
 
 						<Box sx={{ display: { xs: "none", md: "flex" } }}>
 							{pages.map((page) => (
-								<Button
-									key={page.text}
-									onClick={handleCloseNavMenu}
-									sx={{ my: 2, display: "block" }}
-								>
-									<NavLink href={page.url}>{page.text}</NavLink>
-								</Button>
+								<NavLink href={page.url} key={page.text}>
+									<Button
+										onClick={handleCloseNavMenu}
+										sx={{ my: 2, display: "block" }}
+									>
+										{page.text}
+									</Button>
+								</NavLink>
 							))}
 						</Box>
 					</Toolbar>

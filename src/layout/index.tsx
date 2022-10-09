@@ -1,5 +1,7 @@
+import { Box } from "@mui/material";
 import { Container } from "@mui/system";
 import { ReactNode } from "react";
+import Footer from "./footer";
 import Header from "./header";
 
 interface Props {
@@ -8,10 +10,20 @@ interface Props {
 
 const Layout = ({ children }: Props) => {
 	return (
-		<div>
+		<Box
+			sx={{
+				minHeight: "100vh",
+				display: "flex",
+				flexDirection: "column",
+				justifyContent: "space-between",
+			}}
+		>
 			<Header />
-			<Container maxWidth='xl'>{children}</Container>
-		</div>
+			<Container maxWidth='xl' sx={{ flexGrow: 1 }} component='main'>
+				{children}
+			</Container>
+			<Footer />
+		</Box>
 	);
 };
 
