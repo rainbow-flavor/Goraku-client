@@ -1,3 +1,4 @@
+import { Container } from "@mui/system";
 import { ReactNode } from "react";
 import Header from "./header";
 
@@ -9,7 +10,7 @@ const Layout = ({ children }: Props) => {
 	return (
 		<div>
 			<Header />
-			{children}
+			<Container maxWidth='xl'>{children}</Container>
 		</div>
 	);
 };
