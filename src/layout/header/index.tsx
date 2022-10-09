@@ -14,13 +14,11 @@ import Image from "next/image";
 import { useState } from "react";
 import { Container } from "@mui/system";
 import MenuIcon from "@mui/icons-material/Menu";
-import Link from "next/link";
-import { StyledLink } from "@/common/nav-link/style";
 import NavLink from "@/common/nav-link";
 
 const pages = [
 	{ url: "/", text: "홈" },
-	{ url: "/search", text: "검색" },
+	{ url: "/store", text: "검색" },
 	{ url: "/cs", text: "문의" },
 ];
 
