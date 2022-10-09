@@ -6,17 +6,17 @@ import {
 	IconButton,
 	Menu,
 	MenuItem,
+	SvgIcon,
 	Toolbar,
 	Typography,
 } from "@mui/material";
+import TwitterIcon from "@/assets/icon/twitter.svg";
 import LogoIcon from "@/assets/icon/logo.svg";
 import Image from "next/image";
 import { useState } from "react";
 import { Container } from "@mui/system";
-import MenuIcon from "@mui/icons-material/Menu";
 import NavLink from "@/common/nav-link";
 import Link from "next/link";
-import { Twitter } from "@mui/icons-material";
 
 const Footer = () => {
 	return (
@@ -61,9 +61,14 @@ const Footer = () => {
 
 				<Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
 					<NavLink href='https://twitter.com/GorakuList' target='_blank'>
-						<Icon>
-							<Image src={LogoIcon} alt='Goraku 공식 트위터' />
-						</Icon>
+						<Box sx={{ display: "flex" }}>
+							<Image
+								src={TwitterIcon}
+								alt='오락실 아이콘'
+								width={20}
+								height={20}
+							/>
+						</Box>
 					</NavLink>
 
 					<Typography
@@ -72,7 +77,7 @@ const Footer = () => {
 						variant='subtitle1'
 						align='center'
 						color='text.secondary'
-						component='p'
+						component='div'
 					>
 						<NavLink href='/legal/toc'>
 							<Typography variant='body2' color='#007bff' align='center'>

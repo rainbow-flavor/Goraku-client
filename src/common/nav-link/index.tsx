@@ -11,7 +11,7 @@ interface Props {
 const NavLink = ({ children, href, target }: Props) => {
 	return (
 		<Link href={href}>
-			<StyledLink target={target} rel='no  noreferrer'>
+			<StyledLink href={href} target={target} rel='no  noreferrer'>
 				{children}
 			</StyledLink>
 		</Link>
