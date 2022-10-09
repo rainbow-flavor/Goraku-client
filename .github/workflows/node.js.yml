@@ -40,5 +40,5 @@ jobs:
       run: |
         sudo rm -rf $DEPLOY_PATH/Goraku-client
         sudo mv $RUNNER_WORK_PATH/Goraku-client/Goraku-client $DEPLOY_PATH
-        sudo npm build $DEPLOY_PATH/Goraku-client
+        sudo npm run build $DEPLOY_PATH/Goraku-client
         sudo sh $DEPLOY_PATH/run.sh
