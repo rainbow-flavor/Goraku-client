@@ -6,7 +6,7 @@ const nextConfig = {
 		return [
 			{
 				source: "/api/:path*",
-				destination: "http://localhost:8085/api/v1/:path*",
+				destination: "https://gorakuc.iro.ooo/api/v1/:path*",
 			},
 		];
 	},
