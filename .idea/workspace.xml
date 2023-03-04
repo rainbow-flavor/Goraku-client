@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7e9b6e1-b6a4-4152-9085-f60e1b2b665a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/hooks/use-input.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/hooks/use-outside.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/mock/home.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/styles/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styles/Home.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styles/globals.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +95,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677909853475</updated>
-      <workItem from="1677909854596" duration="7839000" />
+      <workItem from="1677909854596" duration="11573000" />
     </task>
     <servers />
   </component>

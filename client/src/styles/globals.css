@@ -1,9 +1,10 @@
 :root {
-
+  --home-item-height: 44px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --home-item-height: 44px;
   }
 }
 
