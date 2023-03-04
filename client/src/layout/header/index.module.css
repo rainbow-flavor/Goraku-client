@@ -1,0 +1,22 @@
+.container {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 0 20px;
+}
+
+.linkBox {
+    margin-left: auto;
+}
+
+.linkBox a {
+    display: flex;
+    align-items: center;
+}
+
+.linkBox img {
+    width: 20px;
+}
+
