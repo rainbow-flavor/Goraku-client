@@ -17,7 +17,7 @@ const HomePage = () => {
       inputFieldRef.current && inputFieldRef.current.contains(e.relatedTarget);
     if (isInternalElement) return;
 
-    setIsOpen(false);
+    closeSearchField();
   };
 
   const onSelectItem = (arg: string) => {
