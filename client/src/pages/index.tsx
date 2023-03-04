@@ -1,14 +1,7 @@
 import { clsx } from "clsx";
-import {
-  FocusEventHandler,
-  LegacyRef,
-  MutableRefObject,
-  useRef,
-  useState,
-} from "react";
+import { FocusEvent, useRef, useState } from "react";
 
 import useInput from "@/hooks/use-input";
-import useOutside from "@/hooks/use-outside";
 import { searchList } from "@/mock/home";
 import styles from "@/styles/Home.module.css";
 
@@ -19,18 +12,29 @@ const HomePage = () => {
 
   const closeSearchField = () => setIsOpen(false);
 
+  const onBlur = (e: FocusEvent) => {
+    const isInternalElement =
+      inputFieldRef.current && inputFieldRef.current.contains(e.relatedTarget);
+    if (isInternalElement) return;
+
+    setIsOpen(false);
+  };
+
   const onSelectItem = (arg: string) => {
     updateValue(arg);
     closeSearchField();
   };
 
-  useOutside(inputFieldRef, closeSearchField);
-
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Goraku</h1>
 
-      <div className={styles.searchInputBox} ref={inputFieldRef}>
+      <div
+        className={styles.searchInputBox}
+        tabIndex={-1}
+        ref={inputFieldRef}
+        onBlur={onBlur}
+      >
         <input
           onFocus={() => setIsOpen(true)}
           className={clsx(
