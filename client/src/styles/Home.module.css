@@ -1,16 +1,17 @@
 .container {
   display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 10px;
   width: 100vw;
   height: 100vh;
-  padding-top: 30vh;
 }
 
 .title {
   font-size: clamp(4rem, 10vw, 6rem);
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+  background: rgb(245,4,4);
+  background: linear-gradient(114deg, rgba(245,4,4,1) 0%, rgba(5,146,255,1) 49%, rgba(237,249,13,1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -91,7 +92,7 @@
 
 @media screen and (max-width: 1024px) {
   .container {
-    padding: 200px 80px;
+    padding: 0 20px;
   }
 
   .searchInputBox {
