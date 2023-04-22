@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchListItem {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: var(--search-item-size);
+    cursor: pointer;
+}
+
+.searchIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--search-item-size);
+    height: var(--search-item-size);
+}
+
+.searchItemText {
+    color:   #8F969C;
+}
