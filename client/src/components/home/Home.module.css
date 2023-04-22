@@ -1,14 +1,41 @@
 .container {
     display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+
+
+}
+
+.header {
+    align-self: flex-end;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height: 48px;
+}
+
+.header a {
+    display: flex;
+}
+
+
+
+.form {
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     gap: 10px;
     width: 100vw;
     height: 100vh;
+
 }
 
 .title {
+    margin: 100px 0 0;
+    align-self: center;
+    display: flex;
     font-size: clamp(4rem, 10vw, 6rem);
     background: rgb(245,4,4);
     background: linear-gradient(114deg, rgba(245,4,4,1) 0%, rgba(5,146,255,1) 49%, rgba(237,249,13,1) 100%);
@@ -31,7 +58,8 @@
     font-size: 16px;
     padding: 1px 20px;
     border: 1px solid #ccc;
-    border-radius: var(--home-item-height);
+    background: var(--element-background-color);
+    border-radius: 16px;
     box-sizing: border-box;
     box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
@@ -39,13 +67,15 @@
 
 
 .searchInput::-webkit-input-placeholder {
+    color: var(--text-color);
     text-align: center;
 }
 
 
 @media screen and (max-width: 1024px) {
-    .container {
+    .form {
         padding: 0 20px;
+        padding-top: 120px;
     }
 
     .searchInputBox {
