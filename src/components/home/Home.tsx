@@ -1,8 +1,10 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
+import { FaSearch } from "react-icons/fa";
 
 import styles from "./Home.module.css";
-import Link from "next/link";
-import { FaSearch } from "react-icons/fa";
+
+import Logo from "@/components/common/logo/Logo";
 
 const Home = () => {
   const { push } = useRouter();
@@ -20,7 +22,7 @@ const Home = () => {
         </Link>
       </div>
 
-      <h1 className={styles.title}>Goraku</h1>
+      <Logo type="home" />
 
       <div className={styles.searchInputBox} onClick={moveToSearch}>
         <input

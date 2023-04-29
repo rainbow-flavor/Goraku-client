@@ -1,11 +1,12 @@
 import React from "react";
 import { useRouter } from "next/router";
+import DetailSearch from "@/components/detail-search/DetailSearch";
 
 const DetailSearchPage = () => {
   const { query } = useRouter();
-  console.log(query);
 
-  return <div>DetailSearchPage</div>;
+
+  return <DetailSearch/>
 };
 
 export default DetailSearchPage;
