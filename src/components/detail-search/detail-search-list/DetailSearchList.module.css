@@ -17,6 +17,5 @@
     flex-direction: column;
     height: calc(100vh - 110px);
     padding-bottom: 100px;
-    gap: 10px;
 }
 

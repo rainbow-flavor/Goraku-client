@@ -1,9 +1,11 @@
-import React, { ChangeEvent, FormEvent, useEffect, useRef } from "react";
-import styles from "@/components/search/SearchForm.module.css";
-import { FaArrowLeft, FaTimes } from "react-icons/fa";
 import { useRouter } from "next/router";
+import React, { ChangeEvent, FormEvent, useEffect, useRef } from "react";
+import { FaArrowLeft, FaTimes } from "react-icons/fa";
 import { useRecoilState } from "recoil";
+
+import { fetchStoreList } from "@/api/store";
 import { searchState } from "@/atoms/search-state";
+import styles from "@/components/search/SearchForm.module.css";
 
 const SearchForm = () => {
   const { back, push } = useRouter();
@@ -34,6 +36,15 @@ const SearchForm = () => {
   useEffect(() => {
     focusInput();
   }, []);
+
+  useEffect(() => {
+    const fetchList = async (word: string) => {
+      const { data } = await fetchStoreList(word);
+      setSearchInfo((prev) => ({ ...prev, list: data?.data ?? [] }));
+    };
+
+    fetchList(searchInfo.searchWord);
+  }, [searchInfo.searchWord]);
 
   return (
     <form className={styles.form} onSubmit={onSubmit}>

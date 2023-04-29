@@ -1,7 +1,9 @@
-import { FaSearch } from "react-icons/fa";
-import styles from "./SearchList.module.css";
 import { useRouter } from "next/router";
-import { useSetRecoilState } from "recoil";
+import { FaSearch } from "react-icons/fa";
+import { useRecoilState } from "recoil";
+
+import styles from "./SearchList.module.css";
+
 import { searchState } from "@/atoms/search-state";
 
 const SearchListItem = ({
@@ -26,7 +28,7 @@ const SearchListItem = ({
 
 const SearchList = () => {
   const { push } = useRouter();
-  const setSearchState = useSetRecoilState(searchState);
+  const [state, setSearchState] = useRecoilState(searchState);
   const onClick = (keyword: string) => {
     setSearchState((prev) => ({ ...prev, searchWord: keyword }));
     push(`/detail-search?keyword=${keyword}`);
@@ -34,13 +36,11 @@ const SearchList = () => {
 
   return (
     <div>
-      {Array(10)
-        .fill("추천 검색어")
-        .map((item, index) => {
-          return (
-            <SearchListItem key={index} text={item + index} onClick={onClick} />
-          );
-        })}
+      {state.list.map((item: string, index) => {
+        return (
+          <SearchListItem key={index} text={item + index} onClick={onClick} />
+        );
+      })}
     </div>
   );
 };
