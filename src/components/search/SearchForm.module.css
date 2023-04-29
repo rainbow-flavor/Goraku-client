@@ -31,7 +31,7 @@
     height: var(--header-size);
     padding: 0 var(--header-size);
     border: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--border-color);
     background: var(--background-color);
     color: var(--text-color);
     font-size: 18px;

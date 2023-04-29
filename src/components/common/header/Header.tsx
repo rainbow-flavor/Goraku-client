@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaBars } from "react-icons/all";
+import { FaBars } from "react-icons/fa";
 
 import styles from "./Header.module.css";
 
