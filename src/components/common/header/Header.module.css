@@ -1,6 +1,6 @@
 .container {
     width: 100%;
-    padding: 10px var(--layout-padding);
+    padding-top: 10px;
 }
 
 .content {

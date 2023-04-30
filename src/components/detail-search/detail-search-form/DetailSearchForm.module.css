@@ -1,0 +1,18 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.container {
+    position: relative;
+}
+
+.submitIcon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    display: flex;
+    transform: translateY(-50%);
+}
+

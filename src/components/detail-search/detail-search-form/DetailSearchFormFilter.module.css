@@ -1,0 +1,21 @@
+.container {
+    max-width: 100%;
+    max-height: 40px;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.container > div {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    margin-right: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.filterTitle {
+    color: var(--text-sub-light-color);
+}

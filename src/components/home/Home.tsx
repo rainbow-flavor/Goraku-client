@@ -4,6 +4,7 @@ import { FaSearch } from "react-icons/fa";
 
 import styles from "./Home.module.css";
 
+import Input from "@/components/common/input/Input";
 import Logo from "@/components/common/logo/Logo";
 
 const Home = () => {
@@ -25,11 +26,7 @@ const Home = () => {
       <Logo type="home" />
 
       <div className={styles.searchInputBox} onClick={moveToSearch}>
-        <input
-          className={styles.searchInput}
-          placeholder="원하는 오락실 게임을 검색하세요"
-          disabled
-        />
+        <Input placeholder="원하는 오락실 게임을 검색하세요" disabled />
         <p>
           <small style={{}}>여러분의 제보를 원합니다! link</small>
         </p>
