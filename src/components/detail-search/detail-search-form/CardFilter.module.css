@@ -1,0 +1,28 @@
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.filterField {
+    height: calc(100% - 80px);
+}
+
+.selectItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: calc(50% - 16px);
+    height: 40px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.selectItem svg {
+    color: var(--text-disabled-color);
+}
+
+.active svg {
+    color: var(--text-color);
+}

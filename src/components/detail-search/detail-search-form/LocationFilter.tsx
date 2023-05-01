@@ -105,6 +105,7 @@ const LocationFilter = () => {
       <div className={styles.filterField}>
         <div className={styles.filter}>
           <p className={styles.filterTitle}>지역</p>
+
           <div className={styles.selectBox}>
             {["all", "seoul", "gyeonggi"].map((si) => {
               return (
@@ -122,6 +123,7 @@ const LocationFilter = () => {
 
         <div className={styles.filter}>
           <p className={styles.filterTitle}>상세 지역</p>
+
           <div className={styles.selectBox}>
             {city.si !== "all" ? (
               locationMap[city.si].map((gu) => {

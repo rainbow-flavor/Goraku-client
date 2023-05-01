@@ -8,8 +8,10 @@
 
 .resetButton {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 8px;
+    width: 130px;
 }
 
 .disabled {
