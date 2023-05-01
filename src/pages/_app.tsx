@@ -3,6 +3,8 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { RecoilRoot } from "recoil";
 
+import Modal from "@/components/common/modal/Modal";
+
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
@@ -15,6 +17,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
       <RecoilRoot>
         <Component {...pageProps} />
+        <Modal />
       </RecoilRoot>
     </>
   );

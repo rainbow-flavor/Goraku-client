@@ -1,0 +1,58 @@
+.container {
+    flex: 1;
+    display: flex;
+    height: calc(100%);
+
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+.filter {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    height: 100%;
+}
+
+.filterParagraph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    font-size: 14px;
+    padding: 10px;
+    color: var(--text-sub-color);
+}
+
+
+.filterTitle {
+    font-size: 17px;
+    color: var(--text-sub-color);
+}
+
+.selectBox {
+    overflow-y: scroll;
+    border: 1px solid var(--border-color);
+}
+
+.smallListHeight {
+    height: 100%;
+}
+
+.largeListHeight {
+    height: calc(100% - 88px);
+}
+
+.selectBox > div {
+    color: var(--text-sub-color);
+    padding: 5px 15px;
+}
+
+.activeSelect {
+    color: var(--text-color) !important;
+    font-weight: bold;
+}
