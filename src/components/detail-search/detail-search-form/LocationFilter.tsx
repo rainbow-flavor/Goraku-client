@@ -1,7 +1,8 @@
-import { clsx } from "clsx";
 import { useState } from "react";
 
 import styles from "./LocationFilter.module.css";
+
+import SubmitFilterButton from "@/components/detail-search/detail-search-form/SubmitFilterButton";
 
 const locationMap = {
   seoul: [
@@ -99,52 +100,51 @@ const LocationFilter = () => {
     setCity((prev) => ({ ...prev, gu }));
   };
 
-  const filterStyleBySize = clsx(
-    styles.selectBox,
-    city.si === "all" ? styles.smallListHeight : styles.largeListHeight
-  );
-
   return (
     <div className={styles.container}>
-      <div className={styles.filter}>
-        <p className={styles.filterTitle}>지역</p>
-        <div className={filterStyleBySize}>
-          {["all", "seoul", "gyeonggi"].map((si) => {
-            return (
-              <div
-                key={si}
-                onClick={() => selectSi(si as Si)}
-                className={city.si === si ? styles.activeSelect : ""}
-              >
-                {translateKey(si)}
-              </div>
-            );
-          })}
+      <div className={styles.filterField}>
+        <div className={styles.filter}>
+          <p className={styles.filterTitle}>지역</p>
+          <div className={styles.selectBox}>
+            {["all", "seoul", "gyeonggi"].map((si) => {
+              return (
+                <div
+                  key={si}
+                  onClick={() => selectSi(si as Si)}
+                  className={city.si === si ? styles.activeSelect : ""}
+                >
+                  {translateKey(si)}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className={styles.filter}>
+          <p className={styles.filterTitle}>상세 지역</p>
+          <div className={styles.selectBox}>
+            {city.si !== "all" ? (
+              locationMap[city.si].map((gu) => {
+                return (
+                  <div
+                    key={gu}
+                    className={city.gu === gu ? styles.activeSelect : ""}
+                    onClick={() => selectGu(gu)}
+                  >
+                    {gu}
+                  </div>
+                );
+              })
+            ) : (
+              <p className={styles.filterParagraph}>
+                지역을 선택하면 상세 지역을 확인할 수 있습니다.
+              </p>
+            )}
+          </div>
         </div>
       </div>
 
-      <div className={styles.filter}>
-        <p className={styles.filterTitle}>상세 지역</p>
-        <div className={filterStyleBySize}>
-          {city.si !== "all" ? (
-            locationMap[city.si].map((gu) => {
-              return (
-                <div
-                  key={gu}
-                  className={city.gu === gu ? styles.activeSelect : ""}
-                  onClick={() => selectGu(gu)}
-                >
-                  {gu}
-                </div>
-              );
-            })
-          ) : (
-            <p className={styles.filterParagraph}>
-              지역을 선택하면 상세 지역을 확인할 수 있습니다.
-            </p>
-          )}
-        </div>
-      </div>
+      <SubmitFilterButton name="지역" />
     </div>
   );
 };

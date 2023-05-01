@@ -1,7 +1,8 @@
 :root {
   --home-item-height: 44px;
+  --active-color: #fff;
   --text-color: #fff;
-  --text-sub-color: #7F7F7F;
+  --text-disabled-color: #7F7F7F;
   --text-sub-light-color: #B2B1AD;
   --background-color: #1D1E20;
   --border-color: #ccc;
@@ -10,6 +11,7 @@
   --header-size: 48px;
   --search-item-size: 48px;
   --layout-padding: 15px;
+  --modal-element-gap: 16px;
 }
 
 html, body, div, span, applet, object, iframe,

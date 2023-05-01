@@ -7,7 +7,7 @@
 }
 
 .result {
-    color: var(--text-sub-color);
+    color: var(--text-disabled-color);
 }
 
 .itemList {

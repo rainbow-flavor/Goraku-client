@@ -1,6 +1,7 @@
 .container {
     flex: 1;
     display: flex;
+    flex-direction: column;
     height: calc(100%);
 
 }
@@ -9,12 +10,16 @@
     display: none;
 }
 
+.filterField {
+    display: flex;
+    height: calc(100% - 80px);
+}
+
 .filter {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 6px;
-    height: 100%;
 }
 
 .filterParagraph {
@@ -25,30 +30,24 @@
     height: 100%;
     font-size: 14px;
     padding: 10px;
-    color: var(--text-sub-color);
+    color: var(--text-disabled-color);
 }
 
 
 .filterTitle {
     font-size: 17px;
-    color: var(--text-sub-color);
+    color: var(--text-disabled-color);
 }
 
 .selectBox {
     overflow-y: scroll;
     border: 1px solid var(--border-color);
-}
-
-.smallListHeight {
     height: 100%;
 }
 
-.largeListHeight {
-    height: calc(100% - 88px);
-}
 
 .selectBox > div {
-    color: var(--text-sub-color);
+    color: var(--text-disabled-color);
     padding: 5px 15px;
 }
 
