@@ -3,9 +3,9 @@ import { MdClose } from "react-icons/md";
 
 import styles from "./DetailSearchModal.module.css";
 
-import CardFilter from "@/components/detail-search/detail-search-modal/CardFilter";
-import LocationFilter from "@/components/detail-search/detail-search-modal/LocationFilter";
-import OpenFilter from "@/components/detail-search/detail-search-modal/OpenFilter";
+import CardFilter from "@/components/detail-search/detail-search-modal/filter/CardFilter";
+import CityFilter from "@/components/detail-search/detail-search-modal/filter/CityFilter";
+import OpenFilter from "@/components/detail-search/detail-search-modal/filter/OpenFilter";
 import useModalState from "@/hooks/use-modal-state";
 
 const DetailSearchModal = () => {
@@ -41,7 +41,7 @@ const DetailSearchModal = () => {
   };
 
   const filterMap: Record<"location" | "card" | "open", ReactNode> = {
-    location: <LocationFilter />,
+    location: <CityFilter />,
     card: <CardFilter />,
     open: <OpenFilter />,
   };

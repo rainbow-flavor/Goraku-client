@@ -12,3 +12,5 @@ export interface Store {
   twitter?: string;
   website?: string;
 }
+
+export type Card = "k" | "n" | "s" | "t" | "a";

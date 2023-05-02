@@ -2,40 +2,35 @@ import { useState } from "react";
 
 import styles from "./CardFilter.module.css";
 
+import { useFilterState } from "@/atoms/filter-atom";
 import Checkbox from "@/components/common/checkbox/Checkbox";
-import SubmitFilterButton from "@/components/detail-search/detail-search-modal/SubmitFilterButton";
+import SubmitFilterButton from "@/components/detail-search/detail-search-modal/filter/SubmitFilterButton";
+import { Card } from "@/types/store";
 
 const CardFilter = () => {
-  const [cards, setCards] = useState([
-    {
-      name: "k",
-      checked: false,
-    },
-    {
-      name: "n",
-      checked: false,
-    },
-    {
-      name: "s",
-      checked: false,
-    },
-    {
-      name: "t",
-      checked: false,
-    },
-    {
-      name: "a",
-      checked: false,
-    },
-  ]);
+  const {
+    filterState: { card },
+    setFilterState,
+    diffCard,
+    initialCard,
+  } = useFilterState();
+  const [cards, setCards] = useState(card);
 
-  const selectCard = (name: string) => {
+  const selectCard = (name: Card) => {
     setCards((prev) =>
       prev.map((card) => ({
         ...card,
         checked: card.name === name ? !card.checked : card.checked,
       }))
     );
+  };
+
+  const resetCards = () => {
+    setCards(initialCard);
+  };
+
+  const saveFilterState = () => {
+    setFilterState((prev) => ({ ...prev, card: cards }));
   };
 
   return (
@@ -53,7 +48,12 @@ const CardFilter = () => {
         })}
       </div>
 
-      <SubmitFilterButton name="카드사" />
+      <SubmitFilterButton
+        name="카드사"
+        reset={diffCard(cards)}
+        onReset={resetCards}
+        onSubmit={saveFilterState}
+      />
     </div>
   );
 };

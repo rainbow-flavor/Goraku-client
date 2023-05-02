@@ -1,9 +1,22 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { RecoilRoot } from "recoil";
+import React, { useEffect } from "react";
+import { RecoilRoot, useRecoilSnapshot } from "recoil";
 
 import Modal from "@/components/common/modal/Modal";
+
+const DebugObserver = () => {
+  const snapshot = useRecoilSnapshot() as any;
+  useEffect(() => {
+    console.debug("The following atoms were modified:");
+    for (const node of snapshot.getNodes_UNSTABLE({ isModified: true })) {
+      console.debug(node.key, snapshot.getLoadable(node));
+    }
+  }, [snapshot]);
+
+  return null;
+};
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
@@ -16,6 +29,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Head>
 
       <RecoilRoot>
+        <DebugObserver />
         <Component {...pageProps} />
         <Modal />
       </RecoilRoot>

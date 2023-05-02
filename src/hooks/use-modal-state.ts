@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 import { useSetRecoilState } from "recoil";
 
-import { modalState } from "@/atoms/modal-state";
+import { modalAtom } from "@/atoms/modal-atom";
 
 const useModalState = () => {
-  const setModalState = useSetRecoilState(modalState);
+  const setModalState = useSetRecoilState(modalAtom);
 
   const showModal = (children: ReactNode) => {
     setModalState(children);

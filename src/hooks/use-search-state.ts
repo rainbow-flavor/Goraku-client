@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useRef } from "react";
 import { useRecoilState } from "recoil";
 
-import { searchState } from "@/atoms/search-state";
+import { searchState } from "@/atoms/search-Atom";
 
 const useSearchState = () => {
   const [searchInfo, setSearchInfo] = useRecoilState(searchState);

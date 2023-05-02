@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 
-import { modalState } from "@/atoms/modal-state";
+import { modalAtom } from "@/atoms/modal-atom";
 
 const Modal = () => {
-  const component = useRecoilValue(modalState);
+  const component = useRecoilValue(modalAtom);
 
   useEffect(() => {
     document.body.style.overflow = component ? "hidden" : "auto";

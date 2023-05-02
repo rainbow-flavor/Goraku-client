@@ -4,7 +4,7 @@ import { useRecoilState } from "recoil";
 
 import styles from "./SearchList.module.css";
 
-import { searchState } from "@/atoms/search-state";
+import { searchState } from "@/atoms/search-Atom";
 
 const SearchListItem = ({
   text,
