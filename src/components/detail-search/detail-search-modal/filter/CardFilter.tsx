@@ -5,6 +5,7 @@ import styles from "./CardFilter.module.css";
 import { useFilterState } from "@/atoms/filter-atom";
 import Checkbox from "@/components/common/checkbox/Checkbox";
 import SubmitFilterButton from "@/components/detail-search/detail-search-modal/filter/SubmitFilterButton";
+import { cardMap } from "@/constants/store";
 import { Card } from "@/types/store";
 
 const CardFilter = () => {
@@ -27,6 +28,7 @@ const CardFilter = () => {
 
   const resetCards = () => {
     setCards(initialCard);
+    setFilterState((prev) => ({ ...prev, card: initialCard }));
   };
 
   const saveFilterState = () => {
@@ -40,7 +42,9 @@ const CardFilter = () => {
           return (
             <Checkbox
               key={card.name}
-              text={card.name}
+              text={
+                <div className={styles.textBox}>{cardMap[card.name].name}</div>
+              }
               checked={card.checked}
               onClick={() => selectCard(card.name)}
             />

@@ -5,6 +5,7 @@ import styles from "./DetailSearchFormFilter.module.css";
 import { useFilterState } from "@/atoms/filter-atom";
 import DetailSearchModal from "@/components/detail-search/detail-search-modal/DetailSearchModal";
 import useModalState from "@/hooks/use-modal-state";
+import { TabType } from "@/types/filter";
 
 const DetailSearchFormFilter = () => {
   const {
@@ -14,15 +15,15 @@ const DetailSearchFormFilter = () => {
 
   const { showModal } = useModalState();
 
-  const showModalByFilter = () => {
-    showModal(<DetailSearchModal />);
+  const showModalByFilter = (tab: TabType) => {
+    showModal(<DetailSearchModal tab={tab} />);
   };
 
   const checkedCards = card.filter((item) => item.checked);
 
   return (
     <div className={styles.container}>
-      <div onClick={showModalByFilter}>
+      <div onClick={() => showModalByFilter("city")}>
         <small className={styles.filterTitle}>지역 : </small>
         <b>
           {city.si === "all" ? "전국" : `${translateKey(city.si)} ${city.gu}`}
@@ -30,7 +31,7 @@ const DetailSearchFormFilter = () => {
         <FaAngleDown size={14} color="#fff" />
       </div>
 
-      <div>
+      <div onClick={() => showModalByFilter("card")}>
         <small className={styles.filterTitle}>카드사 : </small>
         <b>
           {checkedCards.length > 0
@@ -40,9 +41,9 @@ const DetailSearchFormFilter = () => {
         <FaAngleDown size={14} color="#fff" />
       </div>
 
-      <div>
-        <small className={styles.filterTitle}>폐업 여부 포함 : </small>
-        <b>{open ? "TRUE" : "FALSE"}</b>
+      <div onClick={() => showModalByFilter("open")}>
+        <small className={styles.filterTitle}>폐업 여부 : </small>
+        <b>{open ? "포함" : "미포함"}</b>
         <FaAngleDown size={14} color="#fff" />
       </div>
     </div>

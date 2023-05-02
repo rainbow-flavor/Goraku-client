@@ -23,6 +23,7 @@ const OpenFilter = () => {
 
   const resetOpen = () => {
     setToggle(initialOpen);
+    setFilterState((prev) => ({ ...prev, open: initialOpen }));
   };
 
   return (
@@ -37,7 +38,7 @@ const OpenFilter = () => {
 
       <SubmitFilterButton
         name={OPEN_FILTER_TITLE}
-        reset={diffOpen(open)}
+        reset={diffOpen(toggle)}
         onReset={resetOpen}
         onSubmit={saveFilterState}
       />

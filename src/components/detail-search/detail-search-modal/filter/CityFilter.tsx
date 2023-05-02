@@ -5,7 +5,7 @@ import styles from "./CityFilter.module.css";
 import { useFilterState } from "@/atoms/filter-atom";
 import SubmitFilterButton from "@/components/detail-search/detail-search-modal/filter/SubmitFilterButton";
 import { locationMap } from "@/constants/location";
-import { Si } from "@/types/location";
+import { Si } from "@/types/filter";
 
 const CityFilter = () => {
   const {
@@ -30,6 +30,7 @@ const CityFilter = () => {
 
   const resetCity = () => {
     setCity(initialCity);
+    setFilterState((prev) => ({ ...prev, city: initialCity }));
   };
 
   const saveFilterState = () => {

@@ -26,3 +26,13 @@
 .active svg {
     color: var(--text-color);
 }
+
+.textBox {
+display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.textBox > img {
+    width: 40px;
+}

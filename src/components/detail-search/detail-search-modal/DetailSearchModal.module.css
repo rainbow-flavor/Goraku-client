@@ -27,7 +27,7 @@
 .tabBox {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     border-bottom: 1px solid #282A29;
     margin-bottom: var(--modal-element-gap);
 }
@@ -45,6 +45,21 @@
 .activeTab {
     font-weight: bold;
     border-bottom: 2px solid var(--text-color);
+}
+
+.hasCheckedTab {
+    position: relative;
+}
+
+.hasCheckedTab::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -8px;
+    width: 8px;
+    height: 8px;
+    background-color: #FD5227;
+    border-radius: 50%;
 }
 
 .filterBox {

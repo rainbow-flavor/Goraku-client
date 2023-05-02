@@ -43,19 +43,34 @@ const filterAtom = atom<FilterAtom>({
 
 const initialFilterState = selector({
   key: "initial-filter",
-  get: () => {
-    const diffCard = (cards: FilterAtom["card"]) => {
+  get: ({ get }) => {
+    const filterState = get(filterAtom);
+
+    const diffCard = (cards?: FilterAtom["card"]) => {
+      if (cards) {
+        return initialCard.some(
+          (item, index) => item.checked !== cards[index].checked
+        );
+      }
+
       return initialCard.some(
-        (item, index) => item.checked !== cards[index].checked
+        (item, index) => item.checked !== filterState.card[index].checked
       );
     };
 
-    const diffCity = (city: FilterAtom["city"]) => {
-      return initialCity.gu !== city.gu || initialCity.si !== city.si;
+    const diffCity = (city?: FilterAtom["city"]) => {
+      if (city) {
+        return initialCity.gu !== city.gu || initialCity.si !== city.si;
+      }
+
+      return (
+        initialCity.gu !== filterState.city.gu ||
+        initialCity.si !== filterState.city.si
+      );
     };
 
-    const diffOpen = (open: FilterAtom["open"]) => {
-      return initialOpen === open;
+    const diffOpen = (open?: FilterAtom["open"]) => {
+      return open;
     };
 
     const translateKey = (key: string) => {

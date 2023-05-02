@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { Si } from "@/types/location";
+import { Si } from "@/types/filter";
 import { Card } from "@/types/store";
 
 export interface FilterAtom {
