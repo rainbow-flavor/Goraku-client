@@ -2,14 +2,14 @@ import { FaAngleDown } from "react-icons/fa";
 
 import styles from "./DetailSearchFormFilter.module.css";
 
-import DetailSearchFormFilterModal from "@/components/detail-search/detail-search-form/DetailSearchFormFilterModal";
+import DetailSearchModal from "@/components/detail-search/detail-search-modal/DetailSearchModal";
 import useModalState from "@/hooks/use-modal-state";
 
 const DetailSearchFormFilter = () => {
   const { showModal } = useModalState();
 
   const showModalByFilter = () => {
-    showModal(<DetailSearchFormFilterModal />);
+    showModal(<DetailSearchModal />);
   };
 
   return (

@@ -1,32 +1,31 @@
-import { clsx } from "clsx";
 import { useState } from "react";
-import { FaCheckCircle } from "react-icons/fa";
 
 import styles from "./CardFilter.module.css";
 
-import SubmitFilterButton from "@/components/detail-search/detail-search-form/SubmitFilterButton";
+import Checkbox from "@/components/common/checkbox/Checkbox";
+import SubmitFilterButton from "@/components/detail-search/detail-search-modal/SubmitFilterButton";
 
 const CardFilter = () => {
   const [cards, setCards] = useState([
     {
       name: "k",
-      select: false,
+      checked: false,
     },
     {
       name: "n",
-      select: false,
+      checked: false,
     },
     {
       name: "s",
-      select: false,
+      checked: false,
     },
     {
       name: "t",
-      select: false,
+      checked: false,
     },
     {
       name: "a",
-      select: false,
+      checked: false,
     },
   ]);
 
@@ -34,7 +33,7 @@ const CardFilter = () => {
     setCards((prev) =>
       prev.map((card) => ({
         ...card,
-        select: card.name === name ? !card.select : card.select,
+        checked: card.name === name ? !card.checked : card.checked,
       }))
     );
   };
@@ -44,20 +43,16 @@ const CardFilter = () => {
       <div className={styles.filterField}>
         {cards.map((card) => {
           return (
-            <div
+            <Checkbox
               key={card.name}
-              className={clsx(
-                styles.selectItem,
-                card.select ? styles.active : ""
-              )}
+              text={card.name}
+              checked={card.checked}
               onClick={() => selectCard(card.name)}
-            >
-              <FaCheckCircle />
-              {card.name}
-            </div>
+            />
           );
         })}
       </div>
+
       <SubmitFilterButton name="카드사" />
     </div>
   );

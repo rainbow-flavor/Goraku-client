@@ -1,0 +1,17 @@
+.checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: calc(50% - 16px);
+    height: 40px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.checkbox svg {
+    color: var(--text-disabled-color);
+}
+
+.active svg {
+    color: var(--text-color);
+}

@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import styles from "./LocationFilter.module.css";
 
-import SubmitFilterButton from "@/components/detail-search/detail-search-form/SubmitFilterButton";
+import SubmitFilterButton from "@/components/detail-search/detail-search-modal/SubmitFilterButton";
 
 const locationMap = {
   seoul: [
