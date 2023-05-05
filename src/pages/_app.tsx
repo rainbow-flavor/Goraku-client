@@ -1,4 +1,6 @@
 import "@/styles/globals.css";
+import { QueryClient } from "@tanstack/query-core";
+import { QueryClientProvider } from "@tanstack/react-query";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import React, { useEffect } from "react";
@@ -18,6 +20,16 @@ const DebugObserver = () => {
   return null;
 };
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+      refetchIntervalInBackground: false,
+    },
+  },
+});
+
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
@@ -28,11 +40,13 @@ const App = ({ Component, pageProps }: AppProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <RecoilRoot>
-        <DebugObserver />
-        <Component {...pageProps} />
-        <Modal />
-      </RecoilRoot>
+      <QueryClientProvider client={queryClient}>
+        <RecoilRoot>
+          <DebugObserver />
+          <Component {...pageProps} />
+          <Modal />
+        </RecoilRoot>
+      </QueryClientProvider>
     </>
   );
 };

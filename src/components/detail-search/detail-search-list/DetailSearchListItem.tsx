@@ -2,18 +2,25 @@ import styles from "./DetailSearchListItem.module.css";
 
 import { Store } from "@/types/store";
 
-interface DetailSearchListItemProps extends Store {}
-
-const DetailSearchListItem = ({ address, name }: DetailSearchListItemProps) => {
+const DetailSearchListItem = ({ address, name, networkType, isop }: Store) => {
   return (
     <div className={styles.container}>
       <div className={styles.thumbnailBox}>
-        <div className={styles.thumbnail}>사진을 등록해주세요</div>
+        <div className={styles.thumbnail}>
+          {isop ? "사진을 등록해주세요" : "가게가 폐업했습니다.."}
+        </div>
       </div>
 
       <div className={styles.infoBox}>
-        <p>{name}</p>
-        <p>{address}</p>
+        <p className={styles.title}>{name}</p>
+        <p className={styles.address}>{address}</p>
+        <p className={styles.card}>
+          {networkType
+            ? Object.entries(networkType).map(([key, value]) => {
+                return value ? <span>{key}</span> : null;
+              })
+            : "카드사 정보 없음"}
+        </p>
       </div>
     </div>
   );

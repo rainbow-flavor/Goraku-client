@@ -11,6 +11,7 @@ export interface Store {
   contact?: string;
   twitter?: string;
   website?: string;
+  networkType: Record<Card, boolean> | null;
 }
 
 export type Card = "k" | "n" | "s" | "t" | "a";

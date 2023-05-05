@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px 0;
+    padding: 15px 0;
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -18,10 +18,40 @@
     height: 80px;
     font-size: 10px;
     border-radius: 8px;
-    padding: 5px;
+    padding: 8px;
     background-color: var(--element-background-color);
 }
 
 .infoBox {
     flex: 1;
+}
+
+.title {
+    font-weight: bold;
+    color: #66AEB4;
+}
+
+.address {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-disabled-color);
+}
+
+.card span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14px;
+    height: 14px;
+    font-size: 12px;
+    color: var(--background-color);
+    border-radius: 50%;
+    background-color: #F4EEE0;
 }
