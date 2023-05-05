@@ -1,41 +1,37 @@
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 
 import styles from "./CityFilter.module.css";
 
 import { useFilterState } from "@/atoms/filter-atom";
-import SubmitFilterButton from "@/components/detail-search/detail-search-modal/filter/SubmitFilterButton";
 import { locationMap } from "@/constants/location";
 import { Si } from "@/types/filter";
 
 const CityFilter = () => {
   const {
-    filterState: { city: recoilCityState },
-    setFilterState,
-    diffCity,
-    initialCity,
+    filterState: { city: realCity },
+    localFilterState: { city },
+    setLocalFilterState,
     translateKey,
   } = useFilterState();
-  const [city, setCity] = useState<{
-    si: Si;
-    gu: string;
-  }>(recoilCityState);
+  const ref = useRef<HTMLDivElement>(null);
 
   const selectSi = (si: Si) => {
-    setCity(() => ({ si, gu: si === "all" ? "" : "전체" }));
+    setLocalFilterState((prev) => ({
+      ...prev,
+      city: { si, gu: si === "all" ? "" : "전체" },
+    }));
   };
 
   const selectGu = (gu: string) => {
-    setCity((prev) => ({ ...prev, gu }));
+    setLocalFilterState((prev) => ({
+      ...prev,
+      city: { ...prev.city, gu },
+    }));
   };
 
-  const resetCity = () => {
-    setCity(initialCity);
-    setFilterState((prev) => ({ ...prev, city: initialCity }));
-  };
-
-  const saveFilterState = () => {
-    setFilterState((prev) => ({ ...prev, city }));
-  };
+  useEffect(() => {
+    setLocalFilterState((prev) => ({ ...prev, city: realCity }));
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -61,7 +57,7 @@ const CityFilter = () => {
         <div className={styles.filter}>
           <p className={styles.filterTitle}>상세 지역</p>
 
-          <div className={styles.selectBox}>
+          <div className={styles.selectBox} ref={ref}>
             {city.si !== "all" ? (
               locationMap[city.si].map((gu) => {
                 return (
@@ -82,13 +78,6 @@ const CityFilter = () => {
           </div>
         </div>
       </div>
-
-      <SubmitFilterButton
-        name="지역"
-        reset={diffCity(city)}
-        onReset={resetCity}
-        onSubmit={saveFilterState}
-      />
     </div>
   );
 };

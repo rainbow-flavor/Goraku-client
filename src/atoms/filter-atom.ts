@@ -41,10 +41,19 @@ const filterAtom = atom<FilterAtom>({
   },
 });
 
+const modalFilterAtom = atom<FilterAtom>({
+  key: "modal-filter",
+  default: {
+    card: initialCard,
+    city: initialCity,
+    open: initialOpen,
+  },
+});
+
 const initialFilterState = selector({
   key: "initial-filter",
   get: ({ get }) => {
-    const filterState = get(filterAtom);
+    const filterState = get(modalFilterAtom);
 
     const diffCard = (cards?: FilterAtom["card"]) => {
       if (cards) {
@@ -70,7 +79,7 @@ const initialFilterState = selector({
     };
 
     const diffOpen = (open?: FilterAtom["open"]) => {
-      return open;
+      return open ?? false;
     };
 
     const translateKey = (key: string) => {
@@ -98,11 +107,15 @@ const initialFilterState = selector({
 
 export const useFilterState = () => {
   const [filterState, setFilterState] = useRecoilState(filterAtom);
+  const [localFilterState, setLocalFilterState] =
+    useRecoilState(modalFilterAtom);
   const utilFn = useRecoilValue(initialFilterState);
 
   return {
     filterState,
     setFilterState,
+    localFilterState,
+    setLocalFilterState,
     ...utilFn,
   };
 };

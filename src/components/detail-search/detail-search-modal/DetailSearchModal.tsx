@@ -1,13 +1,16 @@
 import { clsx } from "clsx";
-import { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { MdClose } from "react-icons/md";
+import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
 
+import "swiper/css";
 import styles from "./DetailSearchModal.module.css";
 
 import { useFilterState } from "@/atoms/filter-atom";
 import CardFilter from "@/components/detail-search/detail-search-modal/filter/CardFilter";
 import CityFilter from "@/components/detail-search/detail-search-modal/filter/CityFilter";
 import OpenFilter from "@/components/detail-search/detail-search-modal/filter/OpenFilter";
+import SubmitFilterButton from "@/components/detail-search/detail-search-modal/filter/SubmitFilterButton";
 import useModalState from "@/hooks/use-modal-state";
 import { TabType } from "@/types/filter";
 
@@ -42,12 +45,13 @@ const DetailSearchModal = ({ tab = "city" }: DetailSearchModalProps) => {
   const {
     diffCard,
     diffCity,
-    filterState: { open, city, card },
+    localFilterState: { open },
   } = useFilterState();
   const [tabs, setTabs] = useState(
     tabList.map((item) => ({ ...item, checked: item.key === tab }))
   );
 
+  const swiperRef = useRef() as any;
   const selectTab = (index: number) => {
     setTabs((prev) => {
       return prev.map((tab, i) => ({ ...tab, checked: index === i }));
@@ -65,6 +69,22 @@ const DetailSearchModal = ({ tab = "city" }: DetailSearchModalProps) => {
     card: diffCard,
     open: () => open,
   };
+
+  const onSlideChange: SwiperProps["onSlideChange"] = (swiper) => {
+    const activeIndex = swiper.activeIndex;
+    setTabs((prev) =>
+      prev.map((tab, index) => ({ ...tab, checked: activeIndex === index }))
+    );
+  };
+
+  const checkedTab = tabs.find((tab) => tab.checked);
+
+  useEffect(() => {
+    if (swiperRef.current) {
+      const activeIndex = tabs.findIndex((tab) => tab.checked);
+      swiperRef.current.slideTo(activeIndex);
+    }
+  }, [tabs]);
 
   return (
     <div className={styles.container}>
@@ -91,8 +111,24 @@ const DetailSearchModal = ({ tab = "city" }: DetailSearchModalProps) => {
         </div>
 
         <div className={styles.filterBox}>
-          {filterMap[tabs.find((tab) => tab.checked)?.key ?? "city"]}
+          <Swiper
+            spaceBetween={16}
+            className={styles.swiper}
+            onSlideChange={onSlideChange}
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+          >
+            {Object.entries(filterMap).map(([key, Component]) => {
+              return <SwiperSlide key={key}>{Component}</SwiperSlide>;
+            })}
+          </Swiper>
         </div>
+
+        <SubmitFilterButton
+          name={checkedTab?.name}
+          filterKey={checkedTab?.key ?? "city"}
+        />
       </div>
     </div>
   );

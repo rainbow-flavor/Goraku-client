@@ -1,39 +1,32 @@
-import { useState } from "react";
+import { useEffect } from "react";
 
 import styles from "./CardFilter.module.css";
 
 import { useFilterState } from "@/atoms/filter-atom";
 import Checkbox from "@/components/common/checkbox/Checkbox";
-import SubmitFilterButton from "@/components/detail-search/detail-search-modal/filter/SubmitFilterButton";
 import { cardMap } from "@/constants/store";
 import { Card } from "@/types/store";
 
 const CardFilter = () => {
   const {
-    filterState: { card },
-    setFilterState,
-    diffCard,
-    initialCard,
+    filterState: { card: realCard },
+    localFilterState: { card: cards },
+    setLocalFilterState,
   } = useFilterState();
-  const [cards, setCards] = useState(card);
 
   const selectCard = (name: Card) => {
-    setCards((prev) =>
-      prev.map((card) => ({
+    setLocalFilterState((prev) => ({
+      ...prev,
+      card: prev.card.map((card) => ({
         ...card,
         checked: card.name === name ? !card.checked : card.checked,
-      }))
-    );
+      })),
+    }));
   };
 
-  const resetCards = () => {
-    setCards(initialCard);
-    setFilterState((prev) => ({ ...prev, card: initialCard }));
-  };
-
-  const saveFilterState = () => {
-    setFilterState((prev) => ({ ...prev, card: cards }));
-  };
+  useEffect(() => {
+    setLocalFilterState((prev) => ({ ...prev, card: realCard }));
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -51,13 +44,6 @@ const CardFilter = () => {
           );
         })}
       </div>
-
-      <SubmitFilterButton
-        name="카드사"
-        reset={diffCard(cards)}
-        onReset={resetCards}
-        onSubmit={saveFilterState}
-      />
     </div>
   );
 };

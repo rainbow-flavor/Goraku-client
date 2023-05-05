@@ -63,5 +63,13 @@
 }
 
 .filterBox {
-    height: calc(100% - 88px);
+    height: var(--filter-modal-content-height);
 }
+
+.swiper {
+    height: 100%;
+}
+
+
+
+

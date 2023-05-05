@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        상세 검색
+        오락실 둘러보기
         <Link href="/detail-search">
           <FaSearch size={20} color="#fff" title="상세 검색" />
         </Link>
