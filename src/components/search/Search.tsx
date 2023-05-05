@@ -1,8 +1,13 @@
 import styles from "./Search.module.css";
-import SearchList from "@/components/search/SearchList";
-import SearchForm from "@/components/search/SearchForm";
 
-const Search = () => {
+import SearchForm from "@/components/search/SearchForm";
+import SearchList from "@/components/search/SearchList";
+
+interface SearchProps {
+  onSubmit?: () => void;
+}
+
+const Search = ({}: SearchProps) => {
   return (
     <div className={styles.container}>
       <SearchForm />
