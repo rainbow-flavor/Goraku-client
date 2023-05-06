@@ -21,8 +21,8 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        오락실 둘러보기
-        <Link href="/detail-search">
+        <Link href={RouteMap.DETAIL_SEARCH}>
+          오락실 둘러보기
           <FaSearch size={20} color="#fff" title="상세 검색" />
         </Link>
       </div>
