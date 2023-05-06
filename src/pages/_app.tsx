@@ -3,9 +3,10 @@ import { QueryClient } from "@tanstack/query-core";
 import { QueryClientProvider } from "@tanstack/react-query";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import React, { useEffect } from "react";
+import React, { ReactNode, useEffect } from "react";
 import { RecoilRoot, useRecoilSnapshot } from "recoil";
 
+import { useGeolocationAtom } from "@/atoms/geolocation-atom";
 import Modal from "@/components/common/modal/Modal";
 
 const DebugObserver = () => {
@@ -30,6 +31,24 @@ const queryClient = new QueryClient({
   },
 });
 
+const AppContainer = ({ children }: { children: ReactNode }) => {
+  const { setGeolocationState } = useGeolocationAtom();
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude, longitude } = position.coords;
+        setGeolocationState({
+          lat: latitude,
+          lng: longitude,
+        });
+      });
+    }
+  }, []);
+
+  return <>{children}</>;
+};
+
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
@@ -42,9 +61,12 @@ const App = ({ Component, pageProps }: AppProps) => {
 
       <QueryClientProvider client={queryClient}>
         <RecoilRoot>
+          <AppContainer>
+            <Component {...pageProps} />
+            <Modal />
+          </AppContainer>
+
           <DebugObserver />
-          <Component {...pageProps} />
-          <Modal />
         </RecoilRoot>
       </QueryClientProvider>
     </>
