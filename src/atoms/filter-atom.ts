@@ -105,7 +105,7 @@ const initialFilterState = selector({
   },
 });
 
-export const useFilterState = () => {
+export const useFilterAtom = () => {
   const [filterState, setFilterState] = useRecoilState(filterAtom);
   const [localFilterState, setLocalFilterState] =
     useRecoilState(modalFilterAtom);

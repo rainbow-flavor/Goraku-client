@@ -1,17 +1,17 @@
 import styles from "./DetailSearchForm.module.css";
 
+import { useModalAtom } from "@/atoms/modal-atom";
+import { useSearchAtom } from "@/atoms/search-Atom";
 import Input from "@/components/common/input/Input";
 import DetailSearchFormFilter from "@/components/detail-search/detail-search-form/DetailSearchFormFilter";
 import Search from "@/components/search/Search";
-import useModalState from "@/hooks/use-modal-state";
-import useSearchState from "@/hooks/use-search-state";
 
 const DetailSearchForm = () => {
   const {
     state: { searchWord },
     onChange,
-  } = useSearchState();
-  const { showModal } = useModalState();
+  } = useSearchAtom();
+  const { showModal } = useModalAtom();
 
   const onFocus = () => {
     showModal(<Search />);

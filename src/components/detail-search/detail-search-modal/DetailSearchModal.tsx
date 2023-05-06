@@ -6,12 +6,12 @@ import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import styles from "./DetailSearchModal.module.css";
 
-import { useFilterState } from "@/atoms/filter-atom";
+import { useFilterAtom } from "@/atoms/filter-atom";
+import { useModalAtom } from "@/atoms/modal-atom";
 import CardFilter from "@/components/detail-search/detail-search-modal/filter/CardFilter";
 import CityFilter from "@/components/detail-search/detail-search-modal/filter/CityFilter";
 import OpenFilter from "@/components/detail-search/detail-search-modal/filter/OpenFilter";
 import SubmitFilterButton from "@/components/detail-search/detail-search-modal/filter/SubmitFilterButton";
-import useModalState from "@/hooks/use-modal-state";
 import { TabType } from "@/types/filter";
 
 interface DetailSearchModalProps {
@@ -41,12 +41,12 @@ const tabList: {
 ];
 
 const DetailSearchModal = ({ tab = "city" }: DetailSearchModalProps) => {
-  const { closeModal } = useModalState();
+  const { closeModal } = useModalAtom();
   const {
     diffCard,
     diffCity,
     localFilterState: { open },
-  } = useFilterState();
+  } = useFilterAtom();
   const [tabs, setTabs] = useState(
     tabList.map((item) => ({ ...item, checked: item.key === tab }))
   );

@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 import styles from "./CityFilter.module.css";
 
-import { useFilterState } from "@/atoms/filter-atom";
+import { useFilterAtom } from "@/atoms/filter-atom";
 import { locationMap } from "@/constants/location";
 import { Si } from "@/types/filter";
 
@@ -12,7 +12,7 @@ const CityFilter = () => {
     localFilterState: { city },
     setLocalFilterState,
     translateKey,
-  } = useFilterState();
+  } = useFilterAtom();
   const ref = useRef<HTMLDivElement>(null);
 
   const selectSi = (si: Si) => {

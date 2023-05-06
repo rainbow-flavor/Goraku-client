@@ -1,12 +1,17 @@
 import api from "@/api/api";
 import { Store } from "@/types/store";
 
-export const fetchStoreList = (machineName: string) => {
-  return api.get("/machine/search", {
-    params: {
-      machineName,
-    },
-  });
+export const fetchStoreList = async (machineName: string) => {
+  const { data } = await api.get<{ code: string; data: string[] }>(
+    "/machine/search",
+    {
+      params: {
+        machineName,
+      },
+    }
+  );
+
+  return data;
 };
 
 export const fetchSearchList = async (params: {

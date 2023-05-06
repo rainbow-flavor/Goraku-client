@@ -1,34 +1,23 @@
-import React, { FormEvent, useEffect } from "react";
+import React, { FormEvent } from "react";
 import { FaArrowLeft, FaTimes } from "react-icons/fa";
 
-import { fetchStoreList } from "@/api/store";
+import { useModalAtom } from "@/atoms/modal-atom";
+import { useSearchAtom } from "@/atoms/search-Atom";
 import styles from "@/components/search/SearchForm.module.css";
-import useModalState from "@/hooks/use-modal-state";
-import useSearchState from "@/hooks/use-search-state";
 
 const SearchForm = () => {
-  const { closeModal } = useModalState();
+  const { closeModal } = useModalAtom();
   const {
     state: { searchWord },
-    setState,
     onChange,
     ref,
     resetKeyword,
-  } = useSearchState();
+  } = useSearchAtom();
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     closeModal();
   };
-
-  useEffect(() => {
-    const fetchList = async (word: string) => {
-      const { data } = await fetchStoreList(word);
-      setState((prev) => ({ ...prev, list: data?.data ?? [] }));
-    };
-
-    fetchList(searchWord);
-  }, [searchWord]);
 
   return (
     <form className={styles.form} onSubmit={onSubmit}>

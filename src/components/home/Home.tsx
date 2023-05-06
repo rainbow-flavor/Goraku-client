@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { FaSearch } from "react-icons/fa";
 
 import styles from "./Home.module.css";
@@ -6,13 +7,15 @@ import styles from "./Home.module.css";
 import Input from "@/components/common/input/Input";
 import Logo from "@/components/common/logo/Logo";
 import Search from "@/components/search/Search";
+import { RouteMap } from "@/constants/route";
 import useModalState from "@/hooks/use-modal-state";
 
 const Home = () => {
+  const { push } = useRouter();
   const { showModal } = useModalState();
 
   const moveToSearch = () => {
-    showModal(<Search />);
+    showModal(<Search onSearch={() => push(RouteMap.DETAIL_SEARCH)} />);
   };
 
   return (

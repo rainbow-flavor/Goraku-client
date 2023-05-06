@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import styles from "./DetailSearchList.module.css";
 
 import { fetchSearchList } from "@/api/store";
-import { useFilterState } from "@/atoms/filter-atom";
+import { useFilterAtom } from "@/atoms/filter-atom";
 import DetailSearchListItem from "@/components/detail-search/detail-search-list/DetailSearchListItem";
 
 const DetailSearchList = () => {
@@ -13,7 +13,7 @@ const DetailSearchList = () => {
       card,
       open,
     },
-  } = useFilterState();
+  } = useFilterAtom();
   const hasName = (key: string) =>
     !!card.filter((item) => item.name.includes(key))[0];
 

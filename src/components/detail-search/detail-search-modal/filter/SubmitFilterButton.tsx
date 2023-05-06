@@ -3,8 +3,8 @@ import { FaRedo } from "react-icons/fa";
 
 import styles from "./SubmitFilterButton.module.css";
 
-import { useFilterState } from "@/atoms/filter-atom";
-import useModalState from "@/hooks/use-modal-state";
+import { useFilterAtom } from "@/atoms/filter-atom";
+import { useModalAtom } from "@/atoms/modal-atom";
 import { FilterAtom } from "@/types/atom";
 
 interface SubmitFilterButtonProps {
@@ -23,8 +23,8 @@ const SubmitFilterButton = ({ name, filterKey }: SubmitFilterButtonProps) => {
     diffCity,
     diffCard,
     diffOpen,
-  } = useFilterState();
-  const { closeModal } = useModalState();
+  } = useFilterAtom();
+  const { closeModal } = useModalAtom();
 
   const resetMap: Record<keyof FilterAtom, boolean> = {
     city: diffCity(localFilterState.city),

@@ -4,14 +4,14 @@ import SearchForm from "@/components/search/SearchForm";
 import SearchList from "@/components/search/SearchList";
 
 interface SearchProps {
-  onSubmit?: () => void;
+  onSearch?: () => void;
 }
 
-const Search = ({}: SearchProps) => {
+const Search = ({ onSearch }: SearchProps) => {
   return (
     <div className={styles.container}>
       <SearchForm />
-      <SearchList />
+      <SearchList onSearch={onSearch} />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import styles from "./CardFilter.module.css";
 
-import { useFilterState } from "@/atoms/filter-atom";
+import { useFilterAtom } from "@/atoms/filter-atom";
 import Checkbox from "@/components/common/checkbox/Checkbox";
 import { cardMap } from "@/constants/store";
 import { Card } from "@/types/store";
@@ -12,7 +12,7 @@ const CardFilter = () => {
     filterState: { card: realCard },
     localFilterState: { card: cards },
     setLocalFilterState,
-  } = useFilterState();
+  } = useFilterAtom();
 
   const selectCard = (name: Card) => {
     setLocalFilterState((prev) => ({

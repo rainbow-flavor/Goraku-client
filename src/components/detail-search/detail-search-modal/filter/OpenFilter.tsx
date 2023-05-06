@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import styles from "./OpenFilter.module.css";
 
-import { useFilterState } from "@/atoms/filter-atom";
+import { useFilterAtom } from "@/atoms/filter-atom";
 import Checkbox from "@/components/common/checkbox/Checkbox";
 
 const OPEN_FILTER_TITLE = "포함";
@@ -12,7 +12,7 @@ const OpenFilter = () => {
     filterState: { open: realOpen },
     localFilterState: { open },
     setLocalFilterState,
-  } = useFilterState();
+  } = useFilterAtom();
 
   const selectOpen = () => {
     setLocalFilterState((prev) => ({ ...prev, open: !prev.open }));

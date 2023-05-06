@@ -1,0 +1,3 @@
+export const QueryKey = {
+  FETCH_STORE_LIST_BY_MACHINE: "FETCH_STORE_LIST_BY_MACHINE",
+};

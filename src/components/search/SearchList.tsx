@@ -1,10 +1,10 @@
-import { useRouter } from "next/router";
 import { FaSearch } from "react-icons/fa";
-import { useRecoilState } from "recoil";
 
 import styles from "./SearchList.module.css";
 
-import { searchState } from "@/atoms/search-Atom";
+import { useModalAtom } from "@/atoms/modal-atom";
+import { useSearchAtom } from "@/atoms/search-Atom";
+import useSearchQuery from "@/queries/useSearchQuery";
 
 const SearchListItem = ({
   text,
@@ -26,17 +26,20 @@ const SearchListItem = ({
   );
 };
 
-const SearchList = () => {
-  const { push } = useRouter();
-  const [state, setSearchState] = useRecoilState(searchState);
+const SearchList = ({ onSearch }: { onSearch?: () => void }) => {
+  const { closeModal } = useModalAtom();
+  const { setState } = useSearchAtom();
+  const { data } = useSearchQuery();
+
   const onClick = (keyword: string) => {
-    setSearchState((prev) => ({ ...prev, searchWord: keyword }));
-    push(`/detail-search?keyword=${keyword}`);
+    onSearch?.();
+    setState((prev) => ({ ...prev, searchWord: keyword }));
+    closeModal();
   };
 
   return (
     <div>
-      {state.list.map((item: string, index) => {
+      {data?.data.map((item: string, index) => {
         return (
           <SearchListItem key={index} text={item + index} onClick={onClick} />
         );

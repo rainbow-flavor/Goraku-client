@@ -2,18 +2,18 @@ import { FaAngleDown } from "react-icons/fa";
 
 import styles from "./DetailSearchFormFilter.module.css";
 
-import { useFilterState } from "@/atoms/filter-atom";
+import { useFilterAtom } from "@/atoms/filter-atom";
+import { useModalAtom } from "@/atoms/modal-atom";
 import DetailSearchModal from "@/components/detail-search/detail-search-modal/DetailSearchModal";
-import useModalState from "@/hooks/use-modal-state";
 import { TabType } from "@/types/filter";
 
 const DetailSearchFormFilter = () => {
   const {
     translateKey,
     filterState: { city, card, open },
-  } = useFilterState();
+  } = useFilterAtom();
 
-  const { showModal } = useModalState();
+  const { showModal } = useModalAtom();
 
   const showModalByFilter = (tab: TabType) => {
     showModal(<DetailSearchModal tab={tab} />);
