@@ -1,34 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
-
 import styles from "./DetailSearchList.module.css";
 
-import { fetchSearchList } from "@/api/store";
-import { useFilterAtom } from "@/atoms/filter-atom";
 import DetailSearchListItem from "@/components/detail-search/detail-search-list/DetailSearchListItem";
+import useStoreListQuery from "@/queries/useStoreListQuery";
 
 const DetailSearchList = () => {
-  const {
-    filterState: {
-      city: { gu, si },
-      card,
-      open,
-    },
-  } = useFilterAtom();
-  const hasName = (key: string) =>
-    !!card.filter((item) => item.name.includes(key))[0];
-
-  const { data } = useQuery(["FETCH_SEARCH_LIST", gu, si, card, open], () =>
-    fetchSearchList({
-      city1: gu,
-      city2: si === "all" ? undefined : si,
-      cardK: hasName("k"),
-      cardN: hasName("n"),
-      cardS: hasName("s"),
-      cardT: hasName("t"),
-      cardA: hasName("a"),
-      limit: 60,
-    })
-  );
+  const { data } = useStoreListQuery();
 
   return (
     <div className={styles.container}>

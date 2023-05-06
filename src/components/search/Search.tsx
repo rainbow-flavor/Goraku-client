@@ -10,7 +10,7 @@ interface SearchProps {
 const Search = ({ onSearch }: SearchProps) => {
   return (
     <div className={styles.container}>
-      <SearchForm />
+      <SearchForm onSearch={onSearch} />
       <SearchList onSearch={onSearch} />
     </div>
   );

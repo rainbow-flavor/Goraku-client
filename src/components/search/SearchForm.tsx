@@ -5,7 +5,7 @@ import { useModalAtom } from "@/atoms/modal-atom";
 import { useSearchAtom } from "@/atoms/search-Atom";
 import styles from "@/components/search/SearchForm.module.css";
 
-const SearchForm = () => {
+const SearchForm = ({ onSearch }: { onSearch?: () => void }) => {
   const { closeModal } = useModalAtom();
   const {
     state: { searchWord },
@@ -16,6 +16,7 @@ const SearchForm = () => {
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    onSearch?.();
     closeModal();
   };
 
