@@ -4,15 +4,15 @@ import { FaSearch } from "react-icons/fa";
 
 import styles from "./Home.module.css";
 
+import { useModalAtom } from "@/atoms/modal-atom";
 import Input from "@/components/common/input/Input";
 import Logo from "@/components/common/logo/Logo";
 import Search from "@/components/search/Search";
 import { RouteMap } from "@/constants/route";
-import useModalState from "@/hooks/use-modal-state";
 
 const Home = () => {
   const { push } = useRouter();
-  const { showModal } = useModalState();
+  const { showModal } = useModalAtom();
 
   const moveToSearch = () => {
     showModal(<Search onSearch={() => push(RouteMap.DETAIL_SEARCH)} />);
@@ -31,8 +31,9 @@ const Home = () => {
 
       <div className={styles.searchInputBox} onClick={moveToSearch}>
         <Input placeholder="원하는 오락실 게임을 검색하세요" disabled />
-        <p className={styles.paragraph}>여러분의 제보를 원합니다! link</p>
       </div>
+
+      <p className={styles.paragraph}>여러분의 제보를 원합니다! link</p>
     </div>
   );
 };
