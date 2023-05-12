@@ -1,0 +1,53 @@
+
+
+.tagList {
+    overflow-x: auto;
+    white-space: nowrap;
+    margin-bottom: 15px;
+}
+
+.tagList > div {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 2px 5px;
+    border-radius: 10px;
+    font-size: 12px;
+    border: 1px solid var(--text-color);
+}
+
+.tagList::-webkit-scrollbar {
+    display: none;
+}
+
+.machineList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.machineCard {
+    position: relative;
+    width: calc(50% - 12px);
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--text-color);
+}
+
+.machineCard span {
+    display: block;
+    width: fit-content;
+    color: var(--text-link-color);
+    padding: 2px 5px;
+    font-size: 12px;
+    border: 1px solid var(--text-link-color);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+
+.machineCount {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 12px;
+}

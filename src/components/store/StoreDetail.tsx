@@ -17,6 +17,7 @@ import styles from "./StoreDetail.module.css";
 import { fetchStoreDetail } from "@/api/store";
 import DummyImg from "@/assets/detail_dummy.png";
 import NetworkCardList from "@/components/common/network-card-list/NetworkCardList";
+import StoreMachineList from "@/components/store/StoreMachineList";
 import { RouteMap } from "@/constants/route";
 
 const NoInformation = () => (
@@ -26,9 +27,15 @@ const NoInformation = () => (
 const StoreDetail = () => {
   const { query, push } = useRouter();
   const storeId = query.storeId as string;
-  const { data } = useQuery(["FETCH_STORE_DETAIL", storeId], () =>
-    fetchStoreDetail(storeId)
+  const { data } = useQuery(
+    ["FETCH_STORE_DETAIL", storeId],
+    () => fetchStoreDetail(storeId),
+    {
+      enabled: !!storeId,
+    }
   );
+
+  if (!data) return null;
 
   return (
     <div className={styles.container}>
@@ -54,12 +61,15 @@ const StoreDetail = () => {
         <div className={styles.storeInfoBox}>
           <p className={styles.storeInfoText}>
             <FaClock size={20} />
-
             {data?.uptime ?? <NoInformation />}
           </p>
           <p className={clsx(styles.storeInfoText, styles.storeInfoLink)}>
             <FaMapMarkerAlt size={20} />
-            <a href="#">{data?.address ?? <NoInformation />}</a>
+            <a
+              href={`https://map.kakao.com/link/to/${data?.name},${data?.latitude},${data?.longitude}`}
+            >
+              {data?.address ?? <NoInformation />}
+            </a>
           </p>
           <p className={styles.storeInfoText}>
             <FaRegCreditCard size={20} />
@@ -79,13 +89,7 @@ const StoreDetail = () => {
 
       <div>
         <h3 className={styles.storeTitle}>Games</h3>
-        <div>태그, 태그, 태그, 태그</div>
-        <div>
-          <div>카드</div>
-          <div>카드</div>
-          <div>카드</div>
-          <div>카드</div>
-        </div>
+        <StoreMachineList list={data?.storeMachines} />
       </div>
     </div>
   );

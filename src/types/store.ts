@@ -26,19 +26,19 @@ export interface Machine {
     id: number;
     koName: string;
     enName: string;
-    shortName: "beatmania IIDX 29";
-    category: "RHYTHM";
-    company: "BEMANI";
+    shortName: string;
+    category: string;
+    company: string;
     description: null;
     parent: {
-      id: 5;
-      koName: "비트매니아";
-      enName: "beatmania";
-      shortName: "투덱";
-      category: "RHYTHM";
-      company: null;
-      description: null;
-      parent: null;
+      id: number;
+      koName: string;
+      enName: string;
+      shortName: string;
+      category: string;
+      company?: string;
+      description?: string;
+      parent?: null;
     };
   };
 }
