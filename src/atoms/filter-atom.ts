@@ -1,9 +1,9 @@
 import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
 
 import { FilterAtom } from "@/types/atom";
-import { Card } from "@/types/store";
+import { NetworkCardType } from "@/types/store";
 
-const initialCard: { name: Card; checked: boolean }[] = [
+const initialCard: { name: NetworkCardType; checked: boolean }[] = [
   {
     name: "k",
     checked: false,

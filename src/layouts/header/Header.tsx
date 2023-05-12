@@ -15,7 +15,7 @@ const Header = () => {
         </Link>
 
         <div className={styles.menu}>
-          <FaBars size={24} color="#fff" title="상세 검색" />
+          <FaBars size={24} color="#fff" title="메뉴" />
         </div>
       </div>
     </div>

@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 
 import styles from "./CardFilter.module.css";
 
 import { useFilterAtom } from "@/atoms/filter-atom";
 import Checkbox from "@/components/common/checkbox/Checkbox";
 import { cardMap } from "@/constants/store";
-import { Card } from "@/types/store";
+import { NetworkCardType } from "@/types/store";
 
 const CardFilter = () => {
   const {
@@ -14,7 +14,7 @@ const CardFilter = () => {
     setLocalFilterState,
   } = useFilterAtom();
 
-  const selectCard = (name: Card) => {
+  const selectCard = (name: NetworkCardType) => {
     setLocalFilterState((prev) => ({
       ...prev,
       card: prev.card.map((card) => ({
@@ -36,7 +36,15 @@ const CardFilter = () => {
             <Checkbox
               key={card.name}
               text={
-                <div className={styles.textBox}>{cardMap[card.name].name}</div>
+                <div className={styles.textBox}>
+                  {Array.from(cardMap[card.name].name).map((char, index) => {
+                    return (
+                      <Fragment key={index}>
+                        {index === 0 ? <b>{char}</b> : char}
+                      </Fragment>
+                    );
+                  })}
+                </div>
               }
               checked={card.checked}
               onClick={() => selectCard(card.name)}

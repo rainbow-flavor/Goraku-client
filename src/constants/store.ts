@@ -5,10 +5,10 @@ import Konami from "@/assets/konami.png";
 import Namco from "@/assets/namco.png";
 import Sega from "@/assets/sega.jpeg";
 import Taito from "@/assets/taito.png";
-import { Card } from "@/types/store";
+import { NetworkCardType } from "@/types/store";
 
 export const cardMap: Record<
-  Card,
+  NetworkCardType,
   { thumbnail: StaticImageData; name: string }
 > = {
   k: {

@@ -28,9 +28,11 @@
 }
 
 .textBox {
-display: flex;
-    align-items: center;
-    gap: 2px;
+
+}
+
+.textBox b {
+    color: var(--text-special-color);
 }
 
 .textBox > img {

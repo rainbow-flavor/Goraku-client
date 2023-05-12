@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
 
 import { Si } from "@/types/filter";
-import { Card } from "@/types/store";
+import { NetworkCardType } from "@/types/store";
 
 export interface FilterAtom {
   card: {
-    name: Card;
+    name: NetworkCardType;
     checked: boolean;
   }[];
   city: {

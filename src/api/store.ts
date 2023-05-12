@@ -30,3 +30,13 @@ export const fetchSearchList = async (params: {
 
   return data;
 };
+
+export const fetchStoreDetail = async (storeId: string) => {
+  const { data } = await api.get<Response<Store>>("/store/detail", {
+    params: {
+      storeId,
+    },
+  });
+
+  return data.data;
+};

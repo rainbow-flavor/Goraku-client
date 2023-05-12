@@ -35,7 +35,7 @@ const DetailSearchFormFilter = () => {
         <small className={styles.filterTitle}>카드사 : </small>
         <b>
           {checkedCards.length > 0
-            ? checkedCards.map((item) => item.name).join(", ")
+            ? checkedCards.map((item) => item.name.toUpperCase()).join(", ")
             : "ALL"}
         </b>
         <FaAngleDown size={14} color="#fff" />
