@@ -9,9 +9,9 @@ const nextConfig = {
         fs: 'empty',
         net: 'empty',
         tls: 'empty',
-        child_process: 'empty',
+        child_process: 'empty',s
       };
-      config.plugins.push(new webpack.IgnorePlugin({resourceRegExp: /^whatap$/, contextRegExp: /WhatapAgent/}));
+      config.plugins.push(new webpack.IgnorePlugin({resourceRegExp: /^whatap/, contextRegExp: /WhatapAgent$/}));s
     }
     return config;
   },
