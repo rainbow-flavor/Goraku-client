@@ -1,3 +1,7 @@
+// @ts-ignore
+import WhatapAgent from 'whatap';
+WhatapAgent.NodeAgent;
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
