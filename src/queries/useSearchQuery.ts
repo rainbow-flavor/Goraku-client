@@ -10,7 +10,7 @@ const useSearchQuery = () => {
     state: { searchWord },
     setState,
   } = useSearchAtom();
-  const debouncedValue = useDebounce(searchWord, 1000);
+  const debouncedValue = useDebounce(searchWord, 300);
 
   const { data } = useQuery(
     [QueryKey.FETCH_STORE_LIST_BY_MACHINE, debouncedValue],

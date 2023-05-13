@@ -5,6 +5,7 @@ import { useFilterAtom } from "@/atoms/filter-atom";
 import { useGeolocationAtom } from "@/atoms/geolocation-atom";
 import { useSearchAtom } from "@/atoms/search-atom";
 import { QueryKey } from "@/constants/queries";
+import useDebounce from "@/hooks/useDebounce";
 import { Si } from "@/types/filter";
 
 const useStoreListQuery = () => {
@@ -22,10 +23,28 @@ const useStoreListQuery = () => {
       open,
     },
   } = useFilterAtom();
-  const hasName = (key: string) =>
-    !!card.filter((item) => {
-      return item.name.includes(key);
-    })[0];
+
+  const debouncedSearchWord = useDebounce(searchWord, 300);
+  const isCheckedCard = () => {
+    const checkedItems = card.filter((item) => item.checked);
+    if (checkedItems.length === 5 || checkedItems.length === 0) {
+      return {
+        cardK: undefined,
+        cardN: undefined,
+        cardS: undefined,
+        cardT: undefined,
+        cardA: undefined,
+      };
+    }
+
+    return {
+      cardK: card[0].checked,
+      cardN: card[1].checked,
+      cardS: card[2].checked,
+      cardT: card[3].checked,
+      cardA: card[4].checked,
+    };
+  };
 
   const convertSi = (si: Si) => {
     switch (si) {
@@ -44,17 +63,22 @@ const useStoreListQuery = () => {
   };
 
   const { data, fetchNextPage, hasNextPage } = useInfiniteQuery(
-    [QueryKey.FETCH_STORE_LIST, gu, si, card, open, searchWord, lat, lng],
+    [
+      QueryKey.FETCH_STORE_LIST,
+      gu,
+      si,
+      isCheckedCard(),
+      open,
+      debouncedSearchWord,
+      lat,
+      lng,
+    ],
     ({ pageParam: page = 0 }) =>
       fetchSearchList({
         city1: convertSi(si),
         city2: convertGu(gu),
-        cardK: hasName("k"),
-        cardN: hasName("n"),
-        cardS: hasName("s"),
-        cardT: hasName("t"),
-        cardA: hasName("a"),
-        machineName: searchWord,
+        ...isCheckedCard(),
+        machineName: debouncedSearchWord,
         isOp: open,
         page,
         lat,
