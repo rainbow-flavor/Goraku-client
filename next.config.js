@@ -4,7 +4,14 @@ const nextConfig = {
   webpack5: true,
   webpack: (config,{ buildId, dev, isServer, defaultLoaders, nextRuntime, webpack },) => {
     if(isServer === false){
-      config.resolve.fallback = {fs: false , cluster: false , net: false, child_process: false, v8: false}
+      config.node = {
+        dgram: 'empty',
+        fs: 'empty',
+        net: 'empty',
+        tls: 'empty',
+        child_process: 'empty',
+      };
+      config.plugins.push(new webpack.IgnorePlugin(/^(whatap)$/));
     }
     return config;
   },
