@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   webpack5: true,
   webpack: (config) => {
-    config.resolve.fallback = { fs: false , cluster: false , net: false, child_process: false};
+    config.resolve.fallback = { fs: false , cluster: false , net: false, child_process: false, v8: false};
 
     return config;
   },
