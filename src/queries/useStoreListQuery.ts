@@ -79,7 +79,7 @@ const useStoreListQuery = () => {
         city2: convertGu(gu),
         ...isCheckedCard(),
         machineName: debouncedSearchWord,
-        isOp: open,
+        isOp: open || undefined,
         page,
         lat,
         lng,
