@@ -4,7 +4,7 @@ const nextConfig = {
   webpack5: true,
   webpack: (config,{ isServer,webpack },) => {
     if(isServer === false){
-      config.plugins.push(new webpack.IgnorePlugin({resourceRegExp: /^whatap/, contextRegExp: /WhatapAgent$/}));s
+      config.plugins.push(new webpack.IgnorePlugin({resourceRegExp: /^whatap/, contextRegExp: /WhatapAgent$/}));
     }
     return config;
   },
