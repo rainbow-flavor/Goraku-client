@@ -75,9 +75,9 @@ jobs:
         with:
           push: true
           tags: ${{ secrets.IROHUB_URL }}/goraku-front-server:latest
-        build-args: |
-          "LICENSE=${{ secrets.WHATAP_LICENSE }}"
-          "GORAKU_API_URL=${{ secrets.GORAKU_API_URL }}"
+          build-args: |
+            "LICENSE=${{ secrets.WHATAP_LICENSE }}"
+            "GORAKU_API_URL=${{ secrets.GORAKU_API_URL }}"
 
   reload:
     needs: image-build-push
