@@ -12,7 +12,7 @@ const useSearchQuery = () => {
   } = useSearchAtom();
   const debouncedValue = useDebounce(searchWord, 1000);
 
-  return useQuery(
+  const { data } = useQuery(
     [QueryKey.FETCH_STORE_LIST_BY_MACHINE, debouncedValue],
     () => fetchStoreList(debouncedValue),
     {
@@ -22,6 +22,8 @@ const useSearchQuery = () => {
       },
     }
   );
+
+  return { data: data?.data ?? [] };
 };
 
 export default useSearchQuery;

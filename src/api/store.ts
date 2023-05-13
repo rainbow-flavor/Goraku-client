@@ -13,19 +13,19 @@ export const fetchStoreList = async (machineName: string) => {
 };
 
 export const fetchSearchList = async (params: {
-  limit: number;
-  city1?: string;
+  machineName?: string;
+  limit?: number;
+  city1?: "서울" | "경기남부";
   city2?: string;
   isOp?: boolean;
   lat?: number;
   lng?: number;
   page?: number;
-  cardK: boolean;
-  cardN: boolean;
-  cardS: boolean;
-  cardT: boolean;
-  cardA: boolean;
-  machineName: string;
+  cardK?: boolean;
+  cardN?: boolean;
+  cardS?: boolean;
+  cardT?: boolean;
+  cardA?: boolean;
 }) => {
   const { data } = await api.get<
     Response<Store[]> & {

@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 import styles from "./PageLayout.module.css";
 
+import Footer from "@/layouts/footer/Footer";
 import Header from "@/layouts/header/Header";
 
 interface PageLayoutProps {
@@ -13,7 +14,10 @@ const PageLayout = ({ children }: PageLayoutProps) => {
     <div className={styles.layout}>
       <div className={styles.content}>
         <Header />
-        {children}
+
+        <div className={styles.main}>{children}</div>
+
+        <Footer />
       </div>
     </div>
   );

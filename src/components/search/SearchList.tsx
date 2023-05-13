@@ -20,8 +20,6 @@ const SearchListItem = ({
       </div>
 
       <p className={styles.searchItemText}>{text}</p>
-
-      <div></div>
     </div>
   );
 };
@@ -39,10 +37,8 @@ const SearchList = ({ onSearch }: { onSearch?: () => void }) => {
 
   return (
     <div>
-      {data?.data.map((item: string, index) => {
-        return (
-          <SearchListItem key={index} text={item + index} onClick={onClick} />
-        );
+      {data.map((keyword, index) => {
+        return <SearchListItem key={index} text={keyword} onClick={onClick} />;
       })}
     </div>
   );
