@@ -15,9 +15,9 @@ ARG WHATAP_LICENSE
 ENV WHATAP_LICENSE ${WHATAP_LICENSE}
 
 RUN echo -e "${WHATAP_LICENSE}\n\
-    whatap.server.host=13.124.11.223/13.209.172.35\n\
-    whatap_micro_enabled=true\n"\
-    >/app/whatap.conf
+whatap.server.host=13.124.11.223/13.209.172.35\n\
+whatap_micro_enabled=true\n"\
+>/app/whatap.conf
 
 RUN npm run build
 
