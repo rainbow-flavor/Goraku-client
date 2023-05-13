@@ -17,6 +17,9 @@ export const fetchSearchList = async (params: {
   city1?: string;
   city2?: string;
   isOp?: boolean;
+  lat?: number;
+  lng?: number;
+  page?: number;
   cardK: boolean;
   cardN: boolean;
   cardS: boolean;
@@ -24,7 +27,13 @@ export const fetchSearchList = async (params: {
   cardA: boolean;
   machineName: string;
 }) => {
-  const { data } = await api.get<Response<Store[]>>("/store/search", {
+  const { data } = await api.get<
+    Response<Store[]> & {
+      totalPages: number;
+      totalElements: number;
+      currentPage: number;
+    }
+  >("/store/search", {
     params,
   });
 

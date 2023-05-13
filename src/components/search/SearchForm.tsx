@@ -2,7 +2,7 @@ import React, { FormEvent } from "react";
 import { FaArrowLeft, FaTimes } from "react-icons/fa";
 
 import { useModalAtom } from "@/atoms/modal-atom";
-import { useSearchAtom } from "@/atoms/search-Atom";
+import { useSearchAtom } from "@/atoms/search-atom";
 import styles from "@/components/search/SearchForm.module.css";
 
 const SearchForm = ({ onSearch }: { onSearch?: () => void }) => {

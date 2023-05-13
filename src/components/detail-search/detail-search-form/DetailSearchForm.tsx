@@ -1,7 +1,7 @@
 import styles from "./DetailSearchForm.module.css";
 
 import { useModalAtom } from "@/atoms/modal-atom";
-import { useSearchAtom } from "@/atoms/search-Atom";
+import { useSearchAtom } from "@/atoms/search-atom";
 import Input from "@/components/common/input/Input";
 import DetailSearchFormFilter from "@/components/detail-search/detail-search-form/DetailSearchFormFilter";
 import Search from "@/components/search/Search";

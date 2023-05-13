@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import { QueryClient } from "@tanstack/query-core";
 import { QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import React, { ReactNode, useEffect } from "react";
@@ -61,12 +62,13 @@ const App = ({ Component, pageProps }: AppProps) => {
 
       <QueryClientProvider client={queryClient}>
         <RecoilRoot>
+          <ReactQueryDevtools />
+          <DebugObserver />
+
           <AppContainer>
             <Component {...pageProps} />
             <Modal />
           </AppContainer>
-
-          <DebugObserver />
         </RecoilRoot>
       </QueryClientProvider>
     </>

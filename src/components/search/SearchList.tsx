@@ -3,7 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import styles from "./SearchList.module.css";
 
 import { useModalAtom } from "@/atoms/modal-atom";
-import { useSearchAtom } from "@/atoms/search-Atom";
+import { useSearchAtom } from "@/atoms/search-atom";
 import useSearchQuery from "@/queries/useSearchQuery";
 
 const SearchListItem = ({

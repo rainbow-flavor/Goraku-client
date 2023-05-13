@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { fetchStoreList } from "@/api/store";
-import { useSearchAtom } from "@/atoms/search-Atom";
+import { useSearchAtom } from "@/atoms/search-atom";
 import { QueryKey } from "@/constants/queries";
 import useDebounce from "@/hooks/useDebounce";
 
