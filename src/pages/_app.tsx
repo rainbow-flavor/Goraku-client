@@ -9,6 +9,10 @@ import { RecoilRoot, useRecoilSnapshot } from "recoil";
 import { useGeolocationAtom } from "@/atoms/geolocation-atom";
 import Modal from "@/components/common/modal/Modal";
 
+// @ts-ignore
+import WhatapAgent from 'whatap';
+WhatapAgent.NodeAgent;
+
 const DebugObserver = () => {
   const snapshot = useRecoilSnapshot() as any;
   useEffect(() => {

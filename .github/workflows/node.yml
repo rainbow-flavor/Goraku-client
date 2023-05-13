@@ -76,7 +76,8 @@ jobs:
           push: true
           tags: ${{ secrets.IROHUB_URL }}/goraku-front-server:latest
           build-args: |
-            "GORAKU_API_URL=${{ secrets.GORAKU_API_URL }}"
+            GORAKU_API_URL=${{ secrets.GORAKU_API_URL }}
+            WHATAP_LICENSE=${{ secrets.WHATAP_LICENSE }}
 
   reload:
     needs: image-build-push
