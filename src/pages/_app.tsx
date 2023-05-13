@@ -75,7 +75,3 @@ const App = ({ Component, pageProps }: AppProps) => {
 };
 
 export default App;
-
-// @ts-ignore
-import WhatapAgent from 'whatap';
-WhatapAgent.NodeAgent;
