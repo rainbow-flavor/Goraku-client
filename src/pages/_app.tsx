@@ -6,8 +6,6 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import React, { ReactNode, useEffect } from "react";
 import { RecoilRoot, useRecoilSnapshot } from "recoil";
-// @ts-ignore
-import WhatapAgent from 'whatap';
 import { useGeolocationAtom } from "@/atoms/geolocation-atom";
 import Modal from "@/components/common/modal/Modal";
 
@@ -78,4 +76,6 @@ const App = ({ Component, pageProps }: AppProps) => {
 
 export default App;
 
+// @ts-ignore
+import WhatapAgent from 'whatap';
 WhatapAgent.NodeAgent;
