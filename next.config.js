@@ -2,9 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   webpack5: true,
-  webpack: (config) => {
-    config.resolve.fallback = { fs: false , cluster: false , net: false, child_process: false, v8: false};
-
+  webpack: (config,{ buildId, dev, isServer, defaultLoaders, nextRuntime, webpack },) => {
+    if(isServer === false){
+      config.resolve.fallback = {fs: false , cluster: false , net: false, child_process: false, v8: false}
+    }
     return config;
   },
   async rewrites() {
@@ -18,3 +19,5 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+
+
