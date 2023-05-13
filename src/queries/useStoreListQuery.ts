@@ -23,7 +23,10 @@ const useStoreListQuery = () => {
     },
   } = useFilterAtom();
   const hasName = (key: string) =>
-    !!card.filter((item) => item.name.includes(key))[0];
+    !!card.filter((item) => {
+      console.log(item.name.includes(key));
+      return item.name.includes(key);
+    })[0];
 
   const convertSi = (si: Si) => {
     switch (si) {
@@ -38,7 +41,7 @@ const useStoreListQuery = () => {
   };
 
   const convertGu = (gu: string) => {
-    return gu === "전체" ? undefined : gu;
+    return gu === "전체" || gu === "" ? undefined : gu;
   };
 
   const { data, fetchNextPage, hasNextPage } = useInfiniteQuery(
@@ -62,7 +65,7 @@ const useStoreListQuery = () => {
     {
       getNextPageParam: (lastPage) => {
         const { totalPages, currentPage } = lastPage;
-        return currentPage === totalPages ? false : currentPage + 1;
+        return currentPage === totalPages - 1 ? false : currentPage + 1;
       },
     }
   );

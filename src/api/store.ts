@@ -3,6 +3,7 @@ import { Response } from "@/types/api";
 import { Store } from "@/types/store";
 
 export const fetchStoreList = async (machineName: string) => {
+  console.log(process.env.NEXT_PUBLIC_API_URL);
   const { data } = await api.get<Response<string[]>>("/machine/search", {
     params: {
       machineName,
