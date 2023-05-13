@@ -10,10 +10,7 @@ WORKDIR /deploy/
 COPY --from=0 /app/.next /deploy/.next
 COPY --from=0 /app/package.json /deploy/package.json
 COPY --from=0 /app/node_modules /deploy/node_modules
-COPY --from=0 /app/node_modules/whatap/whatap.conf /deploy/whatap.conf
 
-RUN echo 'license=$LICENSE\n\
-          whatap.server.host=13.124.11.223/13.209.172.35\n\
-          whatap_micro_enabled=true' >> /deploy/whatap.conf
+ENTRYPOINT ["npm", "run", "start"]
 
 
