@@ -4,14 +4,7 @@ const nextConfig = {
   webpack5: true,
   webpack: (config,{ isServer,webpack },) => {
     if(isServer === false){
-      config.node = {
-        dgram: 'empty',
-        fs: 'empty',
-        net: 'empty',
-        tls: 'empty',
-        child_process: 'empty',
-      };
-      config.plugins.push(new webpack.IgnorePlugin({resourceRegExp: /^whatap/, contextRegExp: /WhatapAgent$/}));
+      config.plugins.push(new webpack.IgnorePlugin({resourceRegExp: /^whatap/, contextRegExp: /.*$/}));
     }
     return config;
   },
