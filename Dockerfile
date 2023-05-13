@@ -2,7 +2,7 @@ FROM node:16-alpine
 WORKDIR /app/
 COPY . .
 RUN npm install
-RUN echo '$GORAKU_API_URL'>.env
+RUN echo $GORAKU_API_URL>.envs
 RUN npm run build
 
 FROM node:16-alpine
