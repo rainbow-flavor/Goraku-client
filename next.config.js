@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   webpack5: true,
-  webpack: (config,{ buildId, dev, isServer, defaultLoaders, nextRuntime, webpack },) => {
+  webpack: (config,{ isServer,webpack },) => {
     if(isServer === false){
       config.node = {
         dgram: 'empty',
@@ -11,7 +11,7 @@ const nextConfig = {
         tls: 'empty',
         child_process: 'empty',
       };
-      config.plugins.push(new webpack.IgnorePlugin(/^(whatap)$/));
+      config.plugins.push(new webpack.IgnorePlugin({resourceRegExp: /^(whatap)$/, contentRegExp: /^(whatap)$/}));
     }
     return config;
   },
