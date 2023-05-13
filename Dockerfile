@@ -14,7 +14,9 @@ RUN echo ${GORAKU_API_URL}>/app/.env
 ARG WHATAP_LICENSE
 ENV WHATAP_LICENSE ${WHATAP_LICENSE}
 
-RUN echo ${WHATAP_LICENSE}>/app/whatap.conf
+RUN echo "${WHATAP_LICENSE}\n\
+    whatap.server.host=13.124.11.223/13.209.172.35\n\
+    whatap_micro_enabled=true">/app/whatap.conf
 
 RUN npm run build
 
