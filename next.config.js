@@ -11,7 +11,7 @@ const nextConfig = {
         tls: 'empty',
         child_process: 'empty',
       };
-      config.plugins.push(new webpack.IgnorePlugin({resourceRegExp: /^(whatap)$/, contentRegExp: /^(whatap)$/}));
+      config.plugins.push(new webpack.IgnorePlugin({resourceRegExp: /^(whatap)$/, contextRegExp: /^(whatap)$/ }));
     }
     return config;
   },
