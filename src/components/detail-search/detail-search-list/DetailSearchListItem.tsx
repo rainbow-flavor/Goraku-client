@@ -22,9 +22,7 @@ const DetailSearchListItem = ({
   return (
     <div className={styles.container} onClick={movePage}>
       <div className={styles.thumbnailBox}>
-        <div className={styles.thumbnail}>
-          {isop ? "사진을 등록해주세요" : "가게가 폐업했습니다.."}
-        </div>
+        <div className={styles.thumbnail}>사진을 등록해주세요</div>
       </div>
 
       <div className={styles.infoBox}>
