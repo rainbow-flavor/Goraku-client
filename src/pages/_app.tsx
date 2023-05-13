@@ -1,3 +1,5 @@
+// @ts-ignore
+import WhatapAgent from 'whatap';
 import "@/styles/globals.css";
 import { QueryClient } from "@tanstack/query-core";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -9,6 +11,7 @@ import { RecoilRoot, useRecoilSnapshot } from "recoil";
 import { useGeolocationAtom } from "@/atoms/geolocation-atom";
 import Modal from "@/components/common/modal/Modal";
 
+WhatapAgent.NodeAgent;
 const DebugObserver = () => {
   const snapshot = useRecoilSnapshot() as any;
   useEffect(() => {
