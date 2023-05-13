@@ -1,3 +1,4 @@
+import { clsx } from "clsx";
 import { useState } from "react";
 
 import styles from "./StoreMachineList.module.css";
@@ -22,33 +23,52 @@ const tagList = [
 ];
 
 const StoreMachineList = ({ list }: StoreMachineListProps) => {
-  const [tags, setTags] = useState(false);
+  const [filterTags, setFilterTags] = useState(
+    new Array(tagList.length).fill(false).map((item, index) => index === 0)
+  );
+
+  const filteredList =
+    list?.filter((machine) => {
+      if (!filterTags.includes(true)) return false;
+      const selectedCategory =
+        tagList[filterTags.findIndex((selected) => selected)];
+
+      if (selectedCategory === "ALL") {
+        return true;
+      } else {
+        return (
+          machine.machine.category ===
+          tagList[filterTags.findIndex((selected) => selected)]
+        );
+      }
+    }) ?? [];
+
+  const selectFilter = (index: number) => {
+    setFilterTags((prev) => prev.map((tag, i) => i === index));
+  };
 
   return (
     <>
       <div className={styles.tagList}>
-        {[
-          "ALL",
-          "RHYTHM",
-          "FIGHT",
-          "RACING",
-          "SHOOTING",
-          "ACTION",
-          "PUZZLE",
-          "CASUAL",
-          "SPORTS",
-          "ETC",
-        ].map((tag) => {
-          return <div key={tag}>{tag}</div>;
+        {tagList.map((tag, index) => {
+          return (
+            <div
+              key={tag}
+              className={clsx(filterTags[index] ? styles.selectedTag : "")}
+              onClick={() => selectFilter(index)}
+            >
+              {tag}
+            </div>
+          );
         })}
       </div>
 
       <div className={styles.machineList}>
-        {list?.map((machine) => {
+        {filteredList.map((machine) => {
           return (
             <div key={machine.id} className={styles.machineCard}>
               <span>{machine.machine.category}</span>
-              <p>{machine.machine.shortName}</p>
+              <div>{machine.machine.shortName}</div>
               <div className={styles.machineCount}>
                 {machine.machineCount} 대
               </div>
