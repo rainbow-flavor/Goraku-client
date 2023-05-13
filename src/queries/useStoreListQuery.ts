@@ -24,7 +24,6 @@ const useStoreListQuery = () => {
   } = useFilterAtom();
   const hasName = (key: string) =>
     !!card.filter((item) => {
-      console.log(item.name.includes(key));
       return item.name.includes(key);
     })[0];
 
