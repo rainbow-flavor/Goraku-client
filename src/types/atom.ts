@@ -23,6 +23,6 @@ export interface SearchAtom {
 export type ModalAtom = ReactNode | null;
 
 export interface GeolocationAtom {
-  lat: number;
-  lng: number;
+  latitude: number;
+  longitude: number;
 }

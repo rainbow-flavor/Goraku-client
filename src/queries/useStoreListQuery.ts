@@ -13,7 +13,7 @@ const useStoreListQuery = () => {
     state: { searchWord },
   } = useSearchAtom();
   const {
-    geolocationState: { lat, lng },
+    geolocationState: { latitude, longitude },
   } = useGeolocationAtom();
 
   const {
@@ -70,8 +70,8 @@ const useStoreListQuery = () => {
       isCheckedCard(),
       open,
       debouncedSearchWord,
-      lat,
-      lng,
+      latitude,
+      longitude,
     ],
     ({ pageParam: page = 0 }) =>
       fetchSearchList({
@@ -81,8 +81,8 @@ const useStoreListQuery = () => {
         machineName: debouncedSearchWord,
         isOp: open || undefined,
         page,
-        lat,
-        lng,
+        latitude,
+        longitude,
         limit: 60,
       }),
     {

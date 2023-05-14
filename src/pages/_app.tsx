@@ -41,8 +41,8 @@ const AppContainer = ({ children }: { children: ReactNode }) => {
       navigator.geolocation.getCurrentPosition((position) => {
         const { latitude, longitude } = position.coords;
         setGeolocationState({
-          lat: latitude,
-          lng: longitude,
+          latitude,
+          longitude,
         });
       });
     }

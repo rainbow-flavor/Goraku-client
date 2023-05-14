@@ -18,8 +18,8 @@ export const fetchSearchList = async (params: {
   city1?: "서울" | "경기남부";
   city2?: string;
   isOp?: boolean;
-  lat?: number;
-  lng?: number;
+  latitude?: number;
+  longitude?: number;
   page?: number;
   cardK?: boolean;
   cardN?: boolean;
