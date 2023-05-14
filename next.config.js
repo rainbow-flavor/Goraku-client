@@ -28,7 +28,7 @@ module.exports = async (phase, { defaultConfig }) => {
       return [
         {
           source: '/(.*)',
-          securityHeaders
+          headers: securityHeaders
         }
       ]
     },
