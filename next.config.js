@@ -4,7 +4,7 @@ const ContentSecurityPolicy = `
   connect-src 'self' rum-ap-northeast-2.whatap-browser-agent.io;
   style-src 'self' 'unsafe-inline' fonts.googleapis.com;
   font-src 'self' fonts.gstatic.com data:;
-  worker-src 'self' blob:
+  worker-src 'self' blob:;
 `
 const securityHeaders = [
   {
