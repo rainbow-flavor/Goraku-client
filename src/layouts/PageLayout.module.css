@@ -3,6 +3,13 @@
     padding: 0 var(--layout-padding);
 }
 
+@media screen and (min-width: 900px) {
+    .layout {
+        width: 900px;
+        margin: 0 auto;
+    }
+}
+
 .content {
     overflow: hidden;
     display: flex;

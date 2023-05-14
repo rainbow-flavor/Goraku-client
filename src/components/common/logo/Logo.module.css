@@ -23,7 +23,11 @@
     }
 }
 
-
+@media screen and (min-width: 1200px) {
+    .home {
+        width: 500px;
+    }
+}
 
 .nav {
     width: 150px;
