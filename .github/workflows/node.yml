@@ -77,8 +77,9 @@ jobs:
         with:
           push: true
           tags: ${{ secrets.IROHUB_URL }}/goraku-front-server:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+# registry 앞에 있는 cloudflare 의 전송량 제한 으로 인해 비활성화
+#          cache-from: type=gha
+#          cache-to: type=gha,mode=max
           build-args: |
             GORAKU_API_URL=${{ secrets.GORAKU_API_URL }}
             WHATAP_LICENSE=${{ secrets.WHATAP_LICENSE }}
