@@ -38,11 +38,11 @@ const useStoreListQuery = () => {
     }
 
     return {
-      cardK: card[0].checked,
-      cardN: card[1].checked,
-      cardS: card[2].checked,
-      cardT: card[3].checked,
-      cardA: card[4].checked,
+      cardK: card[0].checked || undefined,
+      cardN: card[1].checked || undefined,
+      cardS: card[2].checked || undefined,
+      cardT: card[3].checked || undefined,
+      cardA: card[4].checked || undefined,
     };
   };
 
