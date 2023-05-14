@@ -1,8 +1,8 @@
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' https://repo.whatap-browser-agent.io/rum/prod/;
-  connect-src 'self' https://rum-ap-northeast-2.whatap-browser-agent.io;
-  style-src 'self';
+  script-src 'self' repo.whatap-browser-agent.io/rum/prod/;
+  connect-src 'self' rum-ap-northeast-2.whatap-browser-agent.io;
+  style-src 'self' 'unsafe-inline';
   font-src 'self';
 `
 
