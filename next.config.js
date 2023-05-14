@@ -1,6 +1,9 @@
 const ContentSecurityPolicy = `
-  script-src https://repo.whatap-browser-agent.io/rum/prod/;
-  connect-src https://rum-ap-northeast-2.whatap-browser-agent.io
+  default-src 'self';
+  script-src 'self' https://repo.whatap-browser-agent.io/rum/prod/;
+  connect-src 'self' https://rum-ap-northeast-2.whatap-browser-agent.io;
+  style-src 'self';
+  font-src 'self';
 `
 
 const securityHeaders = [
@@ -41,7 +44,6 @@ module.exports = async (phase, { defaultConfig }) => {
       ];
     },
   };
-  console.log("Executes at server startup")
   return nextConfig
 };
 
