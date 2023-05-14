@@ -1,5 +1,4 @@
 import { Head, Html, Main, NextScript } from "next/document";
-import Script from "next/script";
 import React from "react";
 
 const Document = () => {
@@ -20,11 +19,6 @@ const Document = () => {
       <body>
         <Main />
         <NextScript />
-        <Script
-          src={
-            "https://repo.whatap-browser-agent.io/rum/prod/v1/whatap-browser-agent.js"
-          }
-        />
       </body>
     </Html>
   );
