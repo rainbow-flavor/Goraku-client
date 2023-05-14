@@ -71,10 +71,12 @@ jobs:
           password: ${{ secrets.IROHUB_TOKEN }}
       -
         name: build and push
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           push: true
           tags: ${{ secrets.IROHUB_URL }}/goraku-front-server:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           build-args: |
             GORAKU_API_URL=${{ secrets.GORAKU_API_URL }}
             WHATAP_LICENSE=${{ secrets.WHATAP_LICENSE }}
