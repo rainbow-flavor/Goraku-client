@@ -49,8 +49,8 @@ const AppContainer = ({ children }: { children: ReactNode }) => {
     // @ts-ignore
     window.WhatapBrowserAgent = {
       config: {
-        projectAccessKey: "x4t7f208ret1q-x2vn0t0ncfbjie-x77o2kshpor6p2",
-        pcode: 29935,
+        projectAccessKey: "x4t7g204a5pdr-x1h4lom3udm8b3-xgjfa8fvjq72q",
+        pcode: 29936,
         sampleRate: 100,
       },
     };
