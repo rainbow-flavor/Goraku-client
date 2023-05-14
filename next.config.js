@@ -1,11 +1,10 @@
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' repo.whatap-browser-agent.io/rum/prod/ static.cloudflareinsights.com;
+  script-src 'self' 'unsafe-eval' repo.whatap-browser-agent.io/rum/prod/ static.cloudflareinsights.com;
   connect-src 'self' rum-ap-northeast-2.whatap-browser-agent.io;
-  style-src 'self' 'unsafe-inline';
-  font-src 'self';
+  style-src 'self' 'unsafe-inline' fonts.googleapis.com;
+  font-src 'self' fonts.gstatic.com data:;
 `
-
 const securityHeaders = [
   {
     key: 'Content-Security-Policy',
@@ -16,7 +15,6 @@ const securityHeaders = [
     value: '*',
   },
 ]
-
 module.exports = async (phase, { defaultConfig }) => {
   const nextConfig = {
     reactStrictMode: true,
