@@ -1,6 +1,6 @@
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' repo.whatap-browser-agent.io/rum/prod/;
+  script-src 'self' repo.whatap-browser-agent.io/rum/prod/ static.cloudflareinsights.com;
   connect-src 'self' rum-ap-northeast-2.whatap-browser-agent.io;
   style-src 'self' 'unsafe-inline';
   font-src 'self';
