@@ -1,3 +1,19 @@
+const ContentSecurityPolicy = `
+  script-src https://repo.whatap-browser-agent.io/rum/prod/;
+  connect-src https://rum-ap-northeast-2.whatap-browser-agent.io
+`
+
+const securityHeaders = [
+  {
+    key: 'Content-Security-Policy',
+    value: ContentSecurityPolicy.replace(/\n/g, ''),
+  },
+  {
+    key: 'Timing-Allow-Origin',
+    value: '*',
+  },
+]
+
 module.exports = async (phase, { defaultConfig }) => {
   const nextConfig = {
     reactStrictMode: true,
@@ -7,6 +23,14 @@ module.exports = async (phase, { defaultConfig }) => {
         config.plugins.push(new webpack.IgnorePlugin({resourceRegExp: /^whatap/, contextRegExp: /.*$/}));
       }
       return config;
+    },
+    async headers(){
+      return [
+        {
+          source: '/(.*)',
+          securityHeaders
+        }
+      ]
     },
     async rewrites() {
       return [
