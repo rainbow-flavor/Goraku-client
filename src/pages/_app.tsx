@@ -6,6 +6,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import React, { ReactNode, useEffect } from "react";
 import { RecoilRoot, useRecoilSnapshot } from "recoil";
+
 import { useGeolocationAtom } from "@/atoms/geolocation-atom";
 import Modal from "@/components/common/modal/Modal";
 
@@ -44,6 +45,15 @@ const AppContainer = ({ children }: { children: ReactNode }) => {
         });
       });
     }
+
+    // @ts-ignore
+    window.WhatapBrowserAgent = {
+      config: {
+        projectAccessKey: "x4t7f208ret1q-x2vn0t0ncfbjie-x77o2kshpor6p2",
+        pcode: 29935,
+        sampleRate: 100,
+      },
+    };
   }, []);
 
   return <>{children}</>;
