@@ -64,17 +64,21 @@ const StoreMachineList = ({ list }: StoreMachineListProps) => {
       </div>
 
       <div className={styles.machineList}>
-        {filteredList.map((machine) => {
-          return (
-            <div key={machine.id} className={styles.machineCard}>
-              <span>{machine.machine.category}</span>
-              <div>{machine.machine.shortName}</div>
-              <div className={styles.machineCount}>
-                {machine.machineCount} 대
+        {filteredList.length > 0 ? (
+          filteredList.map((machine) => {
+            return (
+              <div key={machine.id} className={styles.machineCard}>
+                <span>{machine.machine.category}</span>
+                <div>{machine.machine.shortName}</div>
+                <div className={styles.machineCount}>
+                  {machine.machineCount} 대
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })
+        ) : (
+          <div className={styles.machineEmptyText}>데이터가 없습니다.</div>
+        )}
       </div>
     </>
   );

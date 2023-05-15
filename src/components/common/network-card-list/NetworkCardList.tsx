@@ -12,7 +12,9 @@ const NetworkCardList = ({ network }: NetworkCardListProps) => {
       {network
         ? Object.entries(network).map(([key, value]) => {
             return value ? (
-              <span className={styles.card}>{key.toUpperCase()}</span>
+              <span className={styles.card} key={key}>
+                {key.toUpperCase()}
+              </span>
             ) : null;
           })
         : "카드사 정보 없음"}

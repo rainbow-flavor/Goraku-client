@@ -55,6 +55,21 @@
     gap: 12px;
 }
 
+.storeInfoText a {
+    position: relative;
+    color: var(--text-color);
+}
+
+.storeInfoText a::after {
+    content: "";
+    position: absolute;
+    left:0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--border-color);
+}
+
 .storeInfoLink {
 
 }

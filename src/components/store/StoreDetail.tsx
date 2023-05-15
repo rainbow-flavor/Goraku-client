@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { clsx } from "clsx";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import {
   FaClock,
@@ -35,6 +36,15 @@ const StoreDetail = () => {
     }
   );
 
+  const shareLink = async () => {
+    if (navigator.share)
+      await navigator.share({
+        title: data?.name,
+        text: data?.address,
+        url: window.location.pathname,
+      });
+  };
+
   if (!data) return null;
 
   return (
@@ -47,7 +57,7 @@ const StoreDetail = () => {
           <FaRegArrowAltCircleLeft size={24} /> Search
         </div>
 
-        <div>
+        <div onClick={shareLink}>
           <FaShareSquare size={24} />
         </div>
       </div>
@@ -58,32 +68,55 @@ const StoreDetail = () => {
 
       <div className={styles.storeInfoField}>
         <h2 className={styles.storeTitle}>{data?.name}</h2>
+
         <div className={styles.storeInfoBox}>
-          <p className={styles.storeInfoText}>
+          <div className={styles.storeInfoText}>
             <FaClock size={20} />
             {data?.uptime ?? <NoInformation />}
-          </p>
-          <p className={clsx(styles.storeInfoText, styles.storeInfoLink)}>
+          </div>
+
+          <div className={clsx(styles.storeInfoText, styles.storeInfoLink)}>
             <FaMapMarkerAlt size={20} />
             <a
               href={`https://map.kakao.com/link/to/${data?.name},${data?.latitude},${data?.longitude}`}
             >
               {data?.address ?? <NoInformation />}
             </a>
-          </p>
-          <p className={styles.storeInfoText}>
+          </div>
+
+          <div className={styles.storeInfoText}>
             <FaRegCreditCard size={20} />
             <NetworkCardList network={data?.networkType} />
-          </p>
-          <p className={styles.storeInfoText}>
+          </div>
+
+          <div className={styles.storeInfoText}>
             <FaPhoneAlt size={20} /> {data?.contact ?? <NoInformation />}
-          </p>
-          <p className={styles.storeInfoText}>
-            <FaGlobe size={20} /> {data?.website ?? <NoInformation />}
-          </p>
-          <p className={styles.storeInfoText}>
-            <FaTwitter size={20} /> {data?.twitter ?? <NoInformation />}
-          </p>
+          </div>
+
+          <div className={styles.storeInfoText}>
+            <FaGlobe size={20} />
+            {data?.website ? (
+              <Link href={data.website} target="_blank">
+                {data.website}
+              </Link>
+            ) : (
+              <NoInformation />
+            )}
+          </div>
+
+          <div className={styles.storeInfoText}>
+            <FaTwitter size={20} />
+            {data?.twitter ? (
+              <Link
+                href={`https://twitter.com/${data.twitter}`}
+                target="_blank"
+              >
+                {data.twitter}
+              </Link>
+            ) : (
+              <NoInformation />
+            )}
+          </div>
         </div>
       </div>
 
