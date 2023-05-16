@@ -1,0 +1,9 @@
+.layout {
+    padding: var(--layout-padding);
+}
+
+.titleField {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

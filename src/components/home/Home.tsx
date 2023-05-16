@@ -9,6 +9,7 @@ import Input from "@/components/common/input/Input";
 import Logo from "@/components/common/logo/Logo";
 import Search from "@/components/search/Search";
 import { RouteMap } from "@/constants/route";
+import Footer from "@/layouts/footer/Footer";
 
 const Home = () => {
   const { push } = useRouter();
@@ -19,21 +20,24 @@ const Home = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <Link href={RouteMap.DETAIL_SEARCH}>
-          오락실 둘러보기
-          <FaSearch size={20} color="#fff" title="상세 검색" />
-        </Link>
-      </div>
+    <>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <Link href={RouteMap.DETAIL_SEARCH}>
+            오락실 둘러보기
+            <FaSearch size={20} color="#fff" title="상세 검색" />
+          </Link>
+        </div>
 
-      <Logo type="home" />
+        <Logo type="home" />
 
-      <div className={styles.searchInputBox} onClick={moveToSearch}>
-        <Input placeholder="원하는 오락실 게임을 검색하세요" disabled />
+        <div className={styles.searchInputBox} onClick={moveToSearch}>
+          <Input placeholder="원하는 오락실 게임을 검색하세요" disabled />
+        </div>
+        <p className={styles.paragraph}>여러분의 제보를 원합니다! link</p>
       </div>
-      <p className={styles.paragraph}>여러분의 제보를 원합니다! link</p>
-    </div>
+      <Footer />
+    </>
   );
 };
 

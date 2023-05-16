@@ -11,15 +11,16 @@ interface PageLayoutProps {
 
 const PageLayout = ({ children }: PageLayoutProps) => {
   return (
-    <div className={styles.layout}>
-      <div className={styles.content}>
-        <Header />
+    <>
+      <div className={styles.layout}>
+        <div className={styles.content}>
+          <Header />
 
-        <div className={styles.main}>{children}</div>
-
-        <Footer />
+          <div className={styles.main}>{children}</div>
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

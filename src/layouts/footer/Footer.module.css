@@ -1,0 +1,30 @@
+.footer {
+
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 10px;
+    padding: var(--layout-padding);
+}
+
+@media screen and (max-width: 600px) {
+    .content {
+        flex-direction: column-reverse;
+    }
+}
+
+.footer a {
+    color: var(--text-link-color);
+    font-size: 14px;
+}
+
+.footerPolicyField {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+}

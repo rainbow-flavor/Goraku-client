@@ -22,6 +22,7 @@ module.exports = {
   },
   rules: {
     // react
+    "react/no-unescaped-entities": 0,
     "react/function-component-definition": [
       2,
       {

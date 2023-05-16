@@ -54,3 +54,7 @@ button {
   background:none;
   border:none;
 }
+
+ul, ol, li {
+  list-style: none;
+}

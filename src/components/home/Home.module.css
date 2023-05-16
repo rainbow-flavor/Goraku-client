@@ -77,7 +77,6 @@
 @media screen and (max-width: 1024px) {
     .form {
         padding: 0 20px;
-        padding-top: 120px;
     }
 
     .searchInputBox {
@@ -87,7 +86,7 @@
 
 .paragraph {
     padding-top: 10px;
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
     color: #4B9AE0;
 }

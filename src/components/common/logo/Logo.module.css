@@ -32,3 +32,8 @@
 .nav {
     width: 150px;
 }
+
+.footer {
+    width: 100px;
+    filter: grayscale(50%) brightness(10);
+}
