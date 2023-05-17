@@ -1,21 +1,19 @@
 import { clsx } from "clsx";
-import { forwardRef, HTMLAttributes } from "react";
+import { forwardRef } from "react";
 
 import styles from "./Input.module.css";
 
-interface InputProps {
-  styleType?: "search";
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  styleType?: "search" | "normal";
   value?: string;
   disabled?: boolean;
 }
 
-const Input = forwardRef<
-  HTMLInputElement,
-  HTMLAttributes<HTMLInputElement> & InputProps
->((props, ref) => {
+const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const { styleType, ...restProps } = props;
   const variant = {
     search: styles.search,
+    normal: styles.normal,
   };
 
   return (

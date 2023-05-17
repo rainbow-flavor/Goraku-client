@@ -18,8 +18,25 @@
     text-align: center;
 }
 
+.container:-webkit-autofill,
+.container:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+}
+
 .container:focus {
     outline: none;
+}
+
+.normal {
+    height: 40px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background: none;
+    box-sizing: border-box;
+}
+
+.normal::-webkit-input-placeholder {
+    text-align: left;
 }
 
 .search {

@@ -1,0 +1,141 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.titleField {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form label {
+    font-weight: bold;
+}
+
+.cstypeField {
+    position: relative;
+}
+
+.cstypeField svg {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+.cstype {
+    width: 100%;
+    height: 40px;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.cstype:focus {
+    outline: none;
+}
+
+.content {
+    height: 126px;
+    padding: 5px 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: none;
+    color: var(--text-color);
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    resize: none;
+}
+
+.content:focus {
+    outline: none;
+}
+
+.link {
+    color: var(--text-link-color);
+}
+
+.submitField {
+    padding-top: 20px;
+}
+
+.submitField p {
+    text-align: center;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--text-color);
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+.previewImgList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3%;
+    row-gap: 10px;
+}
+
+.previewImg {
+    overflow: hidden;
+    position: relative;
+    width: 31%;
+    aspect-ratio: 1/1;
+    border-radius: 5px;
+}
+
+.closeIcon {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    overflow: hidden;
+    background: rgba(0,0,0,.5);
+}
+
+.previewImgList img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container input[type='file'] {
+    color: transparent;
+}
+
+

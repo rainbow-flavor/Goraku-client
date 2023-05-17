@@ -1,3 +1,4 @@
+import { clsx } from "clsx";
 import { ReactNode } from "react";
 
 import styles from "./PageLayout.module.css";
@@ -7,16 +8,19 @@ import Header from "@/layouts/header/Header";
 
 interface PageLayoutProps {
   children?: ReactNode;
+  type?: "cs";
 }
 
-const PageLayout = ({ children }: PageLayoutProps) => {
+const PageLayout = ({ children, type }: PageLayoutProps) => {
   return (
     <>
       <div className={styles.layout}>
         <div className={styles.content}>
           <Header />
 
-          <div className={styles.main}>{children}</div>
+          <div className={clsx(styles.main, type && styles.csPageMain)}>
+            {children}
+          </div>
         </div>
       </div>
       <Footer />
