@@ -102,6 +102,12 @@
     box-sizing: border-box;
 }
 
+.button:disabled,
+.button[disabled] {
+    background-color: var(--element-background-color);
+    color: var(--text-color);
+}
+
 .previewImgList {
     display: flex;
     flex-wrap: wrap;

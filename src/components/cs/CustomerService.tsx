@@ -32,15 +32,25 @@ const CustomerService = () => {
 
     try {
       const formData = new FormData(e.currentTarget);
+      const csRequest = {
+        email: formData.get("email"),
+        cstype: formData.get("cstype"),
+        content: formData.get("content"),
+      };
+
+      const postFormData = new FormData();
+      postFormData.append(
+        "csRequest",
+        new Blob([JSON.stringify(csRequest)], {
+          type: "application/json",
+        })
+      );
+
       files.forEach((item) => {
-        formData.append("image", item);
+        postFormData.append("image", item);
       });
 
-      await api.post("/cs", formData, {
-        headers: {
-          "Content-Type": `multipart/form-data`,
-        },
-      });
+      await api.post("/cs", postFormData);
     } catch (err) {
       console.error(err);
     } finally {
@@ -144,7 +154,7 @@ const CustomerService = () => {
           </p>
 
           <button type="submit" className={styles.button} disabled={isLoading}>
-            제출
+            {isLoading ? "LOADING" : "제출"}
           </button>
         </div>
       </form>

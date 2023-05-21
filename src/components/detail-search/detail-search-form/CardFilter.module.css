@@ -1,0 +1,11 @@
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.filterField {
+    display: flex;
+    height: calc(100% - 80px);
+}
