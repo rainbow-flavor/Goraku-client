@@ -17,6 +17,7 @@ const securityHeaders = [
     value: "*",
   },
 ];
+
 module.exports = async (phase, { defaultConfig }) => {
   const nextConfig = {
     reactStrictMode: true,

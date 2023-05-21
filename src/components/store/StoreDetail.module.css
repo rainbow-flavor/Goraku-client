@@ -79,6 +79,18 @@
     display: flex;
     align-items: center;
     gap: 12px;
+    width: 100%;
+}
+
+.storeInfoTextIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+}
+
+.storeInfoTextContent {
+    flex: 1;
 }
 
 .storeInfoText a {

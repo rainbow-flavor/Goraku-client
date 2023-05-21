@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { clsx } from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import {
@@ -21,6 +20,7 @@ import NetworkCardList from "@/components/common/network-card-list/NetworkCardLi
 import StoreMachineList from "@/components/store/StoreMachineList";
 import { RouteMap } from "@/constants/route";
 import { ERROR_TEXT } from "@/constants/message";
+import { useMemo } from "react";
 
 const NoInformation = () => (
   <span className={styles.noInformation}>{ERROR_TEXT.NO_INFORMATION}</span>
@@ -45,6 +45,56 @@ const StoreDetail = () => {
         url: window.location.pathname,
       });
   };
+
+  const infoList = useMemo(
+    () =>
+      data
+        ? [
+            {
+              icon: <FaClock size={20} />,
+              text: data.uptime,
+            },
+            {
+              icon: <FaMapMarkerAlt size={20} />,
+              text: data.address ? (
+                <a
+                  href={`https://map.kakao.com/link/to/${data.name},${data.latitude},${data.longitude}`}
+                >
+                  {data.address}
+                </a>
+              ) : null,
+            },
+            {
+              icon: <FaRegCreditCard size={20} />,
+              text: <NetworkCardList network={data.networkType} />,
+            },
+            {
+              icon: <FaPhoneAlt size={20} />,
+              text: data.contact,
+            },
+            {
+              icon: <FaGlobe size={20} />,
+              text: data.website ? (
+                <Link href={data.website} target="_blank">
+                  {data.website}
+                </Link>
+              ) : null,
+            },
+            {
+              icon: <FaTwitter size={20} />,
+              text: data.website ? (
+                <Link
+                  href={`https://twitter.com/${data.twitter}`}
+                  target="_blank"
+                >
+                  {data.twitter}
+                </Link>
+              ) : null,
+            },
+          ]
+        : [],
+    [data]
+  );
 
   if (!data) return null;
 
@@ -85,53 +135,15 @@ const StoreDetail = () => {
         <h2 className={styles.storeTitle}>{data?.name}</h2>
 
         <div className={styles.storeInfoBox}>
-          <div className={styles.storeInfoText}>
-            <FaClock size={20} />
-            {data?.uptime ?? <NoInformation />}
-          </div>
+          {infoList.map((info, index) => {
+            return (
+              <div className={styles.storeInfoText} key={index}>
+                <div className={styles.storeInfoTextIcon}>{info.icon}</div>
 
-          <div className={clsx(styles.storeInfoText, styles.storeInfoLink)}>
-            <FaMapMarkerAlt size={20} />
-            <a
-              href={`https://map.kakao.com/link/to/${data?.name},${data?.latitude},${data?.longitude}`}
-            >
-              {data?.address ?? <NoInformation />}
-            </a>
-          </div>
-
-          <div className={styles.storeInfoText}>
-            <FaRegCreditCard size={20} />
-            <NetworkCardList network={data?.networkType} />
-          </div>
-
-          <div className={styles.storeInfoText}>
-            <FaPhoneAlt size={20} /> {data?.contact ?? <NoInformation />}
-          </div>
-
-          <div className={styles.storeInfoText}>
-            <FaGlobe size={20} />
-            {data?.website ? (
-              <Link href={data.website} target="_blank">
-                {data.website}
-              </Link>
-            ) : (
-              <NoInformation />
-            )}
-          </div>
-
-          <div className={styles.storeInfoText}>
-            <FaTwitter size={20} />
-            {data?.twitter ? (
-              <Link
-                href={`https://twitter.com/${data.twitter}`}
-                target="_blank"
-              >
-                {data.twitter}
-              </Link>
-            ) : (
-              <NoInformation />
-            )}
-          </div>
+                {info.text ?? <NoInformation />}
+              </div>
+            );
+          })}
         </div>
       </div>
 
