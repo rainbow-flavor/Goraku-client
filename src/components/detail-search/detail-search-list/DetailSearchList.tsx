@@ -10,8 +10,6 @@ import { ERROR_TEXT } from "@/constants/message";
 const DetailSearchList = () => {
   const { data, fetchNextPage, hasNextPage } = useStoreListQuery();
 
-  console.log(data);
-
   return (
     <div className={styles.container}>
       <div className={styles.result}>
