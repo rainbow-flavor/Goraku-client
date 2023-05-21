@@ -41,7 +41,7 @@ const StoreDetail = () => {
     if (navigator.share)
       await navigator.share({
         title: data?.name,
-        text: data?.address,
+        text: data?.name,
         url: window.location.pathname,
       });
   };
