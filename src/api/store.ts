@@ -13,7 +13,7 @@ export const fetchStoreList = async (machineName: string) => {
 };
 
 export const fetchSearchList = async (params: {
-  machineName?: string;
+  integrationSearch?: string;
   limit?: number;
   city1?: "서울" | "경기남부";
   city2?: string;
@@ -33,7 +33,7 @@ export const fetchSearchList = async (params: {
       totalElements: number;
       currentPage: number;
     }
-  >("/store/search", {
+  >("/store/integration-search", {
     params,
   });
 

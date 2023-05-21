@@ -73,12 +73,12 @@ const useStoreListQuery = () => {
       latitude,
       longitude,
     ],
-    ({ pageParam: page = 0 }) =>
+    ({ pageParam: page = 1 }) =>
       fetchSearchList({
         city1: convertSi(si),
         city2: convertGu(gu),
         ...isCheckedCard(),
-        machineName: debouncedSearchWord,
+        integrationSearch: debouncedSearchWord,
         page,
         latitude,
         longitude,
@@ -87,7 +87,9 @@ const useStoreListQuery = () => {
     {
       getNextPageParam: (lastPage) => {
         const { totalPages, currentPage } = lastPage;
-        return currentPage === totalPages - 1 ? false : currentPage + 1;
+        if (totalPages === 0) return undefined;
+
+        return currentPage === totalPages - 1 ? undefined : currentPage + 1;
       },
     }
   );

@@ -5,9 +5,12 @@ import styles from "./DetailSearchList.module.css";
 
 import DetailSearchListItem from "@/components/detail-search/detail-search-list/DetailSearchListItem";
 import useStoreListQuery from "@/queries/useStoreListQuery";
+import { ERROR_TEXT } from "@/constants/message";
 
 const DetailSearchList = () => {
   const { data, fetchNextPage, hasNextPage } = useStoreListQuery();
+
+  console.log(data);
 
   return (
     <div className={styles.container}>
@@ -21,6 +24,10 @@ const DetailSearchList = () => {
             return <DetailSearchListItem key={store.id} {...store} />;
           });
         })}
+
+        {data?.pages[0].data.length === 0 && (
+          <div className={styles.emptyText}>{ERROR_TEXT.NO_ITEM}</div>
+        )}
 
         {hasNextPage && (
           <InView

@@ -21,7 +21,7 @@ const DetailSearchForm = () => {
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <Input
-          placeholder="원하는 오락실 게임을 검색하세요"
+          placeholder="게임, 지역, 가게 이름을 검색해보세요"
           styleType="search"
           value={searchWord}
           onChange={onChange}

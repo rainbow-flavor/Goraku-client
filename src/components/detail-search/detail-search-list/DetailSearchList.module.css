@@ -17,3 +17,14 @@
     display: none;
 }
 
+.emptyText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:20px;
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    background-color: var(--element-background-color);
+}
+
