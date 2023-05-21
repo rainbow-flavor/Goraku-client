@@ -10,7 +10,7 @@ import Input from "@/components/common/input/Input";
 import { RouteMap } from "@/constants/route";
 
 const CustomerService = () => {
-  const [files, setFiles] = useState<File[]>([]);
+  const [file, setFile] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const onChangeFile: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -18,17 +18,17 @@ const CustomerService = () => {
 
     if (files && files.length > 0) {
       const fileList = Array.from(files);
-      setFiles((prev) => prev.concat(fileList));
+      setFile(fileList[0]);
     }
   };
 
-  const removeFile = (index: number) => {
-    setFiles((prev) => prev.filter((item, i) => i !== index));
+  const removeFile = () => {
+    setFile(null);
   };
 
   const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    if (files.length === 0) return alert("이미지를 등록해주세요!");
+    if (!file) return alert("이미지를 등록해주세요!");
     setIsLoading(true);
     const form = e.currentTarget;
 
@@ -47,10 +47,7 @@ const CustomerService = () => {
           type: "application/json",
         })
       );
-
-      files.forEach((item) => {
-        postFormData.append("image", item);
-      });
+      postFormData.append("image", file);
 
       await toast.promise(() => api.post("/cs", postFormData), {
         pending: "문의내역 등록 중입니다.",
@@ -59,7 +56,7 @@ const CustomerService = () => {
           "알 수 없는 에러가 발생했습니다. 새로고침이나 다시 시도해주세요.",
       });
 
-      setFiles([]);
+      setFile(null);
       form.reset();
     } catch (err) {
       console.error(err);
@@ -133,19 +130,14 @@ const CustomerService = () => {
             />
           </div>
           <div className={styles.previewImgList}>
-            {files.map((item, index) => {
-              return (
-                <div key={index} className={styles.previewImg}>
-                  <img src={URL.createObjectURL(item)} alt="" />
-                  <div
-                    className={styles.closeIcon}
-                    onClick={() => removeFile(index)}
-                  >
-                    <FaTimes size={20} color="#fff" />
-                  </div>
+            {file && (
+              <div className={styles.previewImg}>
+                <img src={URL.createObjectURL(file)} alt="" />
+                <div className={styles.closeIcon} onClick={removeFile}>
+                  <FaTimes size={20} color="#fff" />
                 </div>
-              );
-            })}
+              </div>
+            )}
           </div>
         </div>
 
