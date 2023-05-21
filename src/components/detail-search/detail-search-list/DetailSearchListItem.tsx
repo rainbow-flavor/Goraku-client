@@ -11,6 +11,7 @@ const DetailSearchListItem = ({
   address,
   name,
   networkType,
+  thumbnail,
   isop,
   id,
 }: Store) => {
@@ -23,7 +24,13 @@ const DetailSearchListItem = ({
   return (
     <div className={styles.container} onClick={movePage}>
       <div className={styles.thumbnailBox}>
-        <div className={styles.thumbnail}>{ERROR_TEXT.NO_IMAGE}</div>
+        <div className={styles.thumbnail}>
+          {thumbnail ? (
+            <img src={thumbnail} alt="가게 이미지" />
+          ) : (
+            ERROR_TEXT.NO_IMAGE
+          )}
+        </div>
       </div>
 
       <div className={styles.infoBox}>

@@ -11,6 +11,7 @@ export interface Store {
   contact?: string;
   twitter?: string;
   website?: string;
+  thumbnail?: string;
   networkType?: Network;
   storeMachines: Machine[];
 }

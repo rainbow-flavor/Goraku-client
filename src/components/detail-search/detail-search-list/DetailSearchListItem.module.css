@@ -24,6 +24,12 @@
     word-break: keep-all;
 }
 
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .infoBox {
     flex: 1;
 }

@@ -23,7 +23,7 @@ import { RouteMap } from "@/constants/route";
 import { ERROR_TEXT } from "@/constants/message";
 
 const NoInformation = () => (
-  <span className={styles.noInformation}>정보 없음</span>
+  <span className={styles.noInformation}>{ERROR_TEXT.NO_INFORMATION}</span>
 );
 
 const StoreDetail = () => {
@@ -64,15 +64,20 @@ const StoreDetail = () => {
       </div>
 
       <div className={styles.thumbnail}>
-        {/*<img src={DummyImg.src} alt="가게 이미지" />*/}
         <div>
-          <p>{ERROR_TEXT.NO_IMAGE_AND_CS}</p>
+          {data.thumbnail ? (
+            <img src={data.thumbnail} alt="가게 이미지" />
+          ) : (
+            <>
+              <p>{ERROR_TEXT.NO_IMAGE_AND_CS}</p>
 
-          <p>
-            <Link href={RouteMap.CUSTOMER_SERVICE}>
-              등록하기 <FaArrowAltCircleRight size={16} />
-            </Link>
-          </p>
+              <p>
+                <Link href={RouteMap.CUSTOMER_SERVICE}>
+                  등록하기 <FaArrowAltCircleRight size={16} />
+                </Link>
+              </p>
+            </>
+          )}
         </div>
       </div>
 
