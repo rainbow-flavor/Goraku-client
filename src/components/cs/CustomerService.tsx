@@ -3,7 +3,8 @@ import { ChangeEventHandler, FormEventHandler, useState } from "react";
 import { FaAngleDown, FaTimes } from "react-icons/fa";
 
 import styles from "./CustomerService.module.css";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import api from "@/api/api";
 import Input from "@/components/common/input/Input";
 import { RouteMap } from "@/constants/route";
@@ -29,9 +30,10 @@ const CustomerService = () => {
     e.preventDefault();
     if (files.length === 0) return alert("이미지를 등록해주세요!");
     setIsLoading(true);
+    const form = e.currentTarget;
 
     try {
-      const formData = new FormData(e.currentTarget);
+      const formData = new FormData(form);
       const csRequest = {
         email: formData.get("email"),
         cstype: formData.get("cstype"),
@@ -50,7 +52,15 @@ const CustomerService = () => {
         postFormData.append("image", item);
       });
 
-      await api.post("/cs", postFormData);
+      await toast.promise(() => api.post("/cs", postFormData), {
+        pending: "문의내역 등록 중입니다.",
+        success: "문의 내역 등록이 완료되었습니다!",
+        error:
+          "알 수 없는 에러가 발생했습니다. 새로고침이나 다시 시도해주세요.",
+      });
+
+      setFiles([]);
+      form.reset();
     } catch (err) {
       console.error(err);
     } finally {
@@ -119,7 +129,6 @@ const CustomerService = () => {
               onChange={onChangeFile}
               accept="image/png, image/jpeg"
               title=" "
-              multiple
               required
             />
           </div>
@@ -158,6 +167,7 @@ const CustomerService = () => {
           </button>
         </div>
       </form>
+      <ToastContainer position="top-right" autoClose={1000} hideProgressBar />
     </div>
   );
 };
