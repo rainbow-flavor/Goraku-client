@@ -1,4 +1,5 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { useMemo } from "react";
 
 import { fetchSearchList } from "@/api/store";
 import { useFilterAtom } from "@/atoms/filter-atom";
@@ -73,7 +74,7 @@ const useStoreListQuery = () => {
       latitude,
       longitude,
     ],
-    ({ pageParam: page = 1 }) =>
+    ({ pageParam: page = 0 }) =>
       fetchSearchList({
         city1: convertSi(si),
         city2: convertGu(gu),
@@ -94,8 +95,14 @@ const useStoreListQuery = () => {
     }
   );
 
+  const storeList = useMemo(
+    () => data?.pages.flatMap((page) => page.data) ?? [],
+    [data]
+  );
+
   return {
     data,
+    storeList,
     fetchNextPage,
     hasNextPage,
   };

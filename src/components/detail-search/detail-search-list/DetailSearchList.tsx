@@ -4,11 +4,11 @@ import { InView } from "react-intersection-observer";
 import styles from "./DetailSearchList.module.css";
 
 import DetailSearchListItem from "@/components/detail-search/detail-search-list/DetailSearchListItem";
-import useStoreListQuery from "@/queries/useStoreListQuery";
 import { ERROR_TEXT } from "@/constants/message";
+import useStoreListQuery from "@/queries/useStoreListQuery";
 
 const DetailSearchList = () => {
-  const { data, fetchNextPage, hasNextPage } = useStoreListQuery();
+  const { data, storeList, fetchNextPage, hasNextPage } = useStoreListQuery();
 
   return (
     <div className={styles.container}>
@@ -17,13 +17,11 @@ const DetailSearchList = () => {
       </div>
 
       <div className={styles.itemList}>
-        {data?.pages.map((page) => {
-          return page.data.map((store) => {
-            return <DetailSearchListItem key={store.id} {...store} />;
-          });
+        {storeList.map((store) => {
+          return <DetailSearchListItem key={store.id} {...store} />;
         })}
 
-        {data?.pages[0].data.length === 0 && (
+        {storeList.length === 0 && (
           <div className={styles.emptyText}>{ERROR_TEXT.NO_ITEM}</div>
         )}
 
