@@ -4,4 +4,5 @@ export const RouteMap = {
   STORE: "/store",
   PRIVACY: "/policies/privacy",
   TERM_OF_CONTRACT: "/policies/toc",
+  CUSTOMER_SERVICE: "/cs",
 };

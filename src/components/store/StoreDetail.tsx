@@ -3,6 +3,7 @@ import { clsx } from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import {
+  FaArrowAltCircleRight,
   FaClock,
   FaGlobe,
   FaMapMarkerAlt,
@@ -16,10 +17,10 @@ import {
 import styles from "./StoreDetail.module.css";
 
 import { fetchStoreDetail } from "@/api/store";
-import DummyImg from "@/assets/detail_dummy.png";
 import NetworkCardList from "@/components/common/network-card-list/NetworkCardList";
 import StoreMachineList from "@/components/store/StoreMachineList";
 import { RouteMap } from "@/constants/route";
+import { ERROR_TEXT } from "@/constants/message";
 
 const NoInformation = () => (
   <span className={styles.noInformation}>정보 없음</span>
@@ -63,7 +64,16 @@ const StoreDetail = () => {
       </div>
 
       <div className={styles.thumbnail}>
-        <img src={DummyImg.src} alt="가게 이미지" />
+        {/*<img src={DummyImg.src} alt="가게 이미지" />*/}
+        <div>
+          <p>{ERROR_TEXT.NO_IMAGE_AND_CS}</p>
+
+          <p>
+            <Link href={RouteMap.CUSTOMER_SERVICE}>
+              등록하기 <FaArrowAltCircleRight size={16} />
+            </Link>
+          </p>
+        </div>
       </div>
 
       <div className={styles.storeInfoField}>

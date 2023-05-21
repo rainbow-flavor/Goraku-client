@@ -65,4 +65,7 @@
     align-items: center;
     width: 100%;
     height: 200px;
+    font-size: 18px;
+    background-color: var(--element-background-color);
+    border-radius: 8px;
 }

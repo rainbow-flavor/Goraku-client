@@ -4,6 +4,7 @@ import { useState } from "react";
 import styles from "./StoreMachineList.module.css";
 
 import { Machine } from "@/types/store";
+import { ERROR_TEXT } from "@/constants/message";
 
 interface StoreMachineListProps {
   list?: Machine[];
@@ -77,7 +78,7 @@ const StoreMachineList = ({ list }: StoreMachineListProps) => {
             );
           })
         ) : (
-          <div className={styles.machineEmptyText}>데이터가 없습니다.</div>
+          <div className={styles.machineEmptyText}>{ERROR_TEXT.NO_ITEM}</div>
         )}
       </div>
     </>

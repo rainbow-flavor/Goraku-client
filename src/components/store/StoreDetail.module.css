@@ -24,7 +24,8 @@
     line-height: 0;
     overflow: hidden;
     border-radius: 16px;
-    background-color: #7F7F7F;
+    background-color: var(--element-background-color);
+    color: var(--text-color);
 }
 
 .thumbnail img {
@@ -32,6 +33,31 @@
     height: auto;
     aspect-ratio: 4/3;
     object-fit: cover;
+}
+
+.thumbnail div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    white-space: pre-wrap;
+    text-align: center;
+    aspect-ratio: 4/3;
+    font-size: 20px;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.thumbnail a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    line-height: 1;
+    color: var(--text-link-color);
+    margin-top: 10px;
 }
 
 .storeInfoField {

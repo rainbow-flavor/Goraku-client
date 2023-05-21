@@ -20,6 +20,8 @@
     border-radius: 8px;
     padding: 8px;
     background-color: var(--element-background-color);
+    text-align: center;
+    word-break: keep-all;
 }
 
 .infoBox {

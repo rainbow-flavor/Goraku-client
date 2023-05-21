@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import api from "@/api/api";
 import Input from "@/components/common/input/Input";
 import { RouteMap } from "@/constants/route";
+import { ERROR_TEXT } from "@/constants/message";
 
 const CustomerService = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -52,8 +53,7 @@ const CustomerService = () => {
       await toast.promise(() => api.post("/cs", postFormData), {
         pending: "문의내역 등록 중입니다.",
         success: "문의 내역 등록이 완료되었습니다!",
-        error:
-          "알 수 없는 에러가 발생했습니다. 새로고침이나 다시 시도해주세요.",
+        error: ERROR_TEXT.SERVER_ERROR,
       });
 
       setFile(null);

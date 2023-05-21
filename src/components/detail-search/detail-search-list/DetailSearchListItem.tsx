@@ -5,6 +5,7 @@ import styles from "./DetailSearchListItem.module.css";
 import NetworkCardList from "@/components/common/network-card-list/NetworkCardList";
 import { RouteMap } from "@/constants/route";
 import { Store } from "@/types/store";
+import { ERROR_TEXT } from "@/constants/message";
 
 const DetailSearchListItem = ({
   address,
@@ -22,7 +23,7 @@ const DetailSearchListItem = ({
   return (
     <div className={styles.container} onClick={movePage}>
       <div className={styles.thumbnailBox}>
-        <div className={styles.thumbnail}>사진을 등록해주세요</div>
+        <div className={styles.thumbnail}>{ERROR_TEXT.NO_IMAGE}</div>
       </div>
 
       <div className={styles.infoBox}>
