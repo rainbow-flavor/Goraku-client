@@ -5,7 +5,7 @@ const ContentSecurityPolicy = `
   style-src 'self' 'unsafe-inline' fonts.googleapis.com;
   font-src 'self' fonts.gstatic.com data:;
   worker-src 'self' blob:;
-  img-src 'self' blob:;
+  img-src 'self' *.imgur.com blob:;
 `;
 const securityHeaders = [
   {

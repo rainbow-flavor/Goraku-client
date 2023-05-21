@@ -34,7 +34,12 @@ const Home = () => {
         <div className={styles.searchInputBox} onClick={moveToSearch}>
           <Input placeholder="원하는 오락실 게임을 검색하세요" disabled />
         </div>
-        <p className={styles.paragraph}>여러분의 제보를 원합니다! link</p>
+
+        <p className={styles.paragraph}>
+          <Link href={RouteMap.CUSTOMER_SERVICE}>
+            여러분의 제보를 원합니다! link
+          </Link>
+        </p>
       </div>
       <Footer />
     </>

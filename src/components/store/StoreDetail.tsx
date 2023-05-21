@@ -73,7 +73,7 @@ const StoreDetail = () => {
 
               <p>
                 <Link href={RouteMap.CUSTOMER_SERVICE}>
-                  등록하기 <FaArrowAltCircleRight size={16} />
+                  제보하기 <FaArrowAltCircleRight size={16} />
                 </Link>
               </p>
             </>

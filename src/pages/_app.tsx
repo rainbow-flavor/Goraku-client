@@ -9,6 +9,8 @@ import { RecoilRoot, useRecoilSnapshot } from "recoil";
 
 import { useGeolocationAtom } from "@/atoms/geolocation-atom";
 import Modal from "@/components/common/modal/Modal";
+import { useRouter } from "next/router";
+import { useModalAtom } from "@/atoms/modal-atom";
 
 const DebugObserver = () => {
   const snapshot = useRecoilSnapshot() as any;
@@ -34,6 +36,8 @@ const queryClient = new QueryClient({
 
 const AppContainer = ({ children }: { children: ReactNode }) => {
   const { setGeolocationState } = useGeolocationAtom();
+  const { closeModal } = useModalAtom();
+  const { pathname } = useRouter();
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -57,6 +61,10 @@ const AppContainer = ({ children }: { children: ReactNode }) => {
       };
     }
   }, []);
+
+  useEffect(() => {
+    closeModal();
+  }, [pathname]);
 
   return <>{children}</>;
 };
