@@ -3,14 +3,14 @@ import { useState } from "react";
 
 import styles from "./StoreMachineList.module.css";
 
-import { Machine } from "@/types/store";
 import { ERROR_TEXT } from "@/constants/message";
+import { Category, Machine } from "@/types/store";
 
 interface StoreMachineListProps {
   list?: Machine[];
 }
 
-const tagList = [
+const tagList: (Category | "ALL")[] = [
   "ALL",
   "RHYTHM",
   "FIGHT",
@@ -44,6 +44,19 @@ const StoreMachineList = ({ list }: StoreMachineListProps) => {
       }
     }) ?? [];
 
+  const colorMap: Record<Category | "ALL", string> = {
+    ALL: styles.all,
+    RHYTHM: styles.rhythm,
+    FIGHT: styles.fight,
+    RACING: styles.racing,
+    SHOOTING: styles.shooting,
+    ACTION: styles.action,
+    PUZZLE: styles.puzzle,
+    CASUAL: styles.casual,
+    SPORTS: styles.sports,
+    ETC: styles.etc,
+  };
+
   const selectFilter = (index: number) => {
     setFilterTags((prev) => prev.map((tag, i) => i === index));
   };
@@ -55,7 +68,10 @@ const StoreMachineList = ({ list }: StoreMachineListProps) => {
           return (
             <div
               key={tag}
-              className={clsx(filterTags[index] ? styles.selectedTag : "")}
+              className={clsx(
+                colorMap[tag],
+                filterTags[index] ? styles.selectedTag : ""
+              )}
               onClick={() => selectFilter(index)}
             >
               {tag}
@@ -69,7 +85,9 @@ const StoreMachineList = ({ list }: StoreMachineListProps) => {
           filteredList.map((machine) => {
             return (
               <div key={machine.id} className={styles.machineCard}>
-                <span>{machine.machine.category}</span>
+                <span className={colorMap[machine.machine.category]}>
+                  {machine.machine.category}
+                </span>
                 <div>{machine.machine.shortName}</div>
                 <div className={styles.machineCount}>
                   {machine.machineCount} 대

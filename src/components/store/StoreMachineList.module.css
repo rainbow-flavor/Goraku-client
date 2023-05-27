@@ -6,12 +6,45 @@
     margin-bottom: 15px;
 }
 
+.all {
+    color: #AAAAAA;
+}
+
+.rhythm {
+    color: var(--rhythm-color);
+}
+.fight {
+    color: var(--fight-color);
+}
+.racing {
+    color: var(--racing-color);
+}
+.shooting {
+    color: var(--shooting-color);
+}
+.action {
+    color: var(--action-color);
+}
+.puzzle {
+    color: var(--puzzle-color);
+}
+.casual {
+    color: var(--casual-color);
+}
+.sports {
+    color: var(--sports-color);
+}
+.etc {
+    color: var(--etc-color);
+}
+
+
 .tagList > div {
     display: inline-block;
     margin-right: 6px;
-    padding: 2px 5px;
-    border-radius: 10px;
-    font-size: 12px;
+    padding: 2px 10px;
+    border-radius: 16px;
+    font-size: 14px;
     border: 1px solid var(--text-color);
 }
 
@@ -20,8 +53,9 @@
 }
 
 .selectedTag {
-    color: #2b2b2b;
+    font-weight: bold;
     background-color: var(--text-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 .machineList {
@@ -41,12 +75,12 @@
 .machineCard span {
     display: block;
     width: fit-content;
-    color: var(--text-link-color);
-    padding: 2px 5px;
+    padding: 2px 10px;
     font-size: 12px;
-    border: 1px solid var(--text-link-color);
-    border-radius: 10px;
+    border-radius: 8px;
     margin-bottom: 10px;
+    font-weight: bold;
+    border: 1px solid #fff;
 }
 
 

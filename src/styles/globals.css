@@ -15,8 +15,16 @@
   --layout-padding: 15px;
   --modal-element-gap: 16px;
   --filter-modal-content-height: calc(100% - 156px);
-
-
+  /*카테고리 테마 컬러*/
+  --rhythm-color: #FFD93D;
+  --fight-color: #CB4349;
+  --racing-color: #FC4F00;
+  --shooting-color: #4B9FB5;
+  --action-color: #3578F5;
+  --puzzle-color: #62ACBB;
+  --casual-color: #FFA893;
+  --sports-color: #FF8400;
+  --etc-color: #A75D5D;
 
   --layout-gap: 20px;
   --layout-element-margin: 10px;

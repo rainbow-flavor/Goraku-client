@@ -18,6 +18,16 @@ export interface Store {
 
 export type NetworkCardType = "k" | "n" | "s" | "t" | "a";
 export type Network = Record<NetworkCardType, boolean>;
+export type Category =
+  | "RHYTHM"
+  | "FIGHT"
+  | "RACING"
+  | "SHOOTING"
+  | "ACTION"
+  | "PUZZLE"
+  | "CASUAL"
+  | "SPORTS"
+  | "ETC";
 
 export interface Machine {
   id: number;
@@ -28,7 +38,7 @@ export interface Machine {
     koName: string;
     enName: string;
     shortName: string;
-    category: string;
+    category: Category;
     company: string;
     description: null;
     parent: {
@@ -36,7 +46,7 @@ export interface Machine {
       koName: string;
       enName: string;
       shortName: string;
-      category: string;
+      category: Category;
       company?: string;
       description?: string;
       parent?: null;
