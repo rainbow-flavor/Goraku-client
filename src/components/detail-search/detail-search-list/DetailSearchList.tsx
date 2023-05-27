@@ -17,20 +17,28 @@ const DetailSearchList = () => {
       <div className={styles.result}>검색결과 {total.toLocaleString()}건</div>
 
       <div className={styles.itemList}>
-        {storeList.map((store) => {
-          return <DetailSearchListItem key={store.id} {...store} />;
+        {storeList.map((store, index, arr) => {
+          return (
+            <React.Fragment key={store.id}>
+              <DetailSearchListItem {...store} />
+              {index > arr.length - 3 && hasNextPage && (
+                <InView
+                  onChange={(inView, entry) => {
+                    if (
+                      entry.boundingClientRect.y > 300 &&
+                      inView &&
+                      storeList.length !== total
+                    )
+                      fetchNextPage();
+                  }}
+                />
+              )}
+            </React.Fragment>
+          );
         })}
 
         {!isLoading && storeList.length === 0 && (
           <div className={styles.emptyText}>{ERROR_TEXT.NO_ITEM}</div>
-        )}
-
-        {hasNextPage && (
-          <InView
-            onChange={(inView, entry) => {
-              if (entry.boundingClientRect.y > 500 && inView) fetchNextPage();
-            }}
-          />
         )}
 
         {isLoading && <DetailSearchListSkeleton />}
