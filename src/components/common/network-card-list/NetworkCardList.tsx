@@ -9,7 +9,6 @@ interface NetworkCardListProps {
 const NetworkCardList = ({ network }: NetworkCardListProps) => {
   return (
     <div className={styles.container}>
-            ) : null;
       {Object.entries(network).map(([key, value]) => {
         return value ? (
           <span className={styles.card} key={key}>

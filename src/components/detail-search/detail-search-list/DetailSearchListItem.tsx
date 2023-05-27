@@ -6,6 +6,7 @@ import styles from "./DetailSearchListItem.module.css";
 
 import DefaultImg from "@/assets/store_default.webp";
 import NetworkCardList from "@/components/common/network-card-list/NetworkCardList";
+import { ERROR_TEXT } from "@/constants/message";
 import { RouteMap } from "@/constants/route";
 import { Store } from "@/types/store";
 
@@ -38,14 +39,14 @@ const DetailSearchListItem = ({
         <p className={clsx(styles.infoText, !address && styles.hasNotInfo)}>
           <FaMapMarkerAlt size={16} />
           <span className={clsx(!address && styles.hasNotInfo)}>
-            {address ?? "주소 정보 없음"}
+            {address ?? ERROR_TEXT.NO_INFORMATION}
           </span>
         </p>
 
         <p className={clsx(styles.infoText, !uptime && styles.hasNotInfo)}>
           <FaClock size={16} />
           <span className={clsx(!uptime && styles.hasNotInfo)}>
-            {uptime ?? "영업시간 정보 없음"}
+            {uptime ?? ERROR_TEXT.NO_INFORMATION}
           </span>
         </p>
 
@@ -57,7 +58,7 @@ const DetailSearchListItem = ({
             <NetworkCardList network={networkType} />
           ) : (
             <span className={clsx(!networkType && styles.hasNotInfo)}>
-              카드사 정보 없음
+              {ERROR_TEXT.NO_INFORMATION}
             </span>
           )}
         </div>

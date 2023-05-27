@@ -10,18 +10,18 @@ const SkeletonItem = () => {
       </div>
 
       <div className={styles.infoBox}>
+        <p className={clsx(styles.title, styles.skeleton)} />
+
+        <p className={clsx(styles.infoText, styles.skeleton)} />
+
+        <p className={clsx(styles.infoText, styles.skeleton)} />
+
         <div className={styles.networkCardBox}>
           <div className={clsx(styles.networkCircle, styles.skeleton)} />
           <div className={clsx(styles.networkCircle, styles.skeleton)} />
           <div className={clsx(styles.networkCircle, styles.skeleton)} />
           <div className={clsx(styles.networkCircle, styles.skeleton)} />
         </div>
-
-        <p className={clsx(styles.title, styles.skeleton)} />
-
-        <p className={clsx(styles.infoText, styles.skeleton)} />
-
-        <p className={clsx(styles.infoText, styles.skeleton)} />
       </div>
     </div>
   );
@@ -29,13 +29,13 @@ const SkeletonItem = () => {
 
 const DetailSearchListSkeleton = () => {
   return (
-    <div className={styles.itemList}>
+    <>
       {Array(20)
         .fill(null)
         .map((_, index) => {
           return <SkeletonItem key={index} />;
         })}
-    </div>
+    </>
   );
 };
 
