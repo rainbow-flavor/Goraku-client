@@ -15,7 +15,7 @@ import SubmitFilterButton from "@/components/detail-search/detail-search-modal/f
 import { TabType } from "@/types/filter";
 
 interface DetailSearchModalProps {
-  tab?: TabType;
+  tab: TabType;
 }
 
 const tabList: {
@@ -40,7 +40,7 @@ const tabList: {
   },
 ];
 
-const DetailSearchModal = ({ tab = "city" }: DetailSearchModalProps) => {
+const DetailSearchModal = ({ tab }: DetailSearchModalProps) => {
   const { closeModal } = useModalAtom();
   const {
     diffCard,
@@ -115,6 +115,7 @@ const DetailSearchModal = ({ tab = "city" }: DetailSearchModalProps) => {
             spaceBetween={16}
             className={styles.swiper}
             onSlideChange={onSlideChange}
+            initialSlide={tabList.findIndex((item) => item.key === tab) ?? 0}
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}

@@ -4,19 +4,16 @@ import { FaSearch } from "react-icons/fa";
 
 import styles from "./Home.module.css";
 
-import { useModalAtom } from "@/atoms/modal-atom";
 import Input from "@/components/common/input/Input";
 import Logo from "@/components/common/logo/Logo";
-import Search from "@/components/search/Search";
 import { RouteMap } from "@/constants/route";
 import Footer from "@/layouts/footer/Footer";
 
 const Home = () => {
   const { push } = useRouter();
-  const { showModal } = useModalAtom();
 
   const moveToSearch = () => {
-    showModal(<Search onSearch={() => push(RouteMap.DETAIL_SEARCH)} />);
+    push(RouteMap.SEARCH);
   };
 
   return (
@@ -37,7 +34,7 @@ const Home = () => {
 
         <p className={styles.paragraph}>
           <Link href={RouteMap.CUSTOMER_SERVICE}>
-            여러분의 제보를 원합니다! link
+            여러분의 제보를 원합니다!
           </Link>
         </p>
       </div>

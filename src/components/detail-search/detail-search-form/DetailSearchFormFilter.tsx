@@ -1,11 +1,11 @@
-import { FaAngleDown } from "react-icons/fa";
+import { useMemo } from "react";
 
 import styles from "./DetailSearchFormFilter.module.css";
 
 import { useFilterAtom } from "@/atoms/filter-atom";
-import { useModalAtom } from "@/atoms/modal-atom";
-import DetailSearchModal from "@/components/detail-search/detail-search-modal/DetailSearchModal";
-import { TabType } from "@/types/filter";
+import FilterButton, {
+  FilterButtonProps,
+} from "@/components/detail-search/detail-search-form/FilterButton";
 
 const DetailSearchFormFilter = () => {
   const {
@@ -13,39 +13,45 @@ const DetailSearchFormFilter = () => {
     filterState: { city, card, open },
   } = useFilterAtom();
 
-  const { showModal } = useModalAtom();
-
-  const showModalByFilter = (tab: TabType) => {
-    showModal(<DetailSearchModal tab={tab} />);
-  };
-
   const checkedCards = card.filter((item) => item.checked);
+
+  const filterList: FilterButtonProps[] = useMemo(
+    () => [
+      {
+        title: "지역",
+        content:
+          city.si === "all" ? "전국" : `${translateKey(city.si)} ${city.gu}`,
+        filterType: "city",
+      },
+      {
+        title: "카드사",
+        content:
+          checkedCards.length > 0
+            ? checkedCards.map((item) => item.name.toUpperCase()).join(", ")
+            : "ALL",
+        filterType: "card",
+      },
+      {
+        title: "폐업 여부",
+        content: open ? "포함" : "미포함",
+        filterType: "open",
+      },
+    ],
+    [city.si, city.gu, checkedCards, open]
+  );
 
   return (
     <div className={styles.container}>
-      <div onClick={() => showModalByFilter("city")}>
-        <small className={styles.filterTitle}>지역 : </small>
-        <b>
-          {city.si === "all" ? "전국" : `${translateKey(city.si)} ${city.gu}`}
-        </b>
-        <FaAngleDown size={14} color="#fff" />
-      </div>
-
-      <div onClick={() => showModalByFilter("card")}>
-        <small className={styles.filterTitle}>카드사 : </small>
-        <b>
-          {checkedCards.length > 0
-            ? checkedCards.map((item) => item.name.toUpperCase()).join(", ")
-            : "ALL"}
-        </b>
-        <FaAngleDown size={14} color="#fff" />
-      </div>
-
-      <div onClick={() => showModalByFilter("open")}>
-        <small className={styles.filterTitle}>폐업 여부 : </small>
-        <b>{open ? "포함" : "미포함"}</b>
-        <FaAngleDown size={14} color="#fff" />
-      </div>
+      {filterList.map(({ title, content, filterType }) => {
+        return (
+          <FilterButton
+            key={filterType}
+            title={title}
+            content={content}
+            filterType={filterType}
+          />
+        );
+      })}
     </div>
   );
 };

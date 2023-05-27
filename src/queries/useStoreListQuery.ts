@@ -63,7 +63,7 @@ const useStoreListQuery = () => {
     return gu === "전체" || gu === "" ? undefined : gu;
   };
 
-  const { data, fetchNextPage, hasNextPage } = useInfiniteQuery(
+  const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery(
     [
       QueryKey.FETCH_STORE_LIST,
       gu,
@@ -100,11 +100,15 @@ const useStoreListQuery = () => {
     [data]
   );
 
+  const total = data?.pages[0].totalElements ?? 0;
+
   return {
     data,
     storeList,
+    total,
     fetchNextPage,
     hasNextPage,
+    isLoading,
   };
 };
 

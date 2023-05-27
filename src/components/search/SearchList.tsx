@@ -1,9 +1,10 @@
+import { useRouter } from "next/router";
 import { FaSearch } from "react-icons/fa";
 
 import styles from "./SearchList.module.css";
 
-import { useModalAtom } from "@/atoms/modal-atom";
 import { useSearchAtom } from "@/atoms/search-atom";
+import { RouteMap } from "@/constants/route";
 import useSearchQuery from "@/queries/useSearchQuery";
 
 const SearchListItem = ({
@@ -24,15 +25,14 @@ const SearchListItem = ({
   );
 };
 
-const SearchList = ({ onSearch }: { onSearch?: () => void }) => {
-  const { closeModal } = useModalAtom();
+const SearchList = () => {
+  const { push } = useRouter();
   const { setState } = useSearchAtom();
   const { data } = useSearchQuery();
 
   const onClick = (keyword: string) => {
-    onSearch?.();
     setState((prev) => ({ ...prev, searchWord: keyword }));
-    closeModal();
+    push(RouteMap.DETAIL_SEARCH);
   };
 
   return (

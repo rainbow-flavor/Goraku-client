@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useMemo } from "react";
 import {
   FaArrowAltCircleRight,
   FaClock,
@@ -16,11 +17,11 @@ import {
 import styles from "./StoreDetail.module.css";
 
 import { fetchStoreDetail } from "@/api/store";
+import Defaultimg from "@/assets/store_default.webp";
 import NetworkCardList from "@/components/common/network-card-list/NetworkCardList";
 import StoreMachineList from "@/components/store/StoreMachineList";
-import { RouteMap } from "@/constants/route";
 import { ERROR_TEXT } from "@/constants/message";
-import { useMemo } from "react";
+import { RouteMap } from "@/constants/route";
 
 const NoInformation = () => (
   <span className={styles.noInformation}>{ERROR_TEXT.NO_INFORMATION}</span>
@@ -118,15 +119,19 @@ const StoreDetail = () => {
           {data.thumbnail ? (
             <img src={data.thumbnail} alt="가게 이미지" />
           ) : (
-            <>
-              <p>{ERROR_TEXT.NO_IMAGE_AND_CS}</p>
+            <div className={styles.noImageBox}>
+              <img src={Defaultimg.src} alt="가게 이미지" />
 
-              <p>
-                <Link href={RouteMap.CUSTOMER_SERVICE}>
-                  제보하기 <FaArrowAltCircleRight size={16} />
-                </Link>
-              </p>
-            </>
+              <div className={styles.noImageText}>
+                <p>{ERROR_TEXT.NO_IMAGE_AND_CS}</p>
+
+                <p>
+                  <Link href={RouteMap.CUSTOMER_SERVICE}>
+                    제보하기 <FaArrowAltCircleRight size={16} />
+                  </Link>
+                </p>
+              </div>
+            </div>
           )}
         </div>
       </div>

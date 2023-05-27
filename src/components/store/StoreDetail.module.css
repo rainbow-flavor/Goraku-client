@@ -60,6 +60,20 @@
     margin-top: 10px;
 }
 
+.noImageBox {
+    position: relative;
+
+}
+
+.noImageText {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.6);
+}
+
 .storeInfoField {
     padding-bottom: 12px;
     border-bottom: 2px solid var(--border-color);
@@ -72,7 +86,7 @@
 .storeInfoBox {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
 }
 
 .storeInfoText {
@@ -95,18 +109,10 @@
 
 .storeInfoText a {
     position: relative;
-    color: var(--text-color);
+    color: var(--text-link-color);
+    word-break: break-word;
 }
 
-.storeInfoText a::after {
-    content: "";
-    position: absolute;
-    left:0;
-    bottom: 0;
-    width: 100%;
-    height: 1px;
-    background-color: var(--border-color);
-}
 
 .storeInfoLink {
 
