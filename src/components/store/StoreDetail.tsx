@@ -17,7 +17,7 @@ import {
 import styles from "./StoreDetail.module.css";
 
 import { fetchStoreDetail } from "@/api/store";
-import Defaultimg from "@/assets/store_default.webp";
+import DefaultImg from "@/assets/store_default.webp";
 import NetworkCardList from "@/components/common/network-card-list/NetworkCardList";
 import StoreMachineList from "@/components/store/StoreMachineList";
 import { ERROR_TEXT } from "@/constants/message";
@@ -67,7 +67,11 @@ const StoreDetail = () => {
             },
             {
               icon: <FaRegCreditCard size={20} />,
-              text: <NetworkCardList network={data.networkType} />,
+              text: data.networkType ? (
+                <NetworkCardList network={data.networkType} />
+              ) : (
+                <NoInformation />
+              ),
             },
             {
               icon: <FaPhoneAlt size={20} />,
@@ -120,7 +124,7 @@ const StoreDetail = () => {
             <img src={data.thumbnail} alt="가게 이미지" />
           ) : (
             <div className={styles.noImageBox}>
-              <img src={Defaultimg.src} alt="가게 이미지" />
+              <img src={DefaultImg.src} alt="가게 이미지" />
 
               <div className={styles.noImageText}>
                 <p>{ERROR_TEXT.NO_IMAGE_AND_CS}</p>

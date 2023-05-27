@@ -1,5 +1,6 @@
 import { clsx } from "clsx";
 import { useRouter } from "next/router";
+import { FaClock, FaMapMarkerAlt, FaRegCreditCard } from "react-icons/fa";
 
 import styles from "./DetailSearchListItem.module.css";
 
@@ -32,19 +33,34 @@ const DetailSearchListItem = ({
       </div>
 
       <div className={styles.infoBox}>
-        <div className={styles.networkCardBox}>
-          <NetworkCardList network={networkType} />
-        </div>
-
         <p className={styles.title}>{name}</p>
 
-        <p className={clsx(styles.infoText, !uptime && styles.hasNotInfo)}>
-          {uptime ?? "영업시간 정보 없음"}
+        <p className={clsx(styles.infoText, !address && styles.hasNotInfo)}>
+          <FaMapMarkerAlt size={16} />
+          <span className={clsx(!address && styles.hasNotInfo)}>
+            {address ?? "주소 정보 없음"}
+          </span>
         </p>
 
-        <p className={clsx(styles.infoText, !address && styles.hasNotInfo)}>
-          {address ?? "주소 정보 없음"}
+        <p className={clsx(styles.infoText, !uptime && styles.hasNotInfo)}>
+          <FaClock size={16} />
+          <span className={clsx(!uptime && styles.hasNotInfo)}>
+            {uptime ?? "영업시간 정보 없음"}
+          </span>
         </p>
+
+        <div
+          className={clsx(styles.infoText, !networkType && styles.hasNotInfo)}
+        >
+          <FaRegCreditCard size={16} />
+          {networkType ? (
+            <NetworkCardList network={networkType} />
+          ) : (
+            <span className={clsx(!networkType && styles.hasNotInfo)}>
+              카드사 정보 없음
+            </span>
+          )}
+        </div>
       </div>
     </div>
   );

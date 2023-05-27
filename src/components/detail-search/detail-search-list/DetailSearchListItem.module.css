@@ -1,6 +1,7 @@
 .container {
     display: flex;
     align-items: center;
+    flex-direction: column;
     gap: 10px;
 }
 
@@ -13,14 +14,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 144px;
-    height: 112px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
     font-size: 10px;
     border-radius: 8px;
     background-color: var(--element-background-color);
     text-align: center;
     word-break: keep-all;
-    border: 1px solid #ccc;
 }
 
 .thumbnail img {
@@ -50,10 +50,14 @@
 
 .infoBox {
     flex: 1;
+    width: 100%;
 }
 
 .networkCardBox {
-    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-top: 2px;
     max-height: 14px;
 }
 
@@ -61,11 +65,16 @@
     font-size: 18px;
     font-weight: bold;
     color: #66AEB4;
+    margin-bottom: 4px;
 }
 
 .infoText {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
     font-size: 14px;
-    min-height: 16px;
+    line-height: 1.2;
 }
 
 .hasNotInfo {
