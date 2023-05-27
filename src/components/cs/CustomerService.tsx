@@ -1,16 +1,20 @@
 import Link from "next/link";
-import { ChangeEventHandler, FormEventHandler, useState } from "react";
-import { FaAngleDown, FaTimes } from "react-icons/fa";
+import { ChangeEventHandler, FormEventHandler, useRef, useState } from "react";
+import { FaAngleDown, FaPlus, FaTimes } from "react-icons/fa";
+import { toast, ToastContainer } from "react-toastify";
 
 import styles from "./CustomerService.module.css";
-import { toast, ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 import api from "@/api/api";
 import Input from "@/components/common/input/Input";
-import { RouteMap } from "@/constants/route";
 import { ERROR_TEXT } from "@/constants/message";
+import { RouteMap } from "@/constants/route";
+
+import { clsx } from "clsx";
 
 const CustomerService = () => {
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -25,6 +29,10 @@ const CustomerService = () => {
 
   const removeFile = () => {
     setFile(null);
+  };
+
+  const onClickFileInput = () => {
+    fileInputRef.current?.click();
   };
 
   const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
@@ -119,17 +127,25 @@ const CustomerService = () => {
 
         <div>
           <label htmlFor="image">사진</label>
-          <div>
-            <input
-              id="image"
-              type="file"
-              onChange={onChangeFile}
-              accept="image/png, image/jpeg"
-              title=" "
-              required
-            />
-          </div>
+          <input
+            id="image"
+            ref={fileInputRef}
+            className={styles.fileInput}
+            type="file"
+            onChange={onChangeFile}
+            accept="image/png, image/jpeg"
+            title=" "
+            required
+          />
+
           <div className={styles.previewImgList}>
+            <div
+              className={clsx(styles.previewImg, styles.fileInputButton)}
+              onClick={onClickFileInput}
+            >
+              <FaPlus size={20} color="#fff" />
+            </div>
+
             {file && (
               <div className={styles.previewImg}>
                 <img src={URL.createObjectURL(file)} alt="" />

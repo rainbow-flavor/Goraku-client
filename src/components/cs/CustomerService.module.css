@@ -108,12 +108,29 @@
     color: var(--text-color);
 }
 
+.fileInput {
+    width: 0;
+    height: 0;
+    position: absolute;
+    font-size: 0;
+    line-height: 0;
+}
+
+.fileInputButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,255,255,0.3);
+}
+
 .previewImgList {
     display: flex;
     flex-wrap: wrap;
     gap: 3%;
     row-gap: 10px;
 }
+
+
 
 .previewImg {
     overflow: hidden;
