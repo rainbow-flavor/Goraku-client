@@ -5,11 +5,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { NextSeo } from "next-seo";
 import React, { ReactNode, useEffect } from "react";
 import { RecoilRoot, useRecoilSnapshot } from "recoil";
-
-import defaultSeoProps from "../../next-seo.config";
 
 import { useGeolocationAtom } from "@/atoms/geolocation-atom";
 import { useModalAtom } from "@/atoms/modal-atom";
@@ -73,26 +70,12 @@ const AppContainer = ({ children }: { children: ReactNode }) => {
 };
 
 const App = ({ Component, pageProps }: AppProps) => {
-  const { seoProps } = pageProps;
-
   return (
     <>
       <Head>
-        <meta
-          name="keywords"
-          content="Goraku, 오락실, 동네 오락실, 오락실 찾기, 오락실 위치, 오락실 주소, 오락실 영업시간"
-        />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <script src="https://repo.whatap-browser-agent.io/rum/prod/v1/whatap-browser-agent.js" />
       </Head>
-
-      <NextSeo
-        {...defaultSeoProps}
-        {...seoProps}
-        openGraph={{
-          ...defaultSeoProps.openGraph,
-          ...seoProps?.openGraph,
-        }}
-      />
 
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>

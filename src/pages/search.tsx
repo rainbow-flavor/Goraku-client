@@ -1,11 +1,14 @@
-import { NextSeo } from "next-seo";
+import Head from "next/head";
 
 import Search from "@/components/search/Search";
 
 const SearchPage = () => {
   return (
     <>
-      <NextSeo noindex={true} />
+      <Head>
+        <title>문의 | Goraku</title>
+        <meta name="robots" content="noindex,nofollow" />
+      </Head>
       <Search />
     </>
   );
