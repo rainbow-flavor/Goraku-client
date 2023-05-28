@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import { QueryClient } from "@tanstack/query-core";
-import { QueryClientProvider } from "@tanstack/react-query";
+import { Hydrate, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { AppProps } from "next/app";
 import Head from "next/head";
@@ -88,15 +88,17 @@ const App = ({ Component, pageProps }: AppProps) => {
       <DefaultSeo {...defaultSeoProps} />
 
       <QueryClientProvider client={queryClient}>
-        <RecoilRoot>
-          <ReactQueryDevtools />
-          <DebugObserver />
+        <Hydrate state={pageProps.dehydratedState}>
+          <RecoilRoot>
+            <ReactQueryDevtools />
+            <DebugObserver />
 
-          <AppContainer>
-            <Component {...pageProps} />
-            <Modal />
-          </AppContainer>
-        </RecoilRoot>
+            <AppContainer>
+              <Component {...pageProps} />
+              <Modal />
+            </AppContainer>
+          </RecoilRoot>
+        </Hydrate>
       </QueryClientProvider>
     </>
   );
