@@ -5,7 +5,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import Script from "next/script";
 import { NextSeo } from "next-seo";
 import React, { ReactNode, useEffect } from "react";
 import { RecoilRoot, useRecoilSnapshot } from "recoil";
@@ -83,9 +82,8 @@ const App = ({ Component, pageProps }: AppProps) => {
           name="keywords"
           content="Goraku, 오락실, 동네 오락실, 오락실 찾기, 오락실 위치, 오락실 주소, 오락실 영업시간"
         />
+        <script src="https://repo.whatap-browser-agent.io/rum/prod/v1/whatap-browser-agent.js" />
       </Head>
-
-      <Script src="https://repo.whatap-browser-agent.io/rum/prod/v1/whatap-browser-agent.js" />
 
       <NextSeo
         {...defaultSeoProps}

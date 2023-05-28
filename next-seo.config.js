@@ -11,7 +11,7 @@ const defaultSeoProps = {
       "Goraku는 지역별, 기체별 검색을 통해 한국 오락실을 검색할 수 있는 사이트입니다",
     images: [
       {
-        url: "https://goraku.iro.ooo/logo_open_graph.png",
+        url: "https://goraku.iro.ooo/img/logo_open_graph.png",
         alt: "Goraku",
       },
     ],

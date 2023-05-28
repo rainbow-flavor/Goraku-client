@@ -56,11 +56,12 @@ const StoreDetail = () => {
             {
               icon: <FaMapMarkerAlt size={20} />,
               text: data.address ? (
-                <a
+                <Link
+                  target="_blank"
                   href={`https://map.kakao.com/link/to/${data.name},${data.latitude},${data.longitude}`}
                 >
                   {data.address}
-                </a>
+                </Link>
               ) : null,
             },
             {
