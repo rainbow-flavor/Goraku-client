@@ -36,6 +36,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
             openGraph: {
               type: "website",
               title: data.name,
+              titleTemplate: `${data.name} | Goraku`,
               description: data.address,
               images: [{ url: imageUrl, alt: "가게 이미지" }],
             },
@@ -51,6 +52,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
       },
     };
   } catch (err) {
+    console.error(err);
     return {
       props: {},
     };

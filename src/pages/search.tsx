@@ -1,7 +1,14 @@
+import { NextSeo } from "next-seo";
+
 import Search from "@/components/search/Search";
 
 const SearchPage = () => {
-  return <Search />;
+  return (
+    <>
+      <NextSeo noindex={true} />
+      <Search />
+    </>
+  );
 };
 
 export default SearchPage;
