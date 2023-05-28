@@ -21,7 +21,10 @@ const HomePage = () => {
         />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Goraku :: 한국 오락실 리스트" />
-        <meta property="og:image" content="/img/logo_open_graph.png" />
+        <meta
+          property="og:image"
+          content="https://goraku.iro.ooo/img/logo_open_graph.png"
+        />
         <meta
           property="og:description"
           content="Goraku는 지역별, 기체별 검색을 통해 한국 오락실을 검색할 수 있는 사이트입니다"

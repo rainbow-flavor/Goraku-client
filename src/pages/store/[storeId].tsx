@@ -31,7 +31,9 @@ const StoreDetailPage: NextPage<{ store: Store }> = ({ store }) => {
         <meta property="og:title" content={`${store.name} | Goraku`} />
         <meta
           property="og:image"
-          content={`${store.thumbnail ?? "/img/logo_open_graph.png"}`}
+          content={`${
+            store.thumbnail ?? "https://goraku.iro.ooo/img/logo_open_graph.png"
+          }`}
         />
         <meta
           property="og:url"
