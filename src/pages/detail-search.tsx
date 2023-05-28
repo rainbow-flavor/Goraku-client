@@ -12,10 +12,12 @@ const DetailSearchPage = () => {
         <meta
           name="description"
           content="Goraku, 오락실, 동네 오락실, 오락실 찾기, 오락실 위치, 오락실 주소, 오락실 영업시간"
+          key="description"
         />
         <meta
           name="keywords"
           content="Goraku, 오락실, 동네 오락실, 오락실 찾기, 오락실 위치, 오락실 주소, 오락실 영업시간"
+          key="keywords"
         />
         <meta property="og:title" content="오락실 탐색 | Goraku" />
         <meta property="og:image" content="/img/logo_open_graph.png" />

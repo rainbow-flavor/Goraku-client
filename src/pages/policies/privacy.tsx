@@ -8,7 +8,7 @@ const PrivacyPage = () => {
     <>
       <Head>
         <title>개인정보취급방침 | Goraku</title>
-        <meta name="robots" content="noindex,nofollow" />
+        <meta name="robots" content="noindex,nofollow" key="robots" />
       </Head>
 
       <PageLayout>

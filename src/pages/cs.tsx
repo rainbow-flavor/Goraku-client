@@ -8,7 +8,7 @@ const CustomerServicePage = () => {
     <>
       <Head>
         <title>문의 | Goraku</title>
-        <meta name="robots" content="noindex,nofollow" />
+        <meta name="robots" content="noindex,nofollow" key="robots" />
       </Head>
 
       <PageLayout type="cs">

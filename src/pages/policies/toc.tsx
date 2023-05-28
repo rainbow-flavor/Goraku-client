@@ -8,7 +8,7 @@ const TermOfContactPage = () => {
     <>
       <Head>
         <title>이용 약관 | Goraku</title>
-        <meta name="robots" content="noindex,nofollow" />
+        <meta name="robots" content="noindex,nofollow" key="robots" />
       </Head>
 
       <PageLayout>
