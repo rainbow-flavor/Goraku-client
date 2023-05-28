@@ -6,7 +6,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Script from "next/script";
-import { DefaultSeo } from "next-seo";
+import { NextSeo } from "next-seo";
 import React, { ReactNode, useEffect } from "react";
 import { RecoilRoot, useRecoilSnapshot } from "recoil";
 
@@ -84,8 +84,17 @@ const App = ({ Component, pageProps }: AppProps) => {
           content="Goraku, 오락실, 동네 오락실, 오락실 찾기, 오락실 위치, 오락실 주소, 오락실 영업시간"
         />
       </Head>
+
       <Script src="https://repo.whatap-browser-agent.io/rum/prod/v1/whatap-browser-agent.js" />
-      <DefaultSeo {...defaultSeoProps} />
+
+      <NextSeo
+        {...defaultSeoProps}
+        {...seoProps}
+        openGraph={{
+          ...defaultSeoProps.openGraph,
+          ...seoProps?.openGraph,
+        }}
+      />
 
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
