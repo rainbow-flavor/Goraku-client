@@ -13,7 +13,7 @@ const StoreDetailPage: NextPage<{ store: Store }> = ({ store }) => {
     <>
       <Head>
         <title>{store.name} | Goraku</title>
-        <meta name="robots" content="all" key="robots" />
+        <meta name="robots" content="index,follow" key="robots" />
         <meta
           name="description"
           content={`${
@@ -24,13 +24,18 @@ const StoreDetailPage: NextPage<{ store: Store }> = ({ store }) => {
         />
         <meta
           name="keywords"
-          content={`오락실, 가게, ${store.city1}, ${store.city2}`}
+          content={`오락실, 가게,${store.city1},${store.city2}`}
           key="keywords"
         />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content={`${store.name} | Goraku`} />
         <meta
           property="og:image"
           content={`${store.thumbnail ?? "/img/logo_open_graph.png"}`}
+        />
+        <meta
+          property="og:url"
+          content={`https://goraku.iro.ooo/store/${store.id}`}
         />
         <meta
           property="og:description"
@@ -43,6 +48,7 @@ const StoreDetailPage: NextPage<{ store: Store }> = ({ store }) => {
           property="og:url"
           content={`https://goraku.iro.ooo/store/${store.id}`}
         />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <PageLayout>
         <StoreDetail />
