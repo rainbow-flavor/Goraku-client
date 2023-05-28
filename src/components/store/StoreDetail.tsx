@@ -41,8 +41,6 @@ const StoreDetail = () => {
   const shareLink = async () => {
     if (navigator.share)
       await navigator.share({
-        title: data?.name,
-        text: data?.name,
         url: window.location.pathname,
       });
   };
