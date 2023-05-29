@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import { QueryClient } from "@tanstack/query-core";
+import { DehydratedState, QueryClient } from "@tanstack/query-core";
 import { Hydrate, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { AppProps } from "next/app";
@@ -69,7 +69,10 @@ const AppContainer = ({ children }: { children: ReactNode }) => {
   return <>{children}</>;
 };
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({
+  Component,
+  pageProps,
+}: AppProps<{ dehydratedState: DehydratedState }>) => {
   return (
     <>
       <Head>

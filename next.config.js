@@ -33,6 +33,9 @@ module.exports = async (phase, { defaultConfig }) => {
       }
       return config;
     },
+    serverRuntimeConfig: {
+      PROJECT_ROOT: __dirname,
+    },
     async headers() {
       return [
         {
