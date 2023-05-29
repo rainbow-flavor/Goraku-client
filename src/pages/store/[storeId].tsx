@@ -1,8 +1,8 @@
 import { dehydrate, QueryClient } from "@tanstack/query-core";
 import axios from "axios";
 import { GetServerSidePropsContext, NextPage } from "next";
-import Head from "next/head";
 
+import NextSeo from "@/components/common/next-seo/NextSeo";
 import StoreDetail from "@/components/store/StoreDetail";
 import PageLayout from "@/layouts/PageLayout";
 import { Response } from "@/types/api";
@@ -11,48 +11,18 @@ import { Store } from "@/types/store";
 const StoreDetailPage: NextPage<{ store: Store }> = ({ store }) => {
   return (
     <>
-      <Head>
-        <title>{store.name} | Goraku</title>
-        <meta name="robots" content="index,follow" key="robots" />
-        <meta
-          name="description"
-          content={`${
-            store.address ??
-            "Goraku는 지역별, 기체별 검색을 통해 한국 오락실을 검색할 수 있는 사이트입니다"
-          }`}
-          key="description"
-        />
-        <meta
-          name="keywords"
-          content={`오락실, 가게,${store.city1},${store.city2}`}
-          key="keywords"
-        />
-        <meta property="og:site_name" content="Goraku" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={`${store.name} | Goraku`} />
-        <meta
-          property="og:image"
-          content={`${
-            store.thumbnail ?? "https://goraku.iro.ooo/img/logo_open_graph.png"
-          }`}
-        />
-        <meta
-          property="og:url"
-          content={`https://goraku.iro.ooo/store/${store.id}`}
-        />
-        <meta
-          property="og:description"
-          content={`${
-            store.address ??
-            "Goraku는 지역별, 기체별 검색을 통해 한국 오락실을 검색할 수 있는 사이트입니다"
-          }`}
-        />
-        <meta
-          property="og:url"
-          content={`https://goraku.iro.ooo/store/${store.id}`}
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
+      <NextSeo
+        robots="index,follow"
+        title={`${store.name} | Goraku`}
+        description={`${
+          store.address ??
+          "Goraku는 지역별, 기체별 검색을 통해 한국 오락실을 검색할 수 있는 사이트입니다"
+        }`}
+        keywords={`오락실, 가게,${store.city1},${store.city2}`}
+        og_image={store.thumbnail}
+        og_url={`https://goraku.iro.ooo/store/${store.id}`}
+      />
+
       <PageLayout>
         <StoreDetail />
       </PageLayout>
