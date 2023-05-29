@@ -27,6 +27,7 @@ const StoreDetailPage: NextPage<{ store: Store }> = ({ store }) => {
           content={`오락실, 가게,${store.city1},${store.city2}`}
           key="keywords"
         />
+        <meta property="og:site_name" content="Goraku" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={`${store.name} | Goraku`} />
         <meta

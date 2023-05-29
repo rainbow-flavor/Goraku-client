@@ -19,6 +19,7 @@ const DetailSearchPage = () => {
           content="Goraku,오락실,동네 오락실,오락실 찾기,오락실 위치,오락실 주소,오락실 영업시간"
           key="keywords"
         />
+        <meta property="og:site_name" content="Goraku" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="오락실 탐색 | Goraku" />
         <meta

@@ -19,12 +19,17 @@ const HomePage = () => {
           content="Goraku, 오락실, 동네 오락실, 오락실 찾기, 오락실 위치, 오락실 주소, 오락실 영업시간"
           key="keywords"
         />
+        <meta property="og:site_name" content="Goraku" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Goraku :: 한국 오락실 리스트" />
         <meta
           property="og:image"
           content="https://goraku.iro.ooo/img/logo_open_graph.png"
         />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="400" />
+        <meta property="og:image:height" content="200" />
+        <meta property="og:image:alt" content="Goraku 대표이미지" />
         <meta
           property="og:description"
           content="Goraku는 지역별, 기체별 검색을 통해 한국 오락실을 검색할 수 있는 사이트입니다"
