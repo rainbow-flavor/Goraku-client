@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { FormEvent } from "react";
+import React, { FormEvent, useEffect } from "react";
 import { FaArrowLeft, FaTimes } from "react-icons/fa";
 
 import { useSearchAtom } from "@/atoms/search-atom";
@@ -20,6 +20,12 @@ const SearchForm = () => {
     e.preventDefault();
     push(RouteMap.DETAIL_SEARCH);
   };
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.focus();
+    }
+  }, []);
 
   return (
     <form className={styles.form} onSubmit={onSubmit}>
