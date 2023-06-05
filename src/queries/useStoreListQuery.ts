@@ -86,6 +86,7 @@ const useStoreListQuery = () => {
         limit: 60,
       }),
     {
+      retry: 2,
       getNextPageParam: (lastPage) => {
         const { totalPages, currentPage } = lastPage;
         if (totalPages === 0) return undefined;
