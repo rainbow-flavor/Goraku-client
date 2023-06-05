@@ -37,7 +37,6 @@ const CustomerService = () => {
 
   const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    if (!file) return alert("이미지를 등록해주세요!");
     setIsLoading(true);
     const form = e.currentTarget;
 
@@ -56,7 +55,10 @@ const CustomerService = () => {
           type: "application/json",
         })
       );
-      postFormData.append("image", file);
+
+      if (file) {
+        postFormData.append("image", file);
+      }
 
       await toast.promise(() => api.post("/cs", postFormData), {
         pending: "문의내역 등록 중입니다.",
@@ -135,7 +137,6 @@ const CustomerService = () => {
             onChange={onChangeFile}
             accept="image/png, image/jpeg"
             title=" "
-            required
           />
 
           <div className={styles.previewImgList}>
