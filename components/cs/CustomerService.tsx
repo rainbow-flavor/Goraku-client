@@ -20,9 +20,17 @@ const CustomerService = () => {
 
   const onChangeFile: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { files } = e.target;
+    const MAX_ALLOWED_SIZE = 30 * 1024 * 1024;
 
     if (files && files.length > 0) {
       const fileList = Array.from(files);
+
+      if (fileList[0]?.size >= MAX_ALLOWED_SIZE) {
+        return toast.error(ERROR_TEXT.NO_ALLOW_IMAGE_SIZE, {
+          autoClose: 2000,
+        });
+      }
+
       setFile(fileList[0]);
     }
   };
