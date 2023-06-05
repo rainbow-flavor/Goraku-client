@@ -84,7 +84,7 @@ const App = ({
         <link
           rel="manifest"
           crossOrigin="use-credentials"
-          href="/favicon/site.webmanifest"
+          href="/favicon/manifest.json"
         />
         <script src="https://repo.whatap-browser-agent.io/rum/prod/v1/whatap-browser-agent.js" />
       </Head>
