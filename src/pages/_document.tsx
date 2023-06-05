@@ -5,7 +5,6 @@ const Document = () => {
   return (
     <Html lang="kr">
       <Head>
-        <link rel="manifest" href="/favicon/site.webmanifest" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

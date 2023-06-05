@@ -81,7 +81,11 @@ const App = ({
           content="initial-scale=1.0, width=device-width"
           key="viewport"
         />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
+        <link
+          rel="manifest"
+          crossOrigin="use-credentials"
+          href="/favicon/site.webmanifest"
+        />
         <script src="https://repo.whatap-browser-agent.io/rum/prod/v1/whatap-browser-agent.js" />
       </Head>
 
