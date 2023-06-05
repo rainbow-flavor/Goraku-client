@@ -1,14 +1,17 @@
-import styles from "./Navbar.module.css";
-import { RouteMap } from "@/constants/route";
+import { clsx } from "clsx";
 import Link from "next/link";
 import { FaHome, FaPhoneAlt, FaSearch } from "react-icons/fa";
-import { clsx } from "clsx";
+
+import styles from "./Navbar.module.css";
+
+import { RouteMap } from "@/constants/route";
 
 interface NavbarProps {
   close?: boolean;
+  onClick?: () => void;
 }
 
-const Navbar = ({ close }: NavbarProps) => {
+const Navbar = ({ close, onClick }: NavbarProps) => {
   const routes = [
     {
       name: "홈 페이지",
@@ -33,7 +36,11 @@ const Navbar = ({ close }: NavbarProps) => {
         <div className={styles.navLinkBox}>
           {routes.map((route) => {
             return (
-              <div key={route.name} className={styles.navLink}>
+              <div
+                key={route.name}
+                className={styles.navLink}
+                onClick={onClick}
+              >
                 {route.icon}
                 <Link href={route.pathname}>{route.name}</Link>
               </div>

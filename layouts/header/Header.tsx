@@ -5,17 +5,21 @@ import styles from "./Header.module.css";
 
 import Logo from "@/components/common/logo/Logo";
 import { RouteMap } from "@/constants/route";
-import Navbar from "@/layouts/navbar/Navbar";
 import useToggle from "@/hooks/useToggle";
+import Navbar from "@/layouts/navbar/Navbar";
 
 const Header = () => {
-  const { toggle, onToggle } = useToggle();
+  const { toggle, onToggle, setToggle } = useToggle();
+
+  const closeNavbar = () => setToggle(false);
 
   return (
     <div className={styles.container}>
       <div className={styles.content}>
         <Link href={RouteMap.HOME}>
-          <Logo type="nav" />
+          <a>
+            <Logo type="nav" />
+          </a>
         </Link>
 
         <div className={styles.menu} onClick={onToggle}>
@@ -23,7 +27,7 @@ const Header = () => {
         </div>
       </div>
 
-      <Navbar close={toggle} />
+      <Navbar close={toggle} onClick={closeNavbar} />
     </div>
   );
 };
