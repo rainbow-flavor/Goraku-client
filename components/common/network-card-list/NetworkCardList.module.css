@@ -12,9 +12,28 @@
     align-items: center;
     width: 14px;
     height: 14px;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 12px;
-    color: var(--background-color);
+    line-height: 1.5;
+    padding: 2px;
+    color: #FFFFFF;
     border-radius: 50%;
     background-color: #F4EEE0;
+    box-sizing: content-box;
+}
+
+.k{
+    background-color: #990014;
+}
+.n{
+    background-color: #ed167e;
+}
+.s{
+    background-color: #0060a8;
+}
+.t{
+    background-color: #e60000;
+}
+.a{
+    background-color: #ff9903;
 }

@@ -31,7 +31,7 @@ const tabList: {
   {
     checked: false,
     key: "card",
-    name: "카드사",
+    name: "네트워크",
   },
   {
     checked: false,

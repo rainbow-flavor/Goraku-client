@@ -24,7 +24,7 @@ const DetailSearchFormFilter = () => {
         filterType: "city",
       },
       {
-        title: "카드사",
+        title: "네트워크",
         content:
           checkedCards.length > 0
             ? checkedCards.map((item) => item.name.toUpperCase()).join(", ")

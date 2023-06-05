@@ -19,7 +19,7 @@ const CardFilter = () => {
           <FaCheckCircle />{" "}
         </div>
       </div>
-      <SubmitFilterButton name="카드사" />
+      <SubmitFilterButton name="네트워크" />
     </div>
   );
 };
