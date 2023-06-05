@@ -5,6 +5,30 @@ const Document = () => {
   return (
     <Html lang="kr">
       <Head>
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/favicon/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon/favicon-16x16.png"
+        />
+        <link
+          rel="manifest"
+          crossOrigin="use-credentials"
+          href="/favicon/manifest.json"
+        />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -15,12 +39,8 @@ const Document = () => {
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
           rel="stylesheet"
         />
-        <link
-          rel="manifest"
-          crossOrigin="use-credentials"
-          href="/manifest.json"
-        />
       </Head>
+
       <body>
         <Main />
         <NextScript />

@@ -18,7 +18,7 @@ const Logo = ({ type }: LogoProps) => {
 
   return (
     <h1 className={clsx(styles.container, styleMap[type])}>
-      <Image src={LogoImg} alt="Goraku 오락실 찾기 서비스 로고" />
+      <Image src={LogoImg} alt="Goraku 오락실 찾기 서비스 로고" layout="fill" />
     </h1>
   );
 };

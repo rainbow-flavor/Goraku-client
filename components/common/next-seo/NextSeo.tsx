@@ -1,11 +1,4 @@
 import Head from "next/head";
-import React from "react";
-
-import AppleTouchIcon from "../../../../public/favicon/apple-touch-icon.png";
-import Favicon16 from "../../../../public/favicon/favicon-16x16.png";
-import Favicon32 from "../../../../public/favicon/favicon-32x32.png";
-import Favicon from "../../../../public/favicon/favicon.ico";
-import OpenGraphDefaultImg from "../../../../public/img/logo_open_graph.png";
 
 interface NextSeoProps {
   robots: "index,follow" | "noindex,nofollow";
@@ -26,11 +19,6 @@ const NextSeo = ({
 }: NextSeoProps) => {
   return (
     <Head>
-      <link rel="shortcut icon" href={Favicon.src} />
-      <link rel="apple-touch-icon" sizes="180x180" href={AppleTouchIcon.src} />
-      <link rel="icon" type="image/png" sizes="32x32" href={Favicon32.src} />
-      <link rel="icon" type="image/png" sizes="16x16" href={Favicon16.src} />
-
       <title>{title}</title>
       <meta name="robots" content={robots} key="robots" />
       <meta name="description" content={description} key="description" />
@@ -42,7 +30,7 @@ const NextSeo = ({
       <meta property="og:title" content={title} key="og:title" />
       <meta
         property="og:image"
-        content={og_image ?? OpenGraphDefaultImg.src}
+        content={og_image ?? "/img/logo_open_graph.png"}
         key="og:image"
       />
       <meta property="og:url" content={og_url} key="og:url" />
@@ -72,7 +60,7 @@ const NextSeo = ({
       />
       <meta
         name="twitter:image"
-        content={og_image ?? OpenGraphDefaultImg.src}
+        content={og_image ?? "/img/logo_open_graph.png"}
         key="twitter:image"
       />
     </Head>
