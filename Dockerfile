@@ -27,6 +27,7 @@ COPY --from=0 /app/.next /deploy/.next
 COPY --from=0 /app/package.json /deploy/package.json
 COPY --from=0 /app/node_modules /deploy/node_modules
 COPY --from=0 /app/whatap.conf /deploy/whatap.conf
+COPY --from=0 /app/public /deploy/public
 
 ENTRYPOINT ["npm", "run", "start"]
 
