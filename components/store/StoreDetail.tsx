@@ -86,7 +86,7 @@ const StoreDetail = () => {
             },
             {
               icon: <FaTwitter size={20} />,
-              text: data.website ? (
+              text: data.twitter ? (
                 <Link
                   href={`https://twitter.com/${data.twitter}`}
                   target="_blank"
