@@ -102,7 +102,6 @@ const CustomerService = () => {
             required
           />
         </div>
-
         <div>
           <label htmlFor="cstype">문의 종류</label>
           <div className={styles.cstypeField}>
@@ -122,7 +121,6 @@ const CustomerService = () => {
             <FaAngleDown color="#fff" size={15} />
           </div>
         </div>
-
         <div>
           <label htmlFor="content">문의 내용</label>
           <textarea
@@ -134,7 +132,6 @@ const CustomerService = () => {
             required
           />
         </div>
-
         <div>
           <label htmlFor="image">사진</label>
           <input
@@ -169,12 +166,12 @@ const CustomerService = () => {
         <div className={styles.submitField}>
           <p>
             아래의 제출 버튼을 누름으로서 GORAKU의 &nbsp;
-            <Link className={styles.link} href={RouteMap.TERM_OF_CONTRACT}>
-              이용약관
+            <Link href={RouteMap.TERM_OF_CONTRACT}>
+              <a className={styles.link}>이용약관</a>
             </Link>
             과&nbsp;
-            <Link className={styles.link} href={RouteMap.PRIVACY}>
-              개인정보처리방침
+            <Link href={RouteMap.PRIVACY}>
+              <a className={styles.link}>개인정보처리방침</a>
             </Link>
             에 동의한 것으로 간주합니다.
           </p>
