@@ -7,3 +7,7 @@ export const ERROR_TEXT = {
   SERVER_ERROR:
     "알 수 없는 에러가 발생했습니다. 새로고침이나 다시 시도해주세요.",
 };
+
+export const GUIDE_TEXT = {
+  INPUT_PLACEHOLDER: "게임, 지역, 가게 이름을 검색해보세요",
+};

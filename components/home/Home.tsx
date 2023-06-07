@@ -12,7 +12,7 @@ import Footer from "@/layouts/footer/Footer";
 const Home = () => {
   const { push } = useRouter();
 
-  const moveToSearch = () => {
+  const onClickInput = () => {
     push(RouteMap.SEARCH);
   };
 
@@ -30,8 +30,12 @@ const Home = () => {
 
         <Logo type="home" />
 
-        <div className={styles.searchInputBox} onClick={moveToSearch}>
-          <Input placeholder="원하는 오락실 게임을 검색하세요" disabled />
+        <div className={styles.searchInputBox}>
+          <Input
+            onClick={onClickInput}
+            placeholder="원하는 오락실 게임을 검색하세요"
+            readOnly
+          />
         </div>
 
         <p className={styles.paragraph}>

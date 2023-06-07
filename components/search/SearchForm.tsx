@@ -22,9 +22,28 @@ const SearchForm = () => {
   };
 
   useEffect(() => {
-    if (ref.current) {
-      ref.current.focus();
-    }
+    const tempEl = document.createElement("input");
+    const input = document.querySelector("input") as HTMLInputElement;
+    tempEl.style.position = "absolute";
+    tempEl.style.top = input.offsetTop + 7 + "px";
+    tempEl.style.left = input.offsetLeft + "px";
+    tempEl.style.height = "0";
+    tempEl.style.opacity = "0";
+
+    document.body.appendChild(tempEl);
+    tempEl.focus();
+
+    const focusInput = () => {
+      input.focus();
+      input.click();
+      document.body.removeChild(tempEl);
+    };
+
+    const onMount = setTimeout(focusInput, 300);
+
+    return () => {
+      clearTimeout(onMount);
+    };
   }, []);
 
   return (
@@ -38,7 +57,6 @@ const SearchForm = () => {
           className={styles.searchInput}
           onChange={onChange}
           value={searchWord}
-          ref={ref}
         />
 
         {searchWord && (

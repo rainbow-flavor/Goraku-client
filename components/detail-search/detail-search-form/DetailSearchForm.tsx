@@ -7,6 +7,7 @@ import styles from "./DetailSearchForm.module.css";
 import { useSearchAtom } from "@/atoms/search-atom";
 import Input from "@/components/common/input/Input";
 import DetailSearchFormFilter from "@/components/detail-search/detail-search-form/DetailSearchFormFilter";
+import { GUIDE_TEXT } from "@/constants/message";
 import { RouteMap } from "@/constants/route";
 
 const DetailSearchForm = () => {
@@ -46,11 +47,12 @@ const DetailSearchForm = () => {
       <div className={styles.wrapper} ref={ref}>
         <div className={styles.container}>
           <Input
-            placeholder="게임, 지역, 가게 이름을 검색해보세요"
+            placeholder={GUIDE_TEXT.INPUT_PLACEHOLDER}
             styleType="search"
             value={searchWord}
             onChange={onChange}
             onClick={onClickInput}
+            readOnly
           />
         </div>
 
