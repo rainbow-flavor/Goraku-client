@@ -12,11 +12,11 @@
 }
 
 .active {
+    z-index: 1;
     transform: translateY(200px);
 }
 
 .content {
-
     display: flex;
     flex-direction: column;
     gap: 20px;

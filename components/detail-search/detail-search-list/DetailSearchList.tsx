@@ -40,7 +40,7 @@ const DetailSearchList = () => {
         {!isLoading && storeList.length === 0 && (
           <div className={styles.emptyText}>{ERROR_TEXT.NO_ITEM}</div>
         )}
-
+        <DetailSearchListSkeleton />
         {isLoading && <DetailSearchListSkeleton />}
       </div>
     </div>

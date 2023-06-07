@@ -1,6 +1,7 @@
 import { clsx } from "clsx";
 import Link from "next/link";
 import { FaHome, FaPhoneAlt, FaSearch } from "react-icons/fa";
+import { InView } from "react-intersection-observer";
 
 import styles from "./Navbar.module.css";
 
@@ -48,6 +49,12 @@ const Navbar = ({ close, onClick }: NavbarProps) => {
           })}
         </div>
       </div>
+      <InView
+        onChange={(inView) => {
+          console.log(inView);
+          if (!inView) onClick?.();
+        }}
+      />
     </div>
   );
 };
