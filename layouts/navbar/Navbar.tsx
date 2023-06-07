@@ -51,7 +51,6 @@ const Navbar = ({ close, onClick }: NavbarProps) => {
       </div>
       <InView
         onChange={(inView) => {
-          console.log(inView);
           if (!inView) onClick?.();
         }}
       />
