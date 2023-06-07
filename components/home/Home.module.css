@@ -85,8 +85,19 @@
 }
 
 .paragraph {
-    padding-top: 10px;
+    padding-top: 20px;
     font-size: 14px;
     text-align: center;
     color: #4B9AE0;
+}
+
+.notification {
+    padding: 5px 30px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+
+.notification a {
+    color: var(--text-link-color);
 }

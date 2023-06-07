@@ -38,11 +38,18 @@ const Home = () => {
           />
         </div>
 
-        <p className={styles.paragraph}>
-          <Link href={RouteMap.CUSTOMER_SERVICE}>
-            여러분의 제보를 원합니다!
-          </Link>
-        </p>
+        <div className={styles.paragraph}>
+          <div className={styles.notification}>
+            <p>
+              현재 지역은 &nbsp;<b>서울</b>, &nbsp;<b>경기남부</b>까지만
+              제공하고 있습니다.
+            </p>
+
+            <Link href={RouteMap.CUSTOMER_SERVICE}>
+              <a>여러분의 제보를 원합니다!</a>
+            </Link>
+          </div>
+        </div>
       </div>
       <Footer />
     </>
