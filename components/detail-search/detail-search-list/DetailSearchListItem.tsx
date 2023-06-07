@@ -29,7 +29,7 @@ const DetailSearchListItem = ({
     <div className={styles.container} onClick={movePage}>
       <div className={styles.thumbnailBox}>
         <div className={clsx(styles.thumbnail, !thumbnail && styles.noImage)}>
-          <img src={thumbnail ?? DefaultImg.src} alt="가게 이미지" />
+          <img src={thumbnail ? thumbnail : DefaultImg.src} alt="가게 이미지" />
         </div>
       </div>
 
