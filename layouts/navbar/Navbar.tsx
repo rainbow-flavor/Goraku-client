@@ -1,5 +1,6 @@
 import { clsx } from "clsx";
 import Link from "next/link";
+import { useState } from "react";
 import { FaHome, FaPhoneAlt, FaSearch } from "react-icons/fa";
 import { InView } from "react-intersection-observer";
 
@@ -13,6 +14,8 @@ interface NavbarProps {
 }
 
 const Navbar = ({ close, onClick }: NavbarProps) => {
+  const [isMount, setIsMount] = useState(false);
+
   const routes = [
     {
       name: "홈 페이지",
@@ -49,9 +52,13 @@ const Navbar = ({ close, onClick }: NavbarProps) => {
           })}
         </div>
       </div>
+
       <InView
-        onChange={(inView) => {
-          if (!inView) onClick?.();
+        onChange={(inView, entry) => {
+          setIsMount(true);
+          if (isMount && entry.boundingClientRect.y < 0 && !inView) {
+            if (close) onClick?.();
+          }
         }}
       />
     </div>
