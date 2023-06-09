@@ -17,9 +17,7 @@ const Header = () => {
     <div className={styles.container}>
       <div className={styles.content}>
         <Link href={RouteMap.HOME}>
-          <a>
-            <Logo type="nav" />
-          </a>
+          <Logo type="nav" />
         </Link>
 
         <div className={styles.menu} onClick={onToggle}>

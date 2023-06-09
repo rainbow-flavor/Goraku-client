@@ -166,12 +166,12 @@ const CustomerService = () => {
         <div className={styles.submitField}>
           <p>
             아래의 제출 버튼을 누름으로서 GORAKU의 &nbsp;
-            <Link href={RouteMap.TERM_OF_CONTRACT}>
-              <a className={styles.link}>이용약관</a>
+            <Link href={RouteMap.TERM_OF_CONTRACT} className={styles.link}>
+              이용약관
             </Link>
             과&nbsp;
-            <Link href={RouteMap.PRIVACY}>
-              <a className={styles.link}>개인정보처리방침</a>
+            <Link href={RouteMap.PRIVACY} className={styles.link}>
+              개인정보처리방침
             </Link>
             에 동의한 것으로 간주합니다.
           </p>

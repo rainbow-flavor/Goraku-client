@@ -21,10 +21,8 @@ const Home = () => {
       <div className={styles.container}>
         <div className={styles.header}>
           <Link href={RouteMap.DETAIL_SEARCH}>
-            <a>
-              오락실 둘러보기
-              <FaSearch size={20} color="#fff" title="상세 검색" />
-            </a>
+            오락실 둘러보기
+            <FaSearch size={20} color="#fff" title="상세 검색" />
           </Link>
         </div>
 
@@ -46,7 +44,7 @@ const Home = () => {
             </p>
 
             <Link href={RouteMap.CUSTOMER_SERVICE}>
-              <a>여러분의 제보를 원합니다!</a>
+              여러분의 제보를 원합니다!
             </Link>
           </div>
         </div>
