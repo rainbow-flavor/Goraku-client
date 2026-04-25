@@ -21,18 +21,6 @@ module.exports = async (phase, { defaultConfig }) => {
   const nextConfig = {
     reactStrictMode: true,
 
-    webpack: (config, { isServer, webpack }) => {
-      if (isServer === false) {
-        config.plugins.push(
-            new webpack.IgnorePlugin({
-              resourceRegExp: /.*/,
-              contextRegExp: /.*$/,
-            })
-        );
-      }
-      return config;
-    },
-
     async headers() {
       return [
         {
