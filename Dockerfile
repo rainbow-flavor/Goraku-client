@@ -7,7 +7,7 @@ RUN npm install
 ARG GORAKU_API_URL
 ENV GORAKU_API_URL ${GORAKU_API_URL}
 
-RUN echo ${GORAKU_API_URL}>/app/.env
+RUN echo ${NEXT_PUBLIC_API_URL}>/app/.env
 
 RUN npm run build
 

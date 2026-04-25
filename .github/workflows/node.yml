@@ -45,7 +45,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           # 빌드 시 필요한 ARG 주입 (GitHub Secrets에 GORAKU_API_URL 등록 필수)
           build-args: |
-            GORAKU_API_URL=${{ secrets.GORAKU_API_URL }}
+            NEXT_PUBLIC_API_URL=${{ secrets.GORAKU_API_URL }}
 
   deploy:
     needs: build-and-push
