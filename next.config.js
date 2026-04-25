@@ -1,7 +1,5 @@
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' repo.whatap-browser-agent.io/rum/prod/ static.cloudflareinsights.com;
-  connect-src 'self' rum-ap-northeast-2.whatap-browser-agent.io;
   style-src 'self' 'unsafe-inline' fonts.googleapis.com;
   font-src 'self' fonts.gstatic.com data:;
   worker-src 'self' blob:;
@@ -26,7 +24,6 @@ module.exports = async (phase, { defaultConfig }) => {
       if (isServer === false) {
         config.plugins.push(
           new webpack.IgnorePlugin({
-            resourceRegExp: /^whatap/,
             contextRegExp: /.*$/,
           })
         );
