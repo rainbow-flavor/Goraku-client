@@ -5,6 +5,7 @@ const ContentSecurityPolicy = `
   worker-src 'self' blob:;
   img-src 'self' *.imgur.com blob: data:;
 `;
+
 const securityHeaders = [
   {
     key: "Content-Security-Policy",
@@ -19,13 +20,14 @@ const securityHeaders = [
 module.exports = async (phase, { defaultConfig }) => {
   const nextConfig = {
     reactStrictMode: true,
-    webpack5: true,
+
     webpack: (config, { isServer, webpack }) => {
       if (isServer === false) {
         config.plugins.push(
-          new webpack.IgnorePlugin({
-            contextRegExp: /.*$/,
-          })
+            new webpack.IgnorePlugin({
+              resourceRegExp: /.*/,
+              contextRegExp: /.*$/,
+            })
         );
       }
       return config;
@@ -39,6 +41,7 @@ module.exports = async (phase, { defaultConfig }) => {
         },
       ];
     },
+
     async rewrites() {
       return [
         {
@@ -48,5 +51,6 @@ module.exports = async (phase, { defaultConfig }) => {
       ];
     },
   };
+
   return nextConfig;
 };
